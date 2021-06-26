@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import 'modern-normalize/modern-normalize.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Register from './components/pages/register';
 import Login from './components/pages/login';
