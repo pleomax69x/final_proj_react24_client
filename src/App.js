@@ -4,12 +4,12 @@ import 'modern-normalize/modern-normalize.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Register from './components/pages/register';
 import Login from './components/pages/login';
-import Project from './components/pages/project';
+import Projects from './components/pages/projects';
 
 function App() {
   return (
     <Router>
-      <div>
+      <div className="container">
         <nav>
           <ul>
             <li>
@@ -32,7 +32,7 @@ function App() {
             <Login />
           </Route>
           <Route path="/projects">
-            <Project />
+            <Projects />
           </Route>
         </Switch>
       </div>
