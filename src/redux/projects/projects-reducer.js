@@ -1,23 +1,12 @@
-import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import actions from './projects-actions';
 
 const {
-  getProjectsRequest,
   getProjectsSuccess,
-  getProjectsError,
-  addProjectRequest,
   addProjectSuccess,
-  addProjectError,
-  deleteProjectRequest,
   deleteProjectSuccess,
-  deleteProjectError,
-  editProjectRequest,
   editProjectSuccess,
-  editProjectError,
-  addTeammateRequest,
   addTeammateSuccess,
-  addTeammateError,
 } = actions;
 
 const projects = createReducer([], {
@@ -33,25 +22,4 @@ const projects = createReducer([], {
   [addTeammateSuccess]: (_, { payload }) => payload,
 });
 
-const loading = createReducer(false, {
-  [getProjectsRequest]: () => true,
-  [getProjectsSuccess]: () => false,
-  [getProjectsError]: () => false,
-  [addProjectRequest]: () => true,
-  [addProjectSuccess]: () => false,
-  [addProjectError]: () => false,
-  [deleteProjectRequest]: () => true,
-  [deleteProjectSuccess]: () => false,
-  [deleteProjectError]: () => false,
-  [editProjectRequest]: () => true,
-  [editProjectSuccess]: () => false,
-  [editProjectError]: () => false,
-  [addTeammateRequest]: () => true,
-  [addTeammateSuccess]: () => false,
-  [addTeammateError]: () => false,
-});
-
-export default combineReducers({
-  projects,
-  loading,
-});
+export default projects;
