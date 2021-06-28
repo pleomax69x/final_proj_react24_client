@@ -1,0 +1,70 @@
+.project_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.project_form_title {
+  margin: 0;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: 0.04em;
+  color: #181c27;
+  margin-bottom: 50px;
+}
+
+.project_form_div {
+  position: relative;
+  margin: 30px 0;
+}
+
+.project_form_lable {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  align-items: center;
+  letter-spacing: 0.04em;
+  color: rgba(24, 28, 39, 0.6);
+}
+
+.project_form_lable {
+  position: absolute;
+  top: -22px;
+  font-size: 14px;
+  color: #ff6b08;
+  transition: all 0.25s linear;
+}
+
+.project_form_input {
+  width: 429px;
+  height: 30px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+  color: rgba(24, 28, 39, 0.6);
+  border: none;
+  border-bottom: 1px solid rgba(24, 28, 39, 0.2);
+}
+
+.project_form_input:hover {
+  border-bottom: 2px solid black;
+}
+.project_form_input:focus {
+  outline: none;
+  border-bottom: 2px solid #ff6b08;
+  transition: all 0.25s linear;
+}
