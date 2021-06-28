@@ -7,11 +7,12 @@ import Login from './components/pages/login';
 import Project from './components/pages/project';
 import Header from './components/Header';
 import s from './container.module.css';
+import Projects from './components/pages/projects';
 
 function App() {
   return (
     <Router>
-      <div className={s.container}>
+      <div className="container">
         <Header />
 
         <div>
@@ -26,6 +27,9 @@ function App() {
               <li>
                 <Link to="/projects">Users</Link>
               </li>
+              <li>
+                <Link to="/project">Projects</Link>
+              </li>
             </ul>
           </nav>
 
@@ -38,6 +42,9 @@ function App() {
             </Route>
             <Route path="/projects">
               <Project />
+            </Route>
+            <Route path="/project">
+              <Projects />
             </Route>
           </Switch>
         </div>
