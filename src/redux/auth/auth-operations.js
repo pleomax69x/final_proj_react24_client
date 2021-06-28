@@ -2,7 +2,7 @@ import axios from 'axios';
 import actions from './auth-actions';
 
 // TODO add
-axios.defaults.baseURL = '';
+axios.defaults.baseURL = 'https://planning-app1.herokuapp.com';
 
 const token = {
   set(token) {
