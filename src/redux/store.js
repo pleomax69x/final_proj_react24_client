@@ -12,6 +12,10 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 import { projectsReducer } from './projects';
+import { sprintsReducer } from './sprints';
+import { tasksReducer } from './tasks';
+import loadingReducer from './loading-reducer';
+import errorReducer from './error-reducer';
 import { authReducer } from './auth';
 
 const middleware = [
@@ -32,6 +36,10 @@ const authPersistConfig = {
 const store = configureStore({
   reducer: {
     projects: projectsReducer,
+    sprints: sprintsReducer,
+    tasks: tasksReducer,
+    error: errorReducer,
+    loading: loadingReducer,
     auth: persistReducer(authPersistConfig, authReducer),
   },
   middleware,
