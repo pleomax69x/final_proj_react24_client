@@ -17,7 +17,6 @@ const {
   addTaskHoursRequest,
   addTaskHoursSuccess,
   addTaskHoursError,
-  changeFilter,
 } = actions;
 
 const getTasks = (projId, sprintId) => async dispatch => {
