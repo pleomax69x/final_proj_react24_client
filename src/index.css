@@ -1,5 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700&display=swap');
 
+/* цей блок під питанням, воно підтягується з нормалайза */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+/* цей блок під питанням, воно підтягується з нормалайза */
+
 body {
   font-family: Montserrat, sans-serif;
   font-style: normal;
@@ -9,13 +23,24 @@ body {
   letter-spacing: 0.04em;
 
   margin: 0;
+  background: #e5e5e5;
+}
 
-  background-color: rgba(241, 242, 247, 1);
+h1,
+h2,
+h3 {
+  margin: 0;
 }
 
 ul,
 li {
+  padding: 0;
+  margin: 0;
   list-style: none;
+}
+
+a {
+  text-decoration: none;
 }
 
 img {
@@ -24,29 +49,6 @@ img {
   height: auto;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-/* Add base styles "Nikolay Lyman" */
-
-html {
-  box-sizing: border-box;
-}
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-  margin: 0;
-  padding: 0;
-}
-body {
-  margin: 0;
-  font-weight: 400;
-  font-size: 16px;
-  background: #f1f2f7;
-}
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -56,46 +58,4 @@ body {
   padding: 0;
   clip: rect (0 0 0 0);
   overflow: hidden;
-}
-ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-a {
-  text-decoration: none;
-}
-h1,
-h2,
-h3 {
-  margin: 0;
-}
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-/* container style */
-
-.container {
-  max-width: 320px;
-  margin: 0 auto;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media screen and (min-width: 1200px) {
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-}
-@media screen and (min-width: 767px) and (max-width: 1199px) {
-  .container {
-    max-width: 720px;
-    margin: 0 auto;
-    padding-left: 15px;
-    padding-right: 15px;
-  }
 }
