@@ -6,6 +6,7 @@ import Register from './components/pages/register';
 import Login from './components/pages/login';
 import Project from './components/pages/project';
 import Header from './components/Header';
+import Projects from './components/pages/projects';
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
             <li>
               <Link to="/projects">Users</Link>
             </li>
+            <li>
+              <Link to="/project">Projects</Link>
+            </li>
           </ul>
         </nav>
 
@@ -36,6 +40,9 @@ function App() {
           </Route>
           <Route path="/projects">
             <Project />
+          </Route>
+          <Route path="/">
+            <Projects />
           </Route>
         </Switch>
       </div>
