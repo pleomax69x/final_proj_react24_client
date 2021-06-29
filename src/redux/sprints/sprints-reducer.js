@@ -1,11 +1,19 @@
-import { createReducer } from '@reduxjs/toolkit';
+import { combineReducers, createReducer } from '@reduxjs/toolkit';
 import actions from './sprints-actions';
 
 const {
+  getSprintsRequest,
   getSprintsSuccess,
+  getSprintsError,
+  addSprintRequest,
   addSprintSuccess,
+  addSprintError,
+  deleteSprintRequest,
   deleteSprintSuccess,
+  deleteSprintError,
+  editSprintRequest,
   editSprintSuccess,
+  editSprintError,
 } = actions;
 
 const sprints = createReducer([], {
@@ -20,4 +28,19 @@ const sprints = createReducer([], {
     }),
 });
 
-export default sprints;
+const error = createReducer('', {
+  [getSprintsRequest]: () => true,
+  [getSprintsSuccess]: () => '',
+  [getSprintsError]: (_, payload) => payload,
+  [addSprintRequest]: () => '',
+  [addSprintSuccess]: () => '',
+  [addSprintError]: (_, payload) => payload,
+  [deleteSprintRequest]: () => '',
+  [deleteSprintSuccess]: () => '',
+  [deleteSprintError]: (_, payload) => payload,
+  [editSprintRequest]: () => '',
+  [editSprintSuccess]: () => '',
+  [editSprintError]: (_, payload) => payload,
+});
+
+export default combineReducers({ sprints, error });

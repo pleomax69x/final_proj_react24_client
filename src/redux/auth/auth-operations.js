@@ -19,18 +19,18 @@ const register = userData => async dispatch => {
     token.set(data.data.token);
     dispatch(actions.registerSuccess(data.data));
   } catch (error) {
-    console.log('error', error, 'error.message', error.message);
-    console.log('err.name ', error.name);
-    dispatch(actions.registerError(error.message));
+    dispatch(
+      actions.registerError(error.message.slice(error.message.length - 3)),
+    );
   }
 };
 
 const login = userData => async dispatch => {
   dispatch(actions.loginRequest());
   try {
-    const response = await axios.post('/login', userData);
-    token.set(response.data.token);
-    dispatch(actions.loginSuccess(response.data));
+    const { data } = await axios.post('/login', userData);
+    token.set(data.data.token);
+    dispatch(actions.loginSuccess(data.data));
   } catch (error) {
     dispatch(actions.loginError(error.message));
   }

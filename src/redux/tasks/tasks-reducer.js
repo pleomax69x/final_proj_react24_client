@@ -3,11 +3,21 @@ import { createReducer } from '@reduxjs/toolkit';
 import actions from './tasks-actions';
 
 const {
+  getTasksRequest,
   getTasksSuccess,
+  getTasksError,
+  addTaskRequest,
   addTaskSuccess,
+  addTaskError,
+  deleteTaskRequest,
   deleteTaskSuccess,
+  deleteTaskError,
+  editTaskRequest,
   editTaskSuccess,
+  editTaskError,
   addTaskHoursSuccess,
+  addTaskHoursRequest,
+  addTaskHoursError,
   changeFilter,
 } = actions;
 
@@ -30,6 +40,24 @@ const tasks = createReducer([], {
 
 const filter = createReducer('', {
   [changeFilter]: (_, { payload }) => payload,
+});
+
+const error = createReducer('', {
+  [getTasksRequest]: () => '',
+  [getTasksSuccess]: () => '',
+  [getTasksError]: (_, payload) => payload,
+  [addTaskRequest]: () => '',
+  [addTaskSuccess]: () => '',
+  [addTaskError]: (_, payload) => payload,
+  [deleteTaskRequest]: () => '',
+  [deleteTaskSuccess]: () => '',
+  [deleteTaskError]: (_, payload) => payload,
+  [editTaskRequest]: () => '',
+  [editTaskSuccess]: () => '',
+  [editTaskError]: (_, payload) => payload,
+  [addTaskHoursSuccess]: () => '',
+  [addTaskHoursRequest]: () => '',
+  [addTaskHoursError]: (_, payload) => payload,
 });
 
 export default combineReducers({
