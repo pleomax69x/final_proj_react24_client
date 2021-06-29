@@ -4,7 +4,7 @@ import 'modern-normalize/modern-normalize.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Register from './components/pages/register';
 import Login from './components/pages/login';
-import Project from './components/pages/project';
+import Project from './components/pages/projects';
 import Header from './components/Header';
 import Projects from './components/pages/projects';
 
@@ -20,10 +20,10 @@ function App() {
               <Link to="/register">Home</Link>
             </li>
             <li>
-              <Link to="/login">About</Link>
+              <Link to="/login">Login</Link>
             </li>
             <li>
-              <Link to="/projects">Users</Link>
+              <Link to="/projects">Projects</Link>
             </li>
             <li>
               <Link to="/project">Projects</Link>
