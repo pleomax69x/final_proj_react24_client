@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import s from './СreatingProject.module.scss';
 
-const СreatingProject = () => {
+const СreatingProject = ({ onSave }) => {
   const [prName, setprName] = useState('');
   const setPrName = e => {
     setprName(e.target.value);
@@ -16,6 +16,7 @@ const СreatingProject = () => {
     e.preventDefault();
 
     console.log(prName, prDesc);
+    onSave();
   };
 
   return (
