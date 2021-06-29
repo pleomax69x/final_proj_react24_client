@@ -5,10 +5,13 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Register from './components/pages/register';
 import Login from './components/pages/login';
 import Project from './components/pages/project';
+import Header from './components/Header';
 
 function App() {
   return (
     <Router>
+      <Header />
+
       <div>
         <nav>
           <ul>
