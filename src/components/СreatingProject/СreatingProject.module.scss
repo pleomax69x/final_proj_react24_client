@@ -5,23 +5,31 @@
   align-items: center;
 }
 
-.project_form_title {
+.form_title {
   margin: 0;
   font-family: 'Montserrat';
   font-weight: 500;
-  font-size: 36px;
-  line-height: 44px;
+  font-size: 26px;
+  line-height: 32px;
   letter-spacing: 0.04em;
   color: #181c27;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
+
+  @media screen and (min-width: 767px) {
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: 0.04em;
+    margin-bottom: 50px;
+  }
 }
 
-.project_form_div {
+.form_field {
   position: relative;
   margin: 30px 0;
 }
 
-.project_form_lable {
+.form_lable {
   position: absolute;
   left: 0;
   top: 0;
@@ -36,17 +44,9 @@
   color: rgba(24, 28, 39, 0.6);
 }
 
-.project_form_lable {
-  position: absolute;
-  top: -22px;
-  font-size: 14px;
-  color: #ff6b08;
-  transition: all 0.25s linear;
-}
-
-.project_form_input {
-  width: 429px;
-  height: 30px;
+.form_input {
+  width: 280px;
+  height: 29px;
   font-family: Montserrat;
   font-style: normal;
   font-weight: normal;
@@ -58,13 +58,27 @@
   color: rgba(24, 28, 39, 0.6);
   border: none;
   border-bottom: 1px solid rgba(24, 28, 39, 0.2);
-}
 
-.project_form_input:hover {
-  border-bottom: 2px solid black;
-}
-.project_form_input:focus {
-  outline: none;
-  border-bottom: 2px solid #ff6b08;
-  transition: all 0.25s linear;
+  @media screen and (min-width: 767px) {
+    width: 429px;
+    height: 30px;
+  }
+
+  &:hover {
+    border-bottom: 2px solid black;
+  }
+
+  &:focus {
+    outline: none;
+    border-bottom: 2px solid #ff6b08;
+    transition: all 0.25s linear;
+  }
+
+  &:focus + .form_lable,
+  &:not(:placeholder-shown) + .form_lable {
+    font-size: 14px;
+    color: #ff6b08;
+    transform: translateY(-23px);
+    transition: all 0.25s linear;
+  }
 }

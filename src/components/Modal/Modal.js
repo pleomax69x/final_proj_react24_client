@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import s from './Modal.module.css';
+import s from './Modal.module.scss';
 
 const modalRoot = document.querySelector('#modal-root');
 

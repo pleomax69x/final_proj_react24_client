@@ -9,15 +9,23 @@
 
 .modal_content {
   position: absolute;
-  width: 530px;
+  width: 320px;
   height: 100%;
   right: 0px;
   top: 0px;
-  padding-top: 120px;
+  padding-top: 63px;
   background-color: #fff;
   border-radius: 3px;
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+
+  @media screen and (min-width: 767px) {
+    padding-top: 120px;
+    width: 512px;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 530px;
+  }
 }
 
 .modal_close_btn {
@@ -45,7 +53,10 @@
 }
 
 .modal_btn_wrapper {
-  padding: 40px 0;
+  padding: 0;
+  @media screen and (min-width: 767px) {
+    padding: 40px 0;
+  }
 }
 
 .modal_btn_done {
@@ -65,10 +76,15 @@
 
   color: #fff;
   background: #ff6b08;
-  box-shadow: 0 3px 4px rgb(255 107 8 / 30%);
+  box-shadow: 0px 3px 4px rgba(255, 107, 8, 0.3);
   border-radius: 25px;
   margin-bottom: 20px;
   transition: all 0.25s linear;
+
+  &:hover {
+    color: #ff6b08;
+    background: #fff;
+  }
 }
 
 .modal_btn_exit {
@@ -90,14 +106,9 @@
   background: #fff;
   text-decoration-line: underline;
   transition: all 0.25s linear;
-}
 
-.modal_btn_done:hover {
-  color: #ff6b08;
-  background: #fff;
-}
-
-.modal_btn_exit:hover {
-  color: #181c27;
-  text-shadow: 4px 4px 2px #969696;
+  &:hover {
+    color: #181c27;
+    text-shadow: 4px 4px 2px #969696;
+  }
 }
