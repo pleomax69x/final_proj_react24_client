@@ -19,9 +19,7 @@ const register = userData => async dispatch => {
     token.set(data.data.token);
     dispatch(actions.registerSuccess(data.data));
   } catch (error) {
-    dispatch(
-      actions.registerError(error.message.slice(error.message.length - 3)),
-    );
+    dispatch(actions.registerError(error.message));
   }
 };
 

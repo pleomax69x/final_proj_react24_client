@@ -27,15 +27,10 @@ const validationSchema = Yup.object().shape({
   ),
 });
 
-const createErrorMessage = code => {
-  switch (Number(code)) {
-    case 400:
-      return 'Not valid password';
-    case 409:
-      return 'Provided email already exists';
-    default:
-      return null;
-  }
+const createErrorMessage = error => {
+  if (error.includes('400')) return 'Not valid password';
+  if (error.includes('409')) return 'Provided email already exists';
+  return 'Unknown error. Please try again';
 };
 
 const Register = () => {
@@ -46,10 +41,16 @@ const Register = () => {
     [dispatch],
   );
 
-  const errorCode = useSelector(state => authSelectors.getErrorCode(state));
+  const errorFromState = useSelector(state =>
+    authSelectors.getErrorMessage(state),
+  );
 
-  const errorMessage = createErrorMessage(errorCode);
-  console.log('errorMessage', errorCode, errorMessage);
+  const errorMessage = errorFromState
+    ? createErrorMessage(errorFromState)
+    : null;
+
+  console.log('errorMessage', errorFromState, errorMessage);
+
   return (
     <>
       <div className={s.leftEllipse}>
