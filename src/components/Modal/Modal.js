@@ -37,7 +37,6 @@ export default function Modal({ onClose, children }) {
         </button>
         {children}
         <div className={s.modal_btn_wrapper}>
-          <button className={s.modal_btn_done}>Ready</button>
           <button className={s.modal_btn_exit} onClick={handleClose}>
             Cancel
           </button>

@@ -44,46 +44,19 @@
   background: #fff;
   transform: rotate(45deg);
   transition: all 0.25s linear;
-}
 
-.modal_close_btn:hover {
-  right: 8px;
-  top: 7px;
-  transform: rotate(225deg);
+  &:hover,
+  &:focus {
+    right: 8px;
+    top: 7px;
+    transform: rotate(225deg);
+  }
 }
 
 .modal_btn_wrapper {
   padding: 0;
   @media screen and (min-width: 767px) {
     padding: 40px 0;
-  }
-}
-
-.modal_btn_done {
-  display: block;
-  margin: 0 auto;
-  padding: 0;
-  width: 154px;
-  height: 44px;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 22px;
-  letter-spacing: 0.04em;
-  border: none;
-  outline: none;
-  cursor: pointer;
-
-  color: #fff;
-  background: #ff6b08;
-  box-shadow: 0px 3px 4px rgba(255, 107, 8, 0.3);
-  border-radius: 25px;
-  margin-bottom: 20px;
-  transition: all 0.25s linear;
-
-  &:hover {
-    color: #ff6b08;
-    background: #fff;
   }
 }
 
@@ -107,7 +80,8 @@
   text-decoration-line: underline;
   transition: all 0.25s linear;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: #181c27;
     text-shadow: 4px 4px 2px #969696;
   }
