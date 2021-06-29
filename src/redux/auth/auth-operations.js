@@ -1,7 +1,6 @@
 import axios from 'axios';
 import actions from './auth-actions';
 
-// TODO add
 axios.defaults.baseURL = 'https://planning-app1.herokuapp.com';
 
 const token = {
@@ -16,10 +15,12 @@ const token = {
 const register = userData => async dispatch => {
   dispatch(actions.registerRequest());
   try {
-    const response = await axios.post('/users/signup', userData);
-    token.set(response.data.token);
-    dispatch(actions.registerSuccess(response.data));
+    const { data } = await axios.post('/registration', userData);
+    token.set(data.data.token);
+    dispatch(actions.registerSuccess(data.data));
   } catch (error) {
+    console.log('error', error, 'error.message', error.message);
+    console.log('err.name ', error.name);
     dispatch(actions.registerError(error.message));
   }
 };
@@ -27,7 +28,7 @@ const register = userData => async dispatch => {
 const login = userData => async dispatch => {
   dispatch(actions.loginRequest());
   try {
-    const response = await axios.post('/users/login', userData);
+    const response = await axios.post('/login', userData);
     token.set(response.data.token);
     dispatch(actions.loginSuccess(response.data));
   } catch (error) {
@@ -38,7 +39,7 @@ const login = userData => async dispatch => {
 const logout = () => async dispatch => {
   dispatch(actions.logoutRequest());
   try {
-    await axios.post('/users/logout');
+    await axios.post('/logout');
     token.unset();
     dispatch(actions.logoutSuccess());
   } catch (error) {

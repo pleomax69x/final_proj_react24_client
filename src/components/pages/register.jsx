@@ -1,10 +1,13 @@
+import { useCallback } from 'react';
 import s from '../../sass/utils/main.module.scss';
+import { useDispatch } from 'react-redux';
 import LeftEllipses from '../../images/registerImg/LeftEllipses';
 import RightWhiteEllipse from '../../images/registerImg/RightWhiteEllipse';
 import RightOrangeEllipse from '../../images/registerImg/RightOrangeEllipse';
 import { useFormik, Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Error from './Error';
+import { authOperations } from '../../redux/auth';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -22,6 +25,12 @@ const validationSchema = Yup.object().shape({
 });
 
 const Register = () => {
+  const dispatch = useDispatch();
+
+  const sendData = useCallback(
+    (email, password) => dispatch(authOperations.register({ email, password })),
+    [dispatch],
+  );
   return (
     <>
       <div className={s.leftEllipse}>
@@ -39,11 +48,29 @@ const Register = () => {
           password: '',
           confirmPassword: '',
         }}
+        onSubmit={(values, { setSubmitting }) => {
+          setSubmitting(false);
+          const { email, password } = values;
+          sendData(email, password);
+        }}
         autoComplete="on"
         validationSchema={validationSchema}
       >
-        {({ values, errors, touched, handleChange, handleBlur }) => (
-          <form name="signupForm" autoComplete="on" className={s.registerForm}>
+        {({
+          values,
+          errors,
+          touched,
+          handleSubmit,
+          handleChange,
+          handleBlur,
+          isSubmitting,
+        }) => (
+          <form
+            name="signupForm"
+            autoComplete="on"
+            className={s.registerForm}
+            onSubmit={handleSubmit}
+          >
             <h1 className={s.registerTitle}>Registration</h1>
             <div className={s.formGroup}>
               <div className={s.formField}>
@@ -100,7 +127,11 @@ const Register = () => {
               </div>
             </div>
             <div className={s.regFormBtn}>
-              <button type="submit" className={s.formBtn}>
+              <button
+                type="submit"
+                className={s.formBtn}
+                disabled={isSubmitting}
+              >
                 Register
               </button>
               <div className={s.toLogin}>
