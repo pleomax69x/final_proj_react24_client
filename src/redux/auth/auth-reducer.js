@@ -18,11 +18,11 @@ const token = createReducer(null, {
 
 const error = createReducer(null, {
   [actions.registerError]: (_, { payload }) => payload,
-  [actions.registerSuccess]: () => '',
+  [actions.registerSuccess]: () => null,
   [actions.loginError]: (_, { payload }) => payload,
-  [actions.loginSuccess]: () => '',
+  [actions.loginSuccess]: () => null,
   [actions.logoutError]: (_, { payload }) => payload,
-  [actions.logoutSuccess]: () => '',
+  [actions.logoutSuccess]: () => null,
   [actions.getCurrUserError]: (_, { payload }) => payload,
 });
 

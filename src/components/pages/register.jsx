@@ -1,13 +1,13 @@
 import { useCallback } from 'react';
 import s from '../../sass/utils/main.module.scss';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LeftEllipses from '../../images/registerImg/LeftEllipses';
 import RightWhiteEllipse from '../../images/registerImg/RightWhiteEllipse';
 import RightOrangeEllipse from '../../images/registerImg/RightOrangeEllipse';
 import { useFormik, Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Error from './Error';
-import { authOperations } from '../../redux/auth';
+import { authOperations, authSelectors } from '../../redux/auth';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -17,12 +17,21 @@ const validationSchema = Yup.object().shape({
   password: Yup.string()
     .required('No password provided.')
     .min(8, 'Password is too short - should be 8 chars minimum.')
-    .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
+    .matches(
+      /[A-Z]\w+/,
+      'Only Latin letters are allowed. At list one Uppercase is required.',
+    ),
   confirmPassword: Yup.string().oneOf(
     [Yup.ref('password'), null],
     'Passwords do not match',
   ),
 });
+
+const createErrorMessage = error => {
+  if (error.includes('400')) return 'Not valid password';
+  if (error.includes('409')) return 'Provided email already exists';
+  return 'Unknown error. Please try again';
+};
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -31,6 +40,17 @@ const Register = () => {
     (email, password) => dispatch(authOperations.register({ email, password })),
     [dispatch],
   );
+
+  const errorFromState = useSelector(state =>
+    authSelectors.getErrorMessage(state),
+  );
+
+  const errorMessage = errorFromState
+    ? createErrorMessage(errorFromState)
+    : null;
+
+  console.log('errorMessage', errorFromState, errorMessage);
+
   return (
     <>
       <div className={s.leftEllipse}>
@@ -127,6 +147,9 @@ const Register = () => {
               </div>
             </div>
             <div className={s.regFormBtn}>
+              {errorMessage ? (
+                <div className={s.errorMessage}>{errorMessage}</div>
+              ) : null}
               <button
                 type="submit"
                 className={s.formBtn}

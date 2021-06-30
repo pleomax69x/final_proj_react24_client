@@ -1,7 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { projectsActions } from './projects';
-import { sprintsActions } from './sprints';
-import { tasksActions } from './tasks';
+import { projectsActions } from '../projects';
+import { sprintsActions } from '../sprints';
+import { tasksActions } from '../tasks';
 
 const {
   getProjectsRequest,
@@ -54,7 +54,7 @@ const {
   addTaskHoursError,
 } = tasksActions;
 
-const loadingReducer = createReducer(false, {
+const loading = createReducer(false, {
   [getProjectsRequest]: () => true,
   [getProjectsSuccess]: () => false,
   [getProjectsError]: () => false,
@@ -99,4 +99,4 @@ const loadingReducer = createReducer(false, {
   [addTaskHoursError]: () => false,
 });
 
-export default loadingReducer;
+export default loading;
