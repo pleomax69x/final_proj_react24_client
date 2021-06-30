@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import projectsOperations from '../../redux/projects/projects-operations';
+import projectsSelectors from '../../redux/projects/projects-selectors';
 import s from './СreatingProject.module.scss';
 
 const СreatingProject = ({ onSave }) => {
@@ -12,11 +15,24 @@ const СreatingProject = ({ onSave }) => {
     setprDesc(e.target.value);
   };
 
+  const projects = useSelector(projectsSelectors.getProjects);
+  const dispatch = useDispatch();
+
   const handleSubmit = e => {
     e.preventDefault();
 
+    // if (projects.some(project => project.name === prName)) {
+    //   return alert(
+    //     `Name "${prName}" already exists, please enter another name.`,
+    //   );
+    // } else
+    dispatch(projectsOperations.addProject(prName, prDesc));
+
     console.log(prName, prDesc);
     onSave();
+
+    setprName('');
+    setprDesc('');
   };
 
   return (
