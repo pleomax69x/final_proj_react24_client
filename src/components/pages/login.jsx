@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import { Formik, Field, Form } from 'formik';
 import * as yup from 'yup';
+import Container from '../Container/Container';
 
 import styles from './login.module.scss';
 
@@ -19,7 +20,7 @@ const schema = yup.object({
 
 const Login = () => (
   <div className={styles.wrapper}>
-    <div className="container">
+    <Container>
       <Formik
         initialValues={{
           email: '',
@@ -75,7 +76,7 @@ const Login = () => (
           </Form>
         )}
       </Formik>
-    </div>
+    </Container>
   </div>
 );
 

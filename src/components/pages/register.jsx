@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import s from '../../sass/utils/main.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import LeftEllipses from '../../images/registerImg/LeftEllipses';
@@ -62,6 +63,7 @@ const Register = () => {
       <div className={s.rightOrangeEllipse}>
         <RightOrangeEllipse />
       </div>
+
       <Formik
         initialValues={{
           email: '',
@@ -159,7 +161,9 @@ const Register = () => {
               </button>
               <div className={s.toLogin}>
                 Do you have an account?
-                <span className={s.regSpan}>Log in</span>
+                <Link to="/login" className={s.regSpan}>
+                  Log in
+                </Link>
               </div>
             </div>
           </form>

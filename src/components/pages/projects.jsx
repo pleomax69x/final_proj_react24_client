@@ -5,6 +5,7 @@ import ProjectCard from '../ProjectCard/ProjectCard';
 import { v4 as uuidv4 } from 'uuid';
 import styles from './projects.module.scss';
 import { useHistory } from 'react-router';
+import Container from '../Container/Container';
 
 const fakeData = [
   {
@@ -33,26 +34,28 @@ const Projects = () => {
   }, []);
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.headWrapper}>
-        <h2>Projects</h2>
-        <label className={styles.btnWrapper}>
-          <button className={styles.btn} onClick={toggleModal}></button>
-          <p className={styles.text}>Create a project</p>
-        </label>
-      </div>
-      <ul className={styles.list}>
-        {fakeData.map(({ title, descr }) => (
-          <ProjectCard key={uuidv4()} title={title} descr={descr} />
-        ))}
-      </ul>
+    <Container>
+      <div className={styles.wrapper}>
+        <div className={styles.headWrapper}>
+          <h2>Projects</h2>
+          <label className={styles.btnWrapper}>
+            <button className={styles.btn} onClick={toggleModal}></button>
+            <p className={styles.text}>Create a project</p>
+          </label>
+        </div>
+        <ul className={styles.list}>
+          {fakeData.map(({ title, descr }) => (
+            <ProjectCard key={uuidv4()} title={title} descr={descr} />
+          ))}
+        </ul>
 
-      {showModal && (
-        <Modal onClose={toggleModal}>
-          <СreatingProject onSave={toggleModal} />
-        </Modal>
-      )}
-    </div>
+        {showModal && (
+          <Modal onClose={toggleModal}>
+            <СreatingProject onSave={toggleModal} />
+          </Modal>
+        )}
+      </div>
+    </Container>
   );
 };
 
