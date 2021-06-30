@@ -50,8 +50,6 @@ const Register = () => {
     ? createErrorMessage(errorFromState)
     : null;
 
-  console.log('errorMessage', errorFromState, errorMessage);
-
   return (
     <>
       <div className={s.leftEllipse}>
