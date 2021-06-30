@@ -16,7 +16,7 @@ function App() {
       <Header />
 
       <div>
-        <nav>
+        {/* <nav>
           <ul>
             <li>
               <Link to="/register">Home</Link>
@@ -34,7 +34,7 @@ function App() {
               <Link to="/sprints">Sprints</Link>
             </li>
           </ul>
-        </nav>
+        </nav> */}
 
         <Switch>
           <Route path="/register">
