@@ -25,7 +25,8 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleChange = ({ target: { name, value } }) => {
+  const handleChange = e => {
+    const { name, value } = e.target;
     switch (name) {
       case 'email':
         return setEmail(value);
@@ -36,11 +37,10 @@ const Login = () => {
     }
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = ({ email, password }, { resetForm, setSubmitting }) => {
     dispatch(authOperations.login({ email, password }));
-    setEmail('');
-    setPassword('');
+    setSubmitting(false);
+    resetForm();
   };
 
   return (
@@ -54,7 +54,11 @@ const Login = () => {
         onSubmit={handleSubmit}
       >
         {({ errors, touched }) => (
-          <Form className={styles.form} autoComplete="off">
+          <Form
+            className={styles.form}
+            autoComplete="off"
+            onChange={handleChange}
+          >
             <h1 className={styles.title}>Enter</h1>
 
             <label className={styles.label}>
@@ -65,7 +69,6 @@ const Login = () => {
                 className={`${styles.input} ${
                   touched.email && errors.email && styles.errorInput
                 }`}
-                onChange={handleChange}
               />
               <p className={styles.name}>Email</p>
               {touched.email && errors.email && (
@@ -78,10 +81,10 @@ const Login = () => {
                 type="password"
                 name="password"
                 placeholder=" "
+                // value="password"
                 className={`${styles.input} ${
                   touched.password && errors.password && styles.errorInput
                 }`}
-                onChange={handleChange}
               />
               <p className={styles.name}>Password </p>
               {touched.password && errors.password && (
