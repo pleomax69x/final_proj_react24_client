@@ -1,4 +1,6 @@
 import React, { useState, useCallback } from 'react';
+import { useSelector } from 'react-redux';
+import projectsSelectors from '../../redux/projects/projects-selectors';
 import Modal from '../Modal';
 import СreatingProject from '../СreatingProject';
 import ProjectCard from '../ProjectCard/ProjectCard';
@@ -7,22 +9,9 @@ import styles from './projects.module.scss';
 import { useHistory } from 'react-router';
 import Container from '../Container/Container';
 
-const fakeData = [
-  {
-    title: '1-project',
-    descr: 'It is my 1 project',
-  },
-  {
-    title: '2-project',
-    descr: 'It is my 2 project',
-  },
-  {
-    title: '3-project',
-    descr: 'It is my 3 project',
-  },
-];
-
 const Projects = () => {
+  const projects = useSelector(projectsSelectors.getProjects);
+
   const history = useHistory();
 
   const addProject = () => history.push('/');
@@ -44,8 +33,12 @@ const Projects = () => {
           </label>
         </div>
         <ul className={styles.list}>
-          {fakeData.map(({ title, descr }) => (
-            <ProjectCard key={uuidv4()} title={title} descr={descr} />
+          {projects.map(project => (
+            <ProjectCard
+              key={uuidv4()}
+              title={project.data.project.name}
+              descr={project.data.project.description}
+            />
           ))}
         </ul>
 

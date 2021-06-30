@@ -1,6 +1,8 @@
 import axios from 'axios';
 import actions from './projects-actions';
 
+axios.defaults.baseURL = 'https://planning-app1.herokuapp.com';
+
 const {
   getProjectsRequest,
   getProjectsSuccess,

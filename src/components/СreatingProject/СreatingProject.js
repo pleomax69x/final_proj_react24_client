@@ -28,6 +28,7 @@ const СreatingProject = ({ onSave }) => {
     // } else
     dispatch(projectsOperations.addProject(prName, prDesc));
 
+    console.log(projects);
     console.log(prName, prDesc);
     onSave();
 
