@@ -28,6 +28,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const createErrorMessage = error => {
+  if (error.includes('401')) return '';
   if (error.includes('400')) return 'Not valid password';
   if (error.includes('409')) return 'Provided email already exists';
   return 'Unknown error. Please try again';
