@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import sprintsOperations from '../../redux/sprints/sprints-operations';
 import sprintsSelectors from '../../redux/sprints/sprints-selectors';
+import projectsSelectors from '../../redux/projects/projects-selectors';
 import s from './СreatingSprint.module.scss';
 
 const СreatingSprint = ({ onSave }) => {
@@ -31,6 +32,7 @@ const СreatingSprint = ({ onSave }) => {
     setDate(today);
   }, []);
 
+  const projects = useSelector(projectsSelectors.getProjects);
   const sprints = useSelector(sprintsSelectors.getSprints);
   const dispatch = useDispatch();
 
@@ -44,6 +46,7 @@ const СreatingSprint = ({ onSave }) => {
     // } else
     dispatch(sprintsOperations.addSprint(spName, data, number));
 
+    console.log(projects, sprints);
     console.log(spName, data, number);
     onSave();
 
