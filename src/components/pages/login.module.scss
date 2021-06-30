@@ -1,6 +1,6 @@
 .wrapper {
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   @media screen and (min-width: 768px) and (max-width: 1199px) {
     margin-top: 30px;
     padding-top: 100px;
@@ -8,9 +8,11 @@
     background-image: url(../../img/loginPage/bg-tablet.png);
   }
   @media screen and (min-width: 1200px) {
+    background-size: cover;
+    margin-left: 110px;
     margin-top: 20px;
     padding-top: 90px;
-    padding-bottom: 350px;
+    padding-bottom: 140px;
     background-image: url(../../img/loginPage/bg.png);
   }
 }
