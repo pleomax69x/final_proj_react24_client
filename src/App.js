@@ -8,6 +8,7 @@ import Project from './components/pages/project';
 
 import Header from './components/Header';
 import Projects from './components/pages/projects';
+import Sprints from './components/pages/sprints';
 
 function App() {
   return (
@@ -15,22 +16,25 @@ function App() {
       <Header />
 
       <div>
-        {/* <nav>
-            <ul>
-              <li>
-                <Link to="/register">Home</Link>
-              </li>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-              <li>
-                <Link to="/projects">Projects</Link>
-              </li>
-              <li>
-                <Link to="/project">Projects</Link>
-              </li>
-            </ul>
-          </nav> */}
+        <nav>
+          <ul>
+            <li>
+              <Link to="/register">Home</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/project">Project</Link>
+            </li>
+            <li>
+              <Link to="/projects">Projects</Link>
+            </li>
+            <li>
+              <Link to="/sprints">Sprints</Link>
+            </li>
+          </ul>
+        </nav>
 
         <Switch>
           <Route path="/register">
@@ -44,6 +48,9 @@ function App() {
           </Route>
           <Route path="/projects">
             <Projects />
+          </Route>
+          <Route path="/sprints">
+            <Sprints />
           </Route>
           <Route path="/">
             <Register />
