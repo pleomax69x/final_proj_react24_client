@@ -59,7 +59,7 @@ function App() {
           <PublicRoute path="/login" redirectTo="/projects" restricted>
             <Login />
           </PublicRoute>
-          <PrivateRoute path="/project" redirectTo="/register">
+          <PrivateRoute path="/projects/:id" redirectTo="/register">
             <Project />
           </PrivateRoute>
           <PrivateRoute path="/projects" redirectTo="/register">
