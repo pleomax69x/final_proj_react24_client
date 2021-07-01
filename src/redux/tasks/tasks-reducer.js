@@ -25,15 +25,15 @@ const tasks = createReducer([], {
   [getTasksSuccess]: (_, { payload }) => payload,
   [addTaskSuccess]: (state, { payload }) => [...state, payload],
   [deleteTaskSuccess]: (state, { payload }) =>
-    state.filter(({ id }) => id !== payload),
+    state.filter(({ _id }) => _id !== payload),
   [editTaskSuccess]: (state, { payload }) =>
     state.map(item => {
-      if (item.id === payload.id) return payload;
+      if (item._id === payload.id) return payload;
       else return item;
     }),
   [addTaskHoursSuccess]: (state, { payload }) =>
     state.map(item => {
-      if (item.id === payload.id) return payload;
+      if (item._id === payload.id) return payload;
       else return item;
     }),
 });
