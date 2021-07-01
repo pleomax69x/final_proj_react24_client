@@ -25,7 +25,7 @@ const getProjects = () => async dispatch => {
   dispatch(getProjectsRequest());
   try {
     const { data } = await axios.get('/projects');
-    dispatch(getProjectsSuccess(data));
+    dispatch(getProjectsSuccess(data.data.projects));
   } catch (error) {
     dispatch(getProjectsError(error.message));
   }
@@ -35,7 +35,7 @@ const addProject = (name, description) => async dispatch => {
   dispatch(addProjectRequest());
   try {
     const { data } = await axios.post('/projects', { name, description });
-    dispatch(addProjectSuccess(data));
+    dispatch(addProjectSuccess(data.data.project));
   } catch (error) {
     dispatch(addProjectError(error.message));
   }
@@ -55,7 +55,7 @@ const editProjectName = (id, updName) => async dispatch => {
   dispatch(editProjectRequest());
   try {
     const { data } = await axios.patch(`/projects/${id}`, { updName });
-    dispatch(editProjectSuccess(data));
+    dispatch(editProjectSuccess(data.data.project));
   } catch (error) {
     dispatch(editProjectError(error.message));
   }
