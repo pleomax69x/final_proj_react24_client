@@ -22,7 +22,7 @@ const getSprints = projId => async dispatch => {
   dispatch(getSprintsRequest());
   try {
     const { data } = await axios.get(`/projects/${projId}/sprints`);
-    dispatch(getSprintsSuccess(data));
+    dispatch(getSprintsSuccess(data.data.sprints));
   } catch (error) {
     dispatch(getSprintsError(error.message));
   }
@@ -36,7 +36,7 @@ const addSprint = (projId, name, startDate, duration) => async dispatch => {
       startDate,
       duration,
     });
-    dispatch(addSprintSuccess(data));
+    dispatch(addSprintSuccess(data.data.sprint));
   } catch (error) {
     dispatch(addSprintError(error.message));
   }
@@ -59,7 +59,7 @@ const editSprintName = (projId, sprintId, updName) => async dispatch => {
       `/projects/${projId}/sprints/${sprintId}`,
       { updName },
     );
-    dispatch(editSprintSuccess(data));
+    dispatch(editSprintSuccess(data.data.sprint));
   } catch (error) {
     dispatch(editSprintError(error.message));
   }

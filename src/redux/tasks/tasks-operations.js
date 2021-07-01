@@ -25,7 +25,7 @@ const getTasks = (projId, sprintId) => async dispatch => {
     const { data } = await axios.get(
       `/projects/${projId}/sprints/${sprintId}/tasks`,
     );
-    dispatch(getTasksSuccess(data));
+    dispatch(getTasksSuccess(data.data.tasks));
   } catch (error) {
     dispatch(getTasksError(error.message));
   }
@@ -43,7 +43,7 @@ const addTask =
           duration,
         },
       );
-      dispatch(addTaskSuccess(data));
+      dispatch(addTaskSuccess(data.data.task));
     } catch (error) {
       dispatch(addTaskError(error.message));
     }
@@ -68,7 +68,7 @@ const editTaskName = (projId, sprintId, taskId, updName) => async dispatch => {
       `/projects/${projId}/sprints/${sprintId}/tasks/${taskId}`,
       { updName },
     );
-    dispatch(editTaskSuccess(data));
+    dispatch(editTaskSuccess(data.data.task));
   } catch (error) {
     dispatch(editTaskError(error.message));
   }
@@ -81,7 +81,7 @@ const editTaskHours = (projId, sprintId, taskId, updDate) => async dispatch => {
       `/projects/${projId}/sprints/${sprintId}/tasks/${taskId}`,
       { updDate },
     );
-    dispatch(addTaskHoursSuccess(data));
+    dispatch(addTaskHoursSuccess(data.data.task));
   } catch (error) {
     dispatch(addTaskHoursError(error.message));
   }
