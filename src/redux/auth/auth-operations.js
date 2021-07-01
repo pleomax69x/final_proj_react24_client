@@ -25,7 +25,7 @@ const register = userData => async dispatch => {
 
 const login = userData => async dispatch => {
   dispatch(actions.loginRequest());
-  // console.log(userData);
+
   try {
     const { data } = await axios.post('/login', userData);
     token.set(data.data.token);
@@ -56,7 +56,7 @@ const getUserData = () => async (dispatch, getState) => {
     dispatch(actions.getCurrUserRequest());
     token.set(savedToken);
     try {
-      const response = await axios.get('/');
+      const response = await axios.get('/projects');
       dispatch(actions.getCurrUserSuccess(response.data));
     } catch (error) {
       dispatch(actions.getCurrUserError(error.message));

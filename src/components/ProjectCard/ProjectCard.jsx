@@ -1,13 +1,12 @@
 import styles from './ProjectCard.module.scss';
-import { Link } from 'react-router-dom';
 const ProjectCard = ({ ...props }) => {
-  const { title, descr } = props;
+  const { title, descr, to } = props;
   return (
     <li className={styles.card}>
-      <Link to="/projects" className={styles.link}>
+      <div onClick={to} className={styles.link}>
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.descr}>{descr}</p>
-      </Link>
+      </div>
       <button className={styles.cart}></button>
     </li>
   );

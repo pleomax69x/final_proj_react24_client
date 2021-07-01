@@ -1,10 +1,16 @@
 import React, { useCallback, useEffect } from 'react';
 import './App.css';
 import 'modern-normalize/modern-normalize.css';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  // Route, Link
+} from 'react-router-dom';
 import Register from './components/pages/register';
 import Login from './components/pages/login';
 import Project from './components/pages/project';
+import PrivateRoute from './components/Routes/PrivateRoute';
+import PublicRoute from './components/Routes/PublicRoute';
 
 import Header from './components/Header';
 import Projects from './components/pages/projects';
@@ -47,24 +53,24 @@ function App() {
         </nav> */}
 
         <Switch>
-          <Route path="/register">
+          <PublicRoute path="/register" redirectTo="/projects" restricted>
             <Register />
-          </Route>
-          <Route path="/login">
+          </PublicRoute>
+          <PublicRoute path="/login" redirectTo="/projects" restricted>
             <Login />
-          </Route>
-          <Route path="/project">
+          </PublicRoute>
+          <PrivateRoute path="/project" redirectTo="/register">
             <Project />
-          </Route>
-          <Route path="/projects">
+          </PrivateRoute>
+          <PrivateRoute path="/projects" redirectTo="/register">
             <Projects />
-          </Route>
-          <Route path="/sprints">
+          </PrivateRoute>
+          <PrivateRoute path="/sprints">
             <Sprints />
-          </Route>
-          <Route path="/">
+          </PrivateRoute>
+          <PublicRoute path="/" redirectTo="/projects" restricted>
             <Register />
-          </Route>
+          </PublicRoute>
         </Switch>
       </div>
     </Router>
