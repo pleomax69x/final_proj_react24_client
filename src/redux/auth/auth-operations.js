@@ -57,7 +57,7 @@ const getUserData = () => async (dispatch, getState) => {
     token.set(savedToken);
     try {
       const response = await axios.get('/');
-      dispatch(actions.getCurrUserSuccess(response.data));
+      dispatch(actions.getCurrUserSuccess(response.data.data));
     } catch (error) {
       dispatch(actions.getCurrUserError(error.message));
     }
