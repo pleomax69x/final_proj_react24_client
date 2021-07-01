@@ -56,7 +56,7 @@ const getUserData = () => async (dispatch, getState) => {
     dispatch(actions.getCurrUserRequest());
     token.set(savedToken);
     try {
-      const response = await axios.get('/projects');
+      const response = await axios.get('/');
       dispatch(actions.getCurrUserSuccess(response.data));
     } catch (error) {
       dispatch(actions.getCurrUserError(error.message));
