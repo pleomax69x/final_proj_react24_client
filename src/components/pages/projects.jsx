@@ -14,7 +14,7 @@ const Projects = () => {
 
   const history = useHistory();
 
-  const addProject = () => history.push('/');
+  const addProject = id => history.push(`/project/${id}`, id);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -38,6 +38,7 @@ const Projects = () => {
               key={uuidv4()}
               title={project.data.project.name}
               descr={project.data.project.description}
+              to={() => addProject(project.data.project._id)}
             />
           ))}
         </ul>

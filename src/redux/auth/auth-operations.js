@@ -25,7 +25,7 @@ const register = userData => async dispatch => {
 
 const login = userData => async dispatch => {
   dispatch(actions.loginRequest());
-  // console.log(userData);
+
   try {
     const { data } = await axios.post('/login', userData);
     token.set(data.data.token);
