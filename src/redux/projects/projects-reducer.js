@@ -23,7 +23,7 @@ const projects = createReducer([], {
   [getProjectsSuccess]: (_, { payload }) => payload,
   [addProjectSuccess]: (state, { payload }) => [...state, payload],
   [deleteProjectSuccess]: (state, { payload }) =>
-    state.filter(({ id }) => id !== payload),
+    state.filter(({ _id }) => _id !== payload),
   [editProjectSuccess]: (state, { payload }) =>
     state.map(item => {
       if (item.id === payload.id) return payload;
