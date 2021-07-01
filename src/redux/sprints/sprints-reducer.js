@@ -20,10 +20,10 @@ const sprints = createReducer([], {
   [getSprintsSuccess]: (_, { payload }) => payload,
   [addSprintSuccess]: (state, { payload }) => [...state, payload],
   [deleteSprintSuccess]: (state, { payload }) =>
-    state.filter(({ id }) => id !== payload),
+    state.filter(({ _id }) => _id !== payload),
   [editSprintSuccess]: (state, { payload }) =>
     state.map(item => {
-      if (item.id === payload.id) return payload;
+      if (item._id === payload._id) return payload;
       else return item;
     }),
 });
