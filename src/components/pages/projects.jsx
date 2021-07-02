@@ -22,8 +22,7 @@ const Projects = () => {
 
   const history = useHistory();
 
-  console.log(projects);
-  const addProject = id => history.push(`/projects/${id}`, id);
+  const transitiontoProject = id => history.push(`/projects/${id}`, id);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -47,7 +46,7 @@ const Projects = () => {
               key={project._id}
               title={project.name}
               descr={project.description}
-              to={() => addProject(project._id)}
+              to={() => transitiontoProject(project._id)}
               onClick={() => deleteProject(project._id)}
             />
           ))}
