@@ -93,12 +93,12 @@
 }
 
 .logOutBtn:before {
-  content: url(../../img/LogOut1.svg);
+  content: url(../../img/header/LogOut1.svg);
   width: 18px;
   height: 18px;
 
   @media screen and (min-width: 768px) {
-    content: url(../../img/LogOut.svg);
+    content: url(../../img/header/LogOut.svg);
     margin-right: 10px;
   }
 }

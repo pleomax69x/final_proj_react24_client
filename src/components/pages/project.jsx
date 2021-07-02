@@ -4,7 +4,7 @@ import { useLocation, useHistory } from 'react-router';
 import sprintsSelectors from '../../redux/sprints/sprints-selectors';
 import sprintsOperations from '../../redux/sprints/sprints-operations';
 import СreatingSprint from '../СreatingSprint';
-import SprintCard from '../SprintCard';
+import SprintsItem from '../SprintsItem';
 import Modal from '../Modal';
 
 const Sprint = () => {
@@ -36,7 +36,7 @@ const Sprint = () => {
       </button>
       <ul>
         {sprints.map(sprints => (
-          <SprintCard
+          <SprintsItem
             key={sprints.id}
             title={sprints.title}
             date={sprints.date}
