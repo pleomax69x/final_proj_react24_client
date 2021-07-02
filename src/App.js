@@ -61,15 +61,15 @@ function App() {
             <Login />
           </PublicRoute>
           <PrivateRoute path="/projects/:id" redirectTo="/register">
-            <Project />
+            <Sprints />
           </PrivateRoute>
           <PrivateRoute path="/projects" redirectTo="/register">
             <Projects />
           </PrivateRoute>
-          <PrivateRoute path="/sprints">
-            <Sprints />
-          </PrivateRoute>
-          <PrivateRoute path="/sprints/:id">
+          {/* <PrivateRoute path="/sprints">
+            
+          </PrivateRoute> */}
+          <PrivateRoute path="/projects/:id/:id">
             <Tasks />
           </PrivateRoute>
           <PublicRoute path="/" redirectTo="/projects" restricted>
