@@ -1,11 +1,8 @@
 import { useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import s from '../../sass/utils/main.module.scss';
+import s from '../../sass/utils/register.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import LeftEllipses from '../../images/registerImg/LeftEllipses';
-import RightWhiteEllipse from '../../images/registerImg/RightWhiteEllipse';
-import RightOrangeEllipse from '../../images/registerImg/RightOrangeEllipse';
-import { useFormik, Formik, Form } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import Error from './Error';
 import { authOperations, authSelectors } from '../../redux/auth';
@@ -52,17 +49,7 @@ const Register = () => {
     : null;
 
   return (
-    <>
-      <div className={s.leftEllipse}>
-        <LeftEllipses />
-      </div>
-      <div className={s.rightWhiteEllipse}>
-        <RightWhiteEllipse />
-      </div>
-      <div className={s.rightOrangeEllipse}>
-        <RightOrangeEllipse />
-      </div>
-
+    <div className={s.wrapper}>
       <Formik
         initialValues={{
           email: '',
@@ -168,59 +155,8 @@ const Register = () => {
           </form>
         )}
       </Formik>
-    </>
+    </div>
   );
 };
 
 export default Register;
-
-{
-  /* <form name="signupForm" autoComplete="on" className={s.registerForm}>
-<h1 className={s.registerTitle}>Registration</h1>
-<div className={s.formGroup}>
-  <div className={s.formField}>
-    <input
-      type="email"
-      name="email"
-      placeholder=" "
-      className={s.inputForm}
-    />
-    <label for="email" className={s.formLabel}>
-      E-mail
-    </label>
-  </div>
-  <div className={s.formField}>
-    <input
-      type="password"
-      name="password"
-      placeholder="Password"
-      placeholder=" "
-      className={s.inputForm}
-    />
-    <label for="email" className={s.formLabel}>
-      Password
-    </label>
-  </div>
-  <div className={s.formField}>
-    <input
-      type="password"
-      name="password"
-      placeholder=" "
-      className={s.inputForm}
-    />
-    <label for="email" className={s.formLabel}>
-      Repeat password
-    </label>
-  </div>
-</div>
-<div className={s.regFormBtn}>
-  <button type="submit" className={s.formBtn}>
-    Register
-  </button>
-  <div className={s.toLogin}>
-    Do you have an account?
-    <span className={s.regSpan}>Log in</span>
-  </div>
-</div>
-</form> */
-}
