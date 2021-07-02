@@ -1,46 +1,81 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import './App.css';
 import 'modern-normalize/modern-normalize.css';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  // Route, Link
+} from 'react-router-dom';
 import Register from './components/pages/register';
 import Login from './components/pages/login';
 import Project from './components/pages/project';
+import PrivateRoute from './components/Routes/PrivateRoute';
+import PublicRoute from './components/Routes/PublicRoute';
+
 import Header from './components/Header';
-import s from './container.module.css';
+import Projects from './components/pages/projects';
+import Sprints from './components/pages/sprints';
+import Tasks from './components/pages/tasks';
+import { useDispatch } from 'react-redux';
+import { authOperations } from './redux/auth';
 
 function App() {
+  const dispatch = useDispatch();
+  const checkUser = useCallback(
+    () => dispatch(authOperations.getUserData()),
+    [dispatch],
+  );
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => checkUser(), []);
   return (
     <Router>
-      <div className={s.container}>
-        <Header />
+      <Header />
 
-        <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/register">Home</Link>
-              </li>
-              <li>
-                <Link to="/login">About</Link>
-              </li>
-              <li>
-                <Link to="/projects">Users</Link>
-              </li>
-            </ul>
-          </nav>
+      <div>
+        {/* <nav>
+          <ul>
+            <li>
+              <Link to="/register">Home</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/project">Project</Link>
+            </li>
+            <li>
+              <Link to="/projects">Projects</Link>
+            </li>
+            <li>
+              <Link to="/sprints">Sprints</Link>
+            </li>
+          </ul>
+        </nav> */}
 
-          <Switch>
-            <Route path="/register">
-              <Register />
-            </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/projects">
-              <Project />
-            </Route>
-          </Switch>
-        </div>
+        <Switch>
+          <PublicRoute path="/register" redirectTo="/projects" restricted>
+            <Register />
+          </PublicRoute>
+          <PublicRoute path="/login" redirectTo="/projects" restricted>
+            <Login />
+          </PublicRoute>
+          <PrivateRoute path="/projects/:id" redirectTo="/register">
+            <Project />
+          </PrivateRoute>
+          <PrivateRoute path="/projects" redirectTo="/register">
+            <Projects />
+          </PrivateRoute>
+          <PrivateRoute path="/sprints">
+            <Sprints />
+          </PrivateRoute>
+          <PrivateRoute path="/sprints/:id">
+            <Tasks />
+          </PrivateRoute>
+          <PublicRoute path="/" redirectTo="/projects" restricted>
+            <Register />
+          </PublicRoute>
+        </Switch>
       </div>
     </Router>
   );
