@@ -29,13 +29,12 @@ const getTasks = sprintId => async dispatch => {
   }
 };
 
-const addTask = (sprintId, name, startDate, duration) => async dispatch => {
+const addTask = (sprintId, title, scheduledHours) => async dispatch => {
   dispatch(addTaskRequest());
   try {
     const { data } = await axios.post(`/tasks/${sprintId}`, {
-      name,
-      startDate,
-      duration,
+      title,
+      scheduledHours,
     });
     dispatch(addTaskSuccess(data.data.task));
   } catch (error) {
@@ -53,20 +52,20 @@ const deleteTask = tasksId => async dispatch => {
   }
 };
 
-const editTaskName = (taskId, updName) => async dispatch => {
+const editTaskName = (taskId, title) => async dispatch => {
   dispatch(editTaskRequest());
   try {
-    const { data } = await axios.patch(`/tasks/${taskId}`, { updName });
+    const { data } = await axios.patch(`/tasks/${taskId}`, { title });
     dispatch(editTaskSuccess(data.data.task));
   } catch (error) {
     dispatch(editTaskError(error.message));
   }
 };
 
-const editTaskHours = (taskId, updDate) => async dispatch => {
+const editTaskHours = (taskId, hoursPerDay) => async dispatch => {
   dispatch(addTaskHoursRequest());
   try {
-    const { data } = await axios.patch(`/tasks/${taskId}`, { updDate });
+    const { data } = await axios.patch(`/tasks/${taskId}`, { hoursPerDay });
     dispatch(addTaskHoursSuccess(data.data.task));
   } catch (error) {
     dispatch(addTaskHoursError(error.message));
