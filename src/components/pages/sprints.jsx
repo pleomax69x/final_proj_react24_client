@@ -8,20 +8,20 @@ import SprintCard from '../SprintCard/SprintCard';
 import Modal from '../Modal';
 
 const Sprint = () => {
+  const history = useHistory();
   const sprints = useSelector(sprintsSelectors.getSprints);
-
+  const userId = history.location.state;
+  console.log(userId);
   const dispatch = useDispatch();
 
   const deleteSprint = id => dispatch(sprintsOperations.deleteSprint(id));
 
   useEffect(() => {
-    dispatch(sprintsOperations.getSprints());
+    dispatch(sprintsOperations.getSprints(userId));
   }, [dispatch]);
 
-  const history = useHistory();
-
   console.log(sprints);
-  const addSprints = id => history.push(`/sprints/${id}`, id);
+  const addSprints = id => history.push(`/projects/${userId}/${id}`, id);
 
   const [showModal, setShowModal] = useState(false);
   const toggleModal = useCallback(() => {
@@ -41,15 +41,15 @@ const Sprint = () => {
             title={sprints.title}
             date={sprints.date}
             duration={sprints.duration}
-            to={() => addSprints(sprints.id)}
-            onClick={() => deleteSprint(sprints.id)}
+            to={() => addSprints(sprints._id)}
+            onClick={() => deleteSprint(sprints._id)}
           />
         ))}
       </ul>
 
       {showModal && (
         <Modal onClose={toggleModal}>
-          <СreatingSprint onSave={toggleModal} />
+          <СreatingSprint onSave={toggleModal} prId={userId} />
         </Modal>
       )}
     </div>
