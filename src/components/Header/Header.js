@@ -2,8 +2,8 @@ import { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperations, authSelectors } from '../../redux/auth';
-// import { ReactComponent as LogOut } from '../../img/LogOut1.svg';
-import logo from '../../img/Logo.svg';
+// import { ReactComponent as LogOut } from '../../img/header/LogOut1.svg';
+import logo from '../../img/header/Logo.svg';
 import Container from '../Container/Container';
 import s from './Header.module.scss';
 
