@@ -1,0 +1,134 @@
+.current_date_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.days_wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+}
+.back_button {
+  display: inline-block;
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 10px;
+  height: 18px;
+  background-color: transparent;
+  background-image: url('../../img/tasksPage/back.svg');
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+}
+
+.forward_button {
+  display: inline-block;
+  margin-left: 20px;
+  margin-right: 0;
+  width: 10px;
+  height: 18px;
+  background-color: transparent;
+  background-image: url('../../img/tasksPage/forward.svg');
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+}
+.сurrent_day {
+  font-family: Montserrat;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  color: #181c27;
+}
+.slash_days {
+  font-family: Montserrat;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  color: #181c27;
+}
+
+.duration_days {
+  font-family: Montserrat;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  color: #181c27;
+}
+
+.date {
+  font-family: Montserrat;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: 0.04em;
+  text-align: right;
+  color: rgba(24, 28, 39, 0.6);
+}
+
+.sprint_name {
+  font-family: Montserrat;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: 0.04em;
+  text-align: left;
+}
+
+.input {
+}
+
+.edit_sprint_name_button {
+  display: inline-block;
+  margin-left: 0px;
+  margin-right: 00px;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  background-image: url('../../img/tasksPage/edit.svg');
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+}
+
+// .task_name {
+//   font-family: Montserrat;
+//   font-size: 18px;
+//   font-style: normal;
+//   font-weight: 500;
+//   line-height: 22px;
+//   letter-spacing: 0.04em;
+//   text-align: left;
+// }
+
+// .table_prop {
+//   font-family: Montserrat;
+//   font-size: 10px;
+//   font-style: normal;
+//   font-weight: 400;
+//   line-height: 12px;
+//   letter-spacing: 0.04em;
+//   text-align: left;
+// }
+
+// .table_prop_hour_per_day {
+//   font-family: Montserrat;
+//   font-size: 14px;
+//   font-style: normal;
+//   font-weight: 400;
+//   line-height: 17px;
+//   letter-spacing: 0.04em;
+//   text-align: right;
+// }

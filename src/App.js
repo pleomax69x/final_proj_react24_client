@@ -15,6 +15,7 @@ import PublicRoute from './components/Routes/PublicRoute';
 import Header from './components/Header';
 import Projects from './components/pages/projects';
 import Sprints from './components/pages/sprints';
+import Tasks from './components/pages/tasks';
 import { useDispatch } from 'react-redux';
 import { authOperations } from './redux/auth';
 
@@ -67,6 +68,9 @@ function App() {
           </PrivateRoute>
           <PrivateRoute path="/sprints">
             <Sprints />
+          </PrivateRoute>
+          <PrivateRoute path="/sprints/:id">
+            <Tasks />
           </PrivateRoute>
           <PublicRoute path="/" redirectTo="/projects" restricted>
             <Register />
