@@ -1,16 +1,29 @@
-import React, { useState, useCallback } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useCallback, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 import sprintsSelectors from '../../redux/sprints/sprints-selectors';
-import Modal from '../Modal';
-import SprintCard from '../ProjectCard/ProjectCard';
-import { v4 as uuidv4 } from 'uuid';
+import sprintsOperations from '../../redux/sprints/sprints-operations';
 import СreatingSprint from '../СreatingSprint/СreatingSprint.js';
+import SprintCard from '../SprintCard/SprintCard';
+import Modal from '../Modal';
 
 const Sprint = () => {
+  const sprints = useSelector(sprintsSelectors.getSprints);
+
+  const dispatch = useDispatch();
+
+  const deleteSprint = id => dispatch(sprintsOperations.deleteSprint(id));
+
+  useEffect(() => {
+    dispatch(sprintsOperations.getSprints());
+  }, [dispatch]);
+
+  const history = useHistory();
+
+  console.log(sprints);
+  const addSprints = id => history.push(`/sprints/${id}`, id);
+
   const [showModal, setShowModal] = useState(false);
-
-  const sprints = useSelector(sprintsSelectors.getProjects);
-
   const toggleModal = useCallback(() => {
     setShowModal(prevShowModal => !prevShowModal);
   }, []);
@@ -22,11 +35,14 @@ const Sprint = () => {
         Сreat sprint
       </button>
       <ul>
-        {sprints.map(project => (
+        {sprints.map(sprints => (
           <SprintCard
-            key={uuidv4()}
-            title={project.data.project.name}
-            descr={project.data.project.description}
+            key={sprints.id}
+            title={sprints.title}
+            date={sprints.date}
+            duration={sprints.duration}
+            to={() => addSprints(sprints.id)}
+            onClick={() => deleteSprint(sprints.id)}
           />
         ))}
       </ul>

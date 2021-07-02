@@ -21,19 +21,19 @@ const {
 const getSprints = projId => async dispatch => {
   dispatch(getSprintsRequest());
   try {
-    const { data } = await axios.get(`/projects/${projId}/sprints`);
+    const { data } = await axios.get(`/sprints/${projId}`);
     dispatch(getSprintsSuccess(data.data.sprints));
   } catch (error) {
     dispatch(getSprintsError(error.message));
   }
 };
 
-const addSprint = (projId, name, startDate, duration) => async dispatch => {
+const addSprint = (projId, title, date, duration) => async dispatch => {
   dispatch(addSprintRequest());
   try {
-    const { data } = await axios.post(`/projects/${projId}/sprints`, {
-      name,
-      startDate,
+    const { data } = await axios.post(`/sprints/${projId}`, {
+      title,
+      date,
       duration,
     });
     dispatch(addSprintSuccess(data.data.sprint));
@@ -42,23 +42,20 @@ const addSprint = (projId, name, startDate, duration) => async dispatch => {
   }
 };
 
-const deleteSprint = (projId, sprintId) => async dispatch => {
+const deleteSprint = sprintId => async dispatch => {
   dispatch(deleteSprintRequest());
   try {
-    await axios.delete(`/projects/${projId}/sprints/${sprintId}`);
+    await axios.delete(`/sprints/${sprintId}`);
     dispatch(deleteSprintSuccess(sprintId));
   } catch (error) {
     dispatch(deleteSprintError(error.message));
   }
 };
 
-const editSprintName = (projId, sprintId, updName) => async dispatch => {
+const editSprintName = (sprintId, title) => async dispatch => {
   dispatch(editSprintRequest());
   try {
-    const { data } = await axios.patch(
-      `/projects/${projId}/sprints/${sprintId}`,
-      { updName },
-    );
+    const { data } = await axios.patch(`/sprints/${sprintId}`, { title });
     dispatch(editSprintSuccess(data.data.sprint));
   } catch (error) {
     dispatch(editSprintError(error.message));
