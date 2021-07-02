@@ -19,68 +19,54 @@ const {
   addTaskHoursError,
 } = actions;
 
-const getTasks = (projId, sprintId) => async dispatch => {
+const getTasks = sprintId => async dispatch => {
   dispatch(getTasksRequest());
   try {
-    const { data } = await axios.get(
-      `/projects/${projId}/sprints/${sprintId}/tasks`,
-    );
+    const { data } = await axios.get(`/tasks/${sprintId}`);
     dispatch(getTasksSuccess(data.data.tasks));
   } catch (error) {
     dispatch(getTasksError(error.message));
   }
 };
 
-const addTask =
-  (projId, sprintId, name, startDate, duration) => async dispatch => {
-    dispatch(addTaskRequest());
-    try {
-      const { data } = await axios.post(
-        `/projects/${projId}/sprints/${sprintId}/tasks`,
-        {
-          name,
-          startDate,
-          duration,
-        },
-      );
-      dispatch(addTaskSuccess(data.data.task));
-    } catch (error) {
-      dispatch(addTaskError(error.message));
-    }
-  };
+const addTask = (sprintId, name, startDate, duration) => async dispatch => {
+  dispatch(addTaskRequest());
+  try {
+    const { data } = await axios.post(`/tasks/${sprintId}`, {
+      name,
+      startDate,
+      duration,
+    });
+    dispatch(addTaskSuccess(data.data.task));
+  } catch (error) {
+    dispatch(addTaskError(error.message));
+  }
+};
 
-const deleteTask = (projId, sprintId, tasksId) => async dispatch => {
+const deleteTask = tasksId => async dispatch => {
   dispatch(deleteTaskRequest());
   try {
-    await axios.delete(
-      `/projects/${projId}/sprints/${sprintId}/tasks/${tasksId}`,
-    );
-    dispatch(deleteTaskSuccess(sprintId));
+    await axios.delete(`/tasks/${tasksId}`);
+    dispatch(deleteTaskSuccess(tasksId));
   } catch (error) {
     dispatch(deleteTaskError(error.message));
   }
 };
 
-const editTaskName = (projId, sprintId, taskId, updName) => async dispatch => {
+const editTaskName = (taskId, updName) => async dispatch => {
   dispatch(editTaskRequest());
   try {
-    const { data } = await axios.patch(
-      `/projects/${projId}/sprints/${sprintId}/tasks/${taskId}`,
-      { updName },
-    );
+    const { data } = await axios.patch(`/tasks/${taskId}`, { updName });
     dispatch(editTaskSuccess(data.data.task));
   } catch (error) {
     dispatch(editTaskError(error.message));
   }
 };
 
-const editTaskHours = (projId, sprintId, taskId, updDate) => async dispatch => {
+const editTaskHours = (taskId, updDate) => async dispatch => {
   dispatch(addTaskHoursRequest());
   try {
-    const { data } = await axios.patch(
-      `/projects/${projId}/sprints/${sprintId}/tasks/${taskId}`,
-      { updDate },
-    );
+    const { data } = await axios.patch(`/tasks/${taskId}`, { updDate });
     dispatch(addTaskHoursSuccess(data.data.task));
   } catch (error) {
     dispatch(addTaskHoursError(error.message));
