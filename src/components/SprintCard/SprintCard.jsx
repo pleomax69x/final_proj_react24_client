@@ -1,17 +1,16 @@
 import s from './SprintCard.module.scss';
-import { Link } from 'react-router-dom';
 
-const ProjectCard = ({ ...props }) => {
-  const { title, descr } = props;
+const SprintCard = ({ title, date, duration, to, onClick }) => {
   return (
     <li className={s.card}>
-      <Link to="/projects" className={s.link}>
+      <div onClick={to} className={s.link}>
         <h3 className={s.title}>{title}</h3>
-        <p className={s.descr}>{descr}</p>
-      </Link>
-      <button className={s.cart}></button>
+        <p className={s.descr}>{date}</p>
+        <p className={s.descr}>{duration}</p>
+      </div>
+      <button type="button" onClick={onClick} className={s.cart}></button>
     </li>
   );
 };
 
-export default ProjectCard;
+export default SprintCard;
