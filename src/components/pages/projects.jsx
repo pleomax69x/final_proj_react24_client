@@ -1,20 +1,29 @@
-import React, { useState, useCallback } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useCallback, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import projectsSelectors from '../../redux/projects/projects-selectors';
 import Modal from '../Modal';
 import СreatingProject from '../СreatingProject';
 import ProjectCard from '../ProjectCard/ProjectCard';
-import { v4 as uuidv4 } from 'uuid';
 import styles from './projects.module.scss';
 import { useHistory } from 'react-router';
 import Container from '../Container/Container';
+import projectsOperations from '../../redux/projects/projects-operations';
 
 const Projects = () => {
   const projects = useSelector(projectsSelectors.getProjects);
 
+  const dispatch = useDispatch();
+
+  const deleteProject = id => dispatch(projectsOperations.deleteProject(id));
+
+  useEffect(() => {
+    dispatch(projectsOperations.getProjects());
+  }, [dispatch]);
+
   const history = useHistory();
 
-  const addProject = id => history.push(`/project/${id}`, id);
+  console.log(projects);
+  const addProject = id => history.push(`/projects/${id}`, id);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -33,12 +42,13 @@ const Projects = () => {
           </label>
         </div>
         <ul className={styles.list}>
-          {projects.map(project => (
+          {projects?.map(project => (
             <ProjectCard
-              key={uuidv4()}
-              title={project.data.project.name}
-              descr={project.data.project.description}
-              to={() => addProject(project.data.project._id)}
+              key={project._id}
+              title={project.name}
+              descr={project.description}
+              to={() => addProject(project._id)}
+              onClick={() => deleteProject(project._id)}
             />
           ))}
         </ul>

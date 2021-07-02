@@ -147,6 +147,17 @@
   line-height: 1.22;
   color: rgba(24, 28, 39, 0.6);
 }
+.wr {
+  position: relative;
+}
+.errorMessage {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: -40px;
+  color: rgba(255, 0, 0, 0.842);
+}
 
 // .wrapper {
 //   background: #e5e5e5;
