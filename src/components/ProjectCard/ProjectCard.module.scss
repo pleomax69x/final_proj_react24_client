@@ -3,10 +3,21 @@
   height: 136px;
 
   margin-bottom: 20px;
-  border: 2px solid transparent;
+  border: none;
   border-radius: 5px;
   position: relative;
-
+  &:nth-child(4n + 1) .cart {
+    background-color: #8c72df;
+  }
+  &:nth-child(4n + 2) .cart {
+    background-color: #ff765f;
+  }
+  &:nth-child(4n + 3) .cart {
+    background-color: #71df87;
+  }
+  &:nth-child(4n + 4) .cart {
+    background-color: #8c72df;
+  }
   &:hover .descr {
     display: block;
     font-family: Montserrat;
@@ -43,75 +54,96 @@
 
   &:nth-child(4n + 1) {
     background-color: #8c72df;
-
+    &:hover,
+    :focus {
+      border: none;
+      outline: none;
+      box-shadow: 1px 6px 10px #8c72df;
+    }
     &::before {
       content: none;
       @media screen and (min-width: 1200px) {
         content: url(../../img/projectsPage/task-1.png);
         position: absolute;
         top: 0px;
-        right: -2px;
+        right: 0px;
       }
 
       @media screen and (min-width: 767px) and (max-width: 1199px) {
         content: url(../../img/projectsPage/task-1-768.png);
         position: absolute;
         top: 0px;
-        right: -2px;
+        right: 0px;
       }
     }
   }
   &:nth-child(4n + 2) {
     background-color: #ff765f;
+    &:hover,
+    :focus {
+      outline: none;
+      box-shadow: 1px 6px 10px #ff765f;
+    }
     &::before {
       content: none;
       @media screen and (min-width: 1200px) {
         content: url(../../img/projectsPage/task-2.png);
         position: absolute;
         top: 0px;
-        right: -2px;
+        right: 0px;
       }
       @media screen and (min-width: 767px) and (max-width: 1199px) {
         content: url(../../img/projectsPage/task-2-768.png);
         position: absolute;
         top: 0px;
-        right: -2px;
+        right: 0px;
       }
     }
   }
+
   &:nth-child(4n + 3) {
     background-color: #71df87;
+    &:hover,
+    :focus {
+      outline: none;
+      box-shadow: 1px 6px 10px #71df87;
+    }
     &::before {
       content: none;
       @media screen and (min-width: 1200px) {
         content: url(../../img/projectsPage/task-3.png);
         position: absolute;
         top: 0px;
-        right: -2px;
+        right: 0px;
       }
       @media screen and (min-width: 767px) and (max-width: 1199px) {
         content: url(../../img/projectsPage/task-3-768.png);
         position: absolute;
         top: 0px;
-        right: -2px;
+        right: 0px;
       }
     }
   }
   &:nth-child(4n + 4) {
     background-color: #8c72df;
+    &:hover,
+    :focus {
+      outline: none;
+      box-shadow: 1px 6px 10px #8c72df;
+    }
     &::before {
       content: none;
       @media screen and (min-width: 1200px) {
         content: url(../../img/projectsPage/task-4.png);
         position: absolute;
         top: 0px;
-        right: -2px;
+        right: 0px;
       }
       @media screen and (min-width: 767px) and (max-width: 1199px) {
         content: url(../../img/projectsPage/task-4-768.png);
         position: absolute;
         top: 0px;
-        right: -2px;
+        right: 0px;
       }
     }
   }
@@ -125,6 +157,7 @@
   line-height: 1.25;
   color: #ffffff;
   letter-spacing: 0.04em;
+  word-wrap: break-word;
   @media screen and (min-width: 767px) {
     font-size: 26px;
     line-height: 1.17;
@@ -159,18 +192,24 @@
 
 .cart {
   background-image: url(../../img/projectsPage/cart.svg);
-  background-color: transparent;
   cursor: pointer;
-  z-index: 1;
+  z-index: 3;
   background-repeat: no-repeat;
   background-size: contain;
-  width: 30px;
   height: 30px;
+  width: 30px;
   border: none;
   position: absolute;
   bottom: 8px;
   right: 8px;
   outline: none;
+  border-radius: 50%;
+  transition: all 250ms linear;
+  &:hover,
+  :focus {
+    transform: scale(0.9);
+    box-shadow: 0px 0px 25px #ffffff;
+  }
   @media screen and (min-width: 767px) {
     width: 34px;
     height: 34px;
