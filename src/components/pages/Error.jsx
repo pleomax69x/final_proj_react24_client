@@ -1,5 +1,5 @@
 import React from 'react';
-import s from '../../sass/utils/main.module.scss';
+import s from '../../sass/utils/register.module.scss';
 
 const Error = ({ touched, message }) => {
   if (!touched) {
