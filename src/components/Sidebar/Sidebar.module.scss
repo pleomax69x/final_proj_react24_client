@@ -1,0 +1,100 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(24, 28, 39, 0.1);
+  padding: 0 30px;
+  padding-bottom: 20px;
+}
+
+.linkProjects {
+  margin-top: 20px;
+  position: relative;
+  top: 0;
+  left: 40px;
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  &::before {
+    content: url(./Arrow.png);
+    position: absolute;
+    top: 2px;
+    left: -40px;
+  }
+}
+.linkProjectsActive {
+  font-weight: 700;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  justify-content: center;
+}
+
+.listItem {
+  display: flex;
+
+  position: relative;
+  margin-bottom: 30px;
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    content: '';
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    border-radius: 5px;
+  }
+  &:nth-child(4n + 1)::before {
+    background-color: #8c72df;
+  }
+
+  &:nth-child(4n + 2)::before {
+    background-color: #ff765f;
+  }
+
+  &:nth-child(4n + 3)::before {
+    background-color: #71df87;
+  }
+
+  &:nth-child(4n + 4)::before {
+    background-color: #8c72df;
+  }
+}
+
+.itemLink {
+  width: 100%;
+  display: flex;
+  position: relative;
+  padding-left: 50px;
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  &:active {
+    font-weight: 700;
+  }
+}
+.btnWrapper {
+  text-align: center;
+}
+.btn {
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  background-color: #ff6b08;
+  background-image: url(./+.png);
+  background-repeat: no-repeat;
+  border: none;
+  background-position: 50%;
+}
+.text {
+  font-family: Montserrat;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+}
