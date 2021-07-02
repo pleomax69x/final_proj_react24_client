@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { tasksSelectors, tasksOperations } from '../../redux/tasks';
 import Modal from '../Modal';
-// import СreatingTask from '../СreatingTask';
+import СreatingTask from '../СreatingTask';
 
 import s from './tasks.module.scss';
 import { useHistory } from 'react-router';
@@ -72,7 +72,7 @@ const Tasks = () => {
       </ul>
       {showModal && (
         <Modal onClose={toggleModal}>
-          {/* <СreatingTask onSave={toggleModal} /> */}
+          <СreatingTask onSave={toggleModal} />
         </Modal>
       )}
       <button onClick={toggleModal}>+</button>
@@ -81,59 +81,3 @@ const Tasks = () => {
   );
 };
 export default Tasks;
-
-// const Projects = () => {
-//   const projects = useSelector(projectsSelectors.getProjects);
-
-//   const dispatch = useDispatch();
-
-//   const deleteProject = id => dispatch(projectsOperations.deleteProject(id));
-
-//   useEffect(() => {
-//     dispatch(projectsOperations.getProjects());
-//   }, [dispatch]);
-
-//   const history = useHistory();
-
-//   console.log(projects);
-//   const addProject = id => history.push(`/projects/${id}`, id);
-
-//   const [showModal, setShowModal] = useState(false);
-
-//   const toggleModal = useCallback(() => {
-//     setShowModal(prevShowModal => !prevShowModal);
-//   }, []);
-
-//   return (
-//     <Container>
-//       <div className={styles.wrapper}>
-//         <div className={styles.headWrapper}>
-//           <h2>Projects</h2>
-//           <label className={styles.btnWrapper}>
-//             <button className={styles.btn} onClick={toggleModal}></button>
-//             <p className={styles.text}>Create a project</p>
-//           </label>
-//         </div>
-//         <ul className={styles.list}>
-//           {projects?.map(project => (
-//             <ProjectCard
-//               key={project._id}
-//               title={project.name}
-//               descr={project.description}
-//               to={() => addProject(project._id)}
-//               onClick={() => deleteProject(project._id)}
-//             />
-//           ))}
-//         </ul>
-
-//         {showModal && (
-//           <Modal onClose={toggleModal}>
-//             <СreatingProject onSave={toggleModal} />
-//           </Modal>
-//         )}
-//       </div>
-//     </Container>
-//   );
-// };
-
-// export default Projects;
