@@ -19,6 +19,7 @@ const {
   addTaskHoursRequest,
   addTaskHoursError,
   changeFilter,
+  changeDayIndex,
 } = actions;
 
 const tasks = createReducer([], {
@@ -36,6 +37,10 @@ const tasks = createReducer([], {
       if (item._id === payload.id) return payload;
       else return item;
     }),
+});
+
+const indexCurrentDay = createReducer([0], {
+  [changeDayIndex]: (_, payload) => payload,
 });
 
 const filter = createReducer('', {
@@ -63,4 +68,6 @@ const error = createReducer('', {
 export default combineReducers({
   tasks,
   filter,
+  indexCurrentDay,
+  error,
 });

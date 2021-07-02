@@ -17,6 +17,7 @@ const {
   addTaskHoursRequest,
   addTaskHoursSuccess,
   addTaskHoursError,
+  changeDayIndex,
 } = actions;
 
 const getTasks = sprintId => async dispatch => {
@@ -72,6 +73,10 @@ const editTaskHours = (taskId, hoursPerDay) => async dispatch => {
   }
 };
 
+const updateDayIndex = newIndex => async dispatch => {
+  dispatch(changeDayIndex(newIndex));
+};
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getTasks,
@@ -79,4 +84,5 @@ export default {
   deleteTask,
   editTaskName,
   editTaskHours,
+  updateDayIndex,
 };
