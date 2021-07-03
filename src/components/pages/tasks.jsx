@@ -1,6 +1,10 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { tasksSelectors, tasksOperations } from '../../redux/tasks';
+import {
+  tasksSelectors,
+  tasksOperations,
+  tasksActions,
+} from '../../redux/tasks';
 import Modal from '../Modal';
 import СreatingTask from '../СreatingTask';
 
@@ -10,17 +14,22 @@ import Container from '../Container/Container';
 import TaskItem from '../TaskItem/TaskItem';
 
 const Tasks = () => {
+  const history = useHistory();
+  const userId = history.location.state;
   const tasks = useSelector(tasksSelectors.getVisibleTasks);
   const dispatch = useDispatch();
   const deleteTask = id => dispatch(tasksOperations.deleteTask(id));
-
+  const filter = useSelector(tasksSelectors.getFilter);
+  const onChange = useCallback(
+    e => {
+      dispatch(tasksActions.changeFilter(e.target.value));
+    },
+    [dispatch],
+  );
   useEffect(() => {
-    dispatch(tasksOperations.getTasks());
+    dispatch(tasksOperations.getTasks(userId));
   }, [dispatch]);
-
-  const history = useHistory();
-
-  const addTask = id => history.push(`/tasks/${id}`, id);
+  console.log(tasks);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -42,16 +51,15 @@ const Tasks = () => {
         <p className={s.date}>01.01.2021</p>
       </div>
 
-      <form className={s} onSubmit={1}>
-        <input
-          className={s}
-          type="text"
-          name="name"
-          placeholder=""
-          // value={name}
-          // onChange={updateName}
-        />
-      </form>
+      <input
+        className={s}
+        type="text"
+        name="filter"
+        placeholder=""
+        value={filter}
+        onChange={onChange}
+      />
+
       <div>
         <h1 className={s.sprint_name}>Sprint Burndown Chart 1</h1>
         <button className={s.edit_sprint_name_button}></button>
@@ -65,7 +73,6 @@ const Tasks = () => {
             scheduledHours={task.scheduledHours}
             hoursPerDay={task.hoursPerDay}
             totalHours={task.totalHours}
-            // to={() => addTask(task._id)}
             onClick={() => deleteTask(task._id)}
           />
         ))}
