@@ -57,7 +57,7 @@ const Pageoneproject = () => {
             <ul className={styles.project_list}>
               {newProject.map(({ name }) => (
                 <li className={styles.project_list_item} key={uuidv4()}>
-                  {name}
+                  <span>{name}</span>
                 </li>
               ))}
             </ul>
