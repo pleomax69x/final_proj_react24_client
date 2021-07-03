@@ -8,26 +8,26 @@ import SprintsItem from '../SprintsItem';
 import Modal from '../Modal';
 
 const Sprint = () => {
-  const history = useHistory();
-  const sprints = useSelector(sprintsSelectors.getSprints);
-  const userId = history.location.state;
-  console.log(userId);
   const dispatch = useDispatch();
+  const sprints = useSelector(sprintsSelectors.getSprints);
+
+  const history = useHistory();
+  const projectId = history.location.state;
 
   const deleteSprint = id => dispatch(sprintsOperations.deleteSprint(id));
 
   useEffect(() => {
-    dispatch(sprintsOperations.getSprints(userId));
-  }, [dispatch]);
+    dispatch(sprintsOperations.getSprints(projectId));
+  }, [dispatch, projectId]);
 
-  console.log(sprints);
-  const addSprints = id => history.push(`/projects/${userId}/${id}`, id);
+  const addSprints = id => history.push(`/projects/${projectId}/${id}`, id);
 
   const [showModal, setShowModal] = useState(false);
   const toggleModal = useCallback(() => {
     setShowModal(prevShowModal => !prevShowModal);
   }, []);
 
+  console.log(projectId, 'Sprints:', sprints);
   return (
     <div>
       <h1>Sprints</h1>
@@ -35,21 +35,21 @@ const Sprint = () => {
         Сreat sprint
       </button>
       <ul>
-        {sprints.map(sprints => (
+        {sprints?.map(sprint => (
           <SprintsItem
-            key={sprints.id}
-            title={sprints.title}
-            date={sprints.date}
-            duration={sprints.duration}
-            to={() => addSprints(sprints._id)}
-            onClick={() => deleteSprint(sprints._id)}
+            key={sprint._id}
+            title={sprint.title}
+            date={sprint.date}
+            duration={sprint.duration}
+            to={() => addSprints(sprint._id)}
+            onClick={() => deleteSprint(sprint._id)}
           />
         ))}
       </ul>
 
       {showModal && (
         <Modal onClose={toggleModal}>
-          <СreatingSprint onSave={toggleModal} prId={userId} />
+          <СreatingSprint onSave={toggleModal} prId={projectId} />
         </Modal>
       )}
     </div>

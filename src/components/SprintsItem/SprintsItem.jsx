@@ -19,12 +19,7 @@ const SprintItem = ({ title, date, duration, to, onClick }) => {
             </p>
           </div>
         </Link>
-        <button
-          type="button"
-          onClick={onClick}
-          className={s.buttonDelete}
-          onClick={'deleteItem'}
-        >
+        <button type="button" onClick={onClick} className={s.buttonDelete}>
           X
         </button>
       </li>

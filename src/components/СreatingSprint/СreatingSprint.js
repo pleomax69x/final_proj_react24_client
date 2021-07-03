@@ -4,6 +4,7 @@ import { Formik, Field, Form } from 'formik';
 import * as yup from 'yup';
 import sprintsOperations from '../../redux/sprints/sprints-operations';
 import sprintsSelectors from '../../redux/sprints/sprints-selectors';
+import currentDate from '../../helpers/currentDate';
 import s from './СreatingSprint.module.scss';
 
 const schema = yup.object({
@@ -24,26 +25,27 @@ const createErrorMessage = error => {
 };
 
 const СreatingSprint = ({ onSave, prId }) => {
+  const dispatch = useDispatch();
+
+  const sprints = useSelector(sprintsSelectors.getSprints);
+
+  const errorFromState = useSelector(state =>
+    sprintsSelectors.getErrorMessage(state),
+  );
+
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const [data, setDate] = useState('2021-07-01');
+  const [data, setDate] = useState('');
   const updateDate = e => {
     setDate(e.target.value);
   };
 
-  // Current date
   useEffect(() => {
-    var today =
-      new Date().getFullYear() +
-      '-' +
-      ('0' + (new Date().getMonth() + 1)).slice(-2) +
-      '-' +
-      ('0' + new Date().getDate()).slice(-2);
-    setDate(today);
+    setDate(currentDate);
   }, []);
 
-  const handleChange = e => {
+  const handleValueChange = e => {
     const { name, value } = e.target;
     switch (name) {
       case 'name':
@@ -54,13 +56,6 @@ const СreatingSprint = ({ onSave, prId }) => {
         return;
     }
   };
-
-  const sprints = useSelector(sprintsSelectors.getSprints);
-  const dispatch = useDispatch();
-
-  const errorFromState = useSelector(state =>
-    sprintsSelectors.getErrorMessage(state),
-  );
 
   let errorMessage = errorFromState ? createErrorMessage(errorFromState) : null;
 
@@ -87,7 +82,7 @@ const СreatingSprint = ({ onSave, prId }) => {
       onSubmit={handleSubmit}
     >
       {({ errors, touched }) => (
-        <Form className={s.sprint_form} onChange={handleChange}>
+        <Form className={s.sprint_form} onChange={handleValueChange}>
           <h2 className={s.form_title}>Creating a sprint</h2>
           <div className={s.form_field}>
             <Field
