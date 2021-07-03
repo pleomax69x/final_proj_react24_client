@@ -2,12 +2,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  @media screen and (min-width: 768px) {
+    justify-content: start;
+    margin-bottom: 20px;
+  }
 }
 
 .days_wrapper {
   display: flex;
   flex-wrap: nowrap;
   align-items: flex-end;
+  @media screen and (min-width: 768px) {
+    margin-right: 39px;
+  }
 }
 .back_button {
   display: inline-block;
@@ -20,6 +29,9 @@
   background-repeat: no-repeat;
   border: none;
   cursor: pointer;
+  @media screen and (min-width: 768px) {
+    margin-left: 0px;
+  }
 }
 
 .forward_button {
@@ -87,7 +99,25 @@
   text-align: left;
 }
 
-.input {
+.form_input {
+  width: 280px;
+  height: 29px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+  color: rgba(24, 28, 39, 0.6);
+  border: none;
+  border-bottom: 1px solid rgba(24, 28, 39, 0.1);
+  background-color: transparent;
+  @media screen and (min-width: 767px) {
+    width: 429px;
+    height: 30px;
+  }
 }
 
 .edit_sprint_name_button {
@@ -101,6 +131,64 @@
   background-repeat: no-repeat;
   border: none;
   cursor: pointer;
+}
+
+.button_create {
+  width: 44px;
+  height: 44px;
+  margin-right: 20px;
+  background-image: url(../../img/tasksPage/+.png);
+  background-position: 50%;
+  border: none;
+  border-radius: 50%;
+  transition: all 0.3s linear;
+  background-color: #ff6b08;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  &:hover {
+    outline: none;
+    box-shadow: 0 0 8px #ff6b08;
+  }
+  @media screen and (max-width: 1199px) {
+    margin-right: 0;
+  }
+  @media screen and (max-width: 767px) {
+    margin-right: 0;
+    position: absolute;
+    bottom: 20px;
+    center: 20px;
+    z-index: 20;
+  }
+}
+
+.button_analytics {
+  width: 44px;
+  height: 44px;
+  margin-right: 20px;
+  background-image: url(../../img/tasksPage/analytics.png);
+  background-position: 50%;
+  border: none;
+  border-radius: 50%;
+  transition: all 0.3s linear;
+  background-color: #ff6b08;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  &:hover {
+    outline: none;
+    box-shadow: 0 0 8px #ff6b08;
+  }
+  @media screen and (max-width: 1199px) {
+    margin-right: 0;
+  }
+  @media screen and (max-width: 767px) {
+    margin-right: 0;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 20;
+  }
 }
 
 // .task_name {
