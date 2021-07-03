@@ -1,11 +1,11 @@
 import s from './SprintsItem.module.scss';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const SprintItem = ({ title, date, duration, to, onClick }) => {
   return (
     <div>
       <li className={s.sprintItem}>
-        <Link onClick={to} className={s.projectLink}>
+        <div onClick={to} className={s.projectLink}>
           <div className={s.date}>
             <h3 className={s.cardTitle}>{title}</h3>
             <p className={s.cardDateContainer}>
@@ -18,12 +18,12 @@ const SprintItem = ({ title, date, duration, to, onClick }) => {
               Duration <span className={s.cardDate}>{duration}</span>
             </p>
           </div>
-        </Link>
+        </div>
         <button
           type="button"
           onClick={onClick}
           className={s.buttonDelete}
-          onClick={'deleteItem'}
+          // onClick={deleteItem}
         >
           X
         </button>

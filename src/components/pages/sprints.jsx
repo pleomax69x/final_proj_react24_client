@@ -35,14 +35,14 @@ const Sprint = () => {
         Сreat sprint
       </button>
       <ul>
-        {sprints.map(sprints => (
+        {sprints.map(sprint => (
           <SprintsItem
-            key={sprints.id}
-            title={sprints.title}
-            date={sprints.date}
-            duration={sprints.duration}
-            to={() => addSprints(sprints._id)}
-            onClick={() => deleteSprint(sprints._id)}
+            key={sprint._id}
+            title={sprint.title}
+            date={sprint.date}
+            duration={sprint.duration}
+            to={() => addSprints(sprint._id)}
+            onClick={() => deleteSprint(sprint._id)}
           />
         ))}
       </ul>
