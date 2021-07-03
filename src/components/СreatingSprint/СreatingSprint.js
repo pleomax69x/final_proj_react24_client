@@ -1,21 +1,33 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Formik, Field, Form } from 'formik';
+import * as yup from 'yup';
 import sprintsOperations from '../../redux/sprints/sprints-operations';
 import sprintsSelectors from '../../redux/sprints/sprints-selectors';
 import s from './СreatingSprint.module.scss';
 
+const schema = yup.object({
+  name: yup
+    .string('Enter a name')
+    .min(5, 'Name should contains at least 5 characters')
+    .required('Name is required'),
+  number: yup
+    .number('Enter duration')
+    .positive('Duration should be positive number')
+    .required('Duration is required'),
+});
+
+const createErrorMessage = error => {
+  if (error.includes('400')) return 'Bad request. Please try again';
+  if (error.includes('401')) return 'User not authorized';
+  return 'Unknown error. Please try again';
+};
+
 const СreatingSprint = ({ onSave, prId }) => {
-  const [spName, setspName] = useState('');
-  const setSpName = e => {
-    setspName(e.target.value);
-  };
-
+  const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const updateNumber = e => {
-    setNumber(e.target.value);
-  };
 
-  const [data, setDate] = useState('2021-06-01');
+  const [data, setDate] = useState('2021-07-01');
   const updateDate = e => {
     setDate(e.target.value);
   };
@@ -31,67 +43,143 @@ const СreatingSprint = ({ onSave, prId }) => {
     setDate(today);
   }, []);
 
+  const handleChange = e => {
+    const { name, value } = e.target;
+    switch (name) {
+      case 'name':
+        return setName(value);
+      case 'number':
+        return setNumber(value);
+      default:
+        return;
+    }
+  };
+
   const sprints = useSelector(sprintsSelectors.getSprints);
   const dispatch = useDispatch();
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const errorFromState = useSelector(state =>
+    sprintsSelectors.getErrorMessage(state),
+  );
 
-    // if (sprints.some(sprint => sprint.name === spName)) {
-    //   return alert(
-    //     `Name "${spName}" already exists, please enter another name.`,
-    //   );
-    // } else
-    dispatch(sprintsOperations.addSprint(prId, spName, data, number));
+  let errorMessage = errorFromState ? createErrorMessage(errorFromState) : null;
 
-    console.log(prId, sprints);
-    console.log(spName, data, number);
+  const handleSubmit = ({ name, number }, { resetForm, setSubmitting }) => {
+    if (sprints.some(sprint => sprint.title === name)) {
+      return (errorMessage = `Name "${name}" already exists, please enter another name.`);
+    } else dispatch(sprintsOperations.addSprint(prId, name, data, number));
+
+    setSubmitting(false);
+    resetForm();
+
+    // console.log(prId, name, data, number);
     onSave();
-
-    setspName('');
-    setNumber('');
-    setDate('');
   };
 
   return (
-    <form className={s.sprint_form} onSubmit={handleSubmit}>
-      <h2 className={s.form_title}>Creating a sprint</h2>
-      <div className={s.form_field}>
-        <input
-          className={s.form_input}
-          type="text"
-          name="name"
-          placeholder=" "
-          value={spName}
-          onChange={setSpName}
-        />
-        <label className={s.form_lable}>The name of the sprint</label>
-      </div>
-      <div className={s.form_field}>
-        <input
-          className={s.form_input}
-          type="date"
-          name="date"
-          placeholder=" "
-          value={data}
-          onChange={updateDate}
-        />
-        <label className={s.form_lable}>Start date</label>
-      </div>
-      <div className={s.form_field}>
-        <input
-          className={s.form_input}
-          type="text"
-          name="duration"
-          placeholder=" "
-          value={number}
-          onChange={updateNumber}
-        />
-        <label className={s.form_lable}>Duration</label>
-      </div>
-      <button className={s.btn_submit}>Ready</button>
-    </form>
+    <Formik
+      initialValues={{
+        name: '',
+        data: '',
+        number: '',
+      }}
+      validationSchema={schema}
+      onSubmit={handleSubmit}
+    >
+      {({ errors, touched }) => (
+        <Form className={s.sprint_form} onChange={handleChange}>
+          <h2 className={s.form_title}>Creating a sprint</h2>
+          <div className={s.form_field}>
+            <Field
+              className={`${s.form_input} ${
+                touched.name && errors.name && s.errorInput
+              }`}
+              type="text"
+              name="name"
+              placeholder=" "
+            />
+            <label className={s.form_lable}>The name of the sprint</label>
+            {touched.name && errors.name && (
+              <div className={s.error}>{errors.name}</div>
+            )}
+          </div>
+          <div className={s.form_field}>
+            <Field
+              className={`${s.form_input} ${
+                touched.name && errors.name && s.errorInput
+              }`}
+              type="date"
+              name="date"
+              placeholder=" "
+              value={data}
+              onChange={updateDate}
+            />
+            <label className={s.form_lable}>Start date</label>
+          </div>
+          <div className={s.form_field}>
+            <Field
+              className={`${s.form_input} ${
+                touched.name && errors.name && s.errorInput
+              }`}
+              type="text"
+              name="number"
+              placeholder=" "
+            />
+            <label className={s.form_lable}>Duration</label>
+            {touched.number && errors.number && (
+              <div className={s.error}>{errors.number}</div>
+            )}
+          </div>
+          <div className={s.wr}>
+            {errorMessage ? (
+              <div className={s.errorMessage}>{errorMessage}</div>
+            ) : null}
+          </div>
+          <button type="submit" className={s.btn_submit}>
+            Ready
+          </button>
+        </Form>
+      )}
+    </Formik>
   );
 };
 
 export default СreatingSprint;
+
+// <form className={s.sprint_form} onSubmit={handleSubmit}>
+// <h2 className={s.form_title}>Creating a sprint</h2>
+// <div className={s.form_field}>
+//   <input
+//     className={s.form_input}
+//     type="text"
+//     name="name"
+//     placeholder=" "
+//     value={name}
+//     onChange={setName}
+//   />
+//   <label className={s.form_lable}>The name of the sprint</label>
+// </div>
+// <div className={s.form_field}>
+//   <input
+//     className={s.form_input}
+//     type="date"
+//     name="date"
+//     placeholder=" "
+//     value={data}
+//     onChange={updateDate}
+//   />
+//   <label className={s.form_lable}>Start date</label>
+// </div>
+// <div className={s.form_field}>
+//   <input
+//     className={s.form_input}
+//     type="text"
+//     name="duration"
+//     placeholder=" "
+//     value={number}
+//     onChange={updateNumber}
+//   />
+//   <label className={s.form_lable}>Duration</label>
+// </div>
+// <button className={s.btn_submit}>Ready</button>
+// </form>
