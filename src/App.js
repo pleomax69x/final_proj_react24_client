@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
-import './App.css';
+import './App.scss';
 import 'modern-normalize/modern-normalize.css';
 import {
   BrowserRouter as Router,

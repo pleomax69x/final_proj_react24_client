@@ -8,7 +8,7 @@ import s from './СreatingProject.module.scss';
 
 const schema = yup.object({
   name: yup
-    .string('Enter your name')
+    .string('Enter a name')
     .min(3, 'Name should contains at least 3 characters')
     .required('Name is required'),
   desc: yup
@@ -63,8 +63,8 @@ const СreatingProject = ({ onSave }) => {
   return (
     <Formik
       initialValues={{
-        email: '',
-        password: '',
+        name: '',
+        desc: '',
       }}
       validationSchema={schema}
       onSubmit={handleSubmit}
@@ -80,8 +80,6 @@ const СreatingProject = ({ onSave }) => {
               type="text"
               name="name"
               placeholder=" "
-              // value={name}
-              // onChange={setPrName}
             />
             <label className={s.form_lable}>Project name</label>
             {touched.name && errors.name && (
@@ -96,8 +94,6 @@ const СreatingProject = ({ onSave }) => {
               type="text"
               name="desc"
               placeholder=" "
-              // value={desc}
-              // onChange={setPrDesc}
             />
             <label className={s.form_lable}>Description</label>
             {touched.desc && errors.desc && (
