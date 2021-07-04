@@ -8,7 +8,8 @@ import RightOrangeEllipse from '../../images/registerImg/RightOrangeEllipse';
 import { useFormik, Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Error from './Error';
-import { authOperations, authSelectors } from '../../redux/auth';
+import { authOperations } from '../../redux/auth';
+import { errorSelectors } from '../../redux/error';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -29,6 +30,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const createErrorMessage = error => {
+  console.log('createErrorMessage', error);
   if (error.includes('401')) return '';
   if (error.includes('400')) return 'Not valid password';
   if (error.includes('409')) return 'Provided email already exists';
@@ -43,9 +45,7 @@ const Register = () => {
     [dispatch],
   );
 
-  const errorFromState = useSelector(state =>
-    authSelectors.getErrorMessage(state),
-  );
+  const errorFromState = useSelector(errorSelectors);
 
   const errorMessage = errorFromState
     ? createErrorMessage(errorFromState)

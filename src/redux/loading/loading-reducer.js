@@ -1,7 +1,23 @@
 import { createReducer } from '@reduxjs/toolkit';
+import { authActions } from '../auth';
 import { projectsActions } from '../projects';
 import { sprintsActions } from '../sprints';
 import { tasksActions } from '../tasks';
+
+const {
+  registerRequest,
+  registerSuccess,
+  registerError,
+  loginRequest,
+  loginSuccess,
+  loginError,
+  logoutRequest,
+  logoutSuccess,
+  logoutError,
+  getCurrUserRequest,
+  getCurrUserSuccess,
+  getCurrUserError,
+} = authActions;
 
 const {
   getProjectsRequest,
@@ -55,6 +71,18 @@ const {
 } = tasksActions;
 
 const loading = createReducer(false, {
+  [registerRequest]: () => true,
+  [registerSuccess]: () => false,
+  [registerError]: () => false,
+  [loginRequest]: () => true,
+  [loginSuccess]: () => false,
+  [loginError]: () => false,
+  [logoutRequest]: () => true,
+  [logoutSuccess]: () => false,
+  [logoutError]: () => false,
+  [getCurrUserRequest]: () => true,
+  [getCurrUserSuccess]: () => false,
+  [getCurrUserError]: () => false,
   [getProjectsRequest]: () => true,
   [getProjectsSuccess]: () => false,
   [getProjectsError]: () => false,

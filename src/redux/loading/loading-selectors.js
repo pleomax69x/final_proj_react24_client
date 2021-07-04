@@ -1,3 +1,3 @@
-const getIsLoading = state => state.loader.loading;
+const getIsLoading = state => state.loading;
 
 export default getIsLoading;
