@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Field, Form } from 'formik';
 import * as yup from 'yup';
-import projectsOperations from '../../redux/projects/projects-operations';
-import projectsSelectors from '../../redux/projects/projects-selectors';
+import { projectsOperations, projectsSelectors } from '../../redux/projects';
+import { errorSelectors } from '../../redux/error';
 import s from './СreatingProject.module.scss';
 
 const schema = yup.object({
@@ -42,9 +42,7 @@ const СreatingProject = ({ onSave }) => {
   const projects = useSelector(projectsSelectors.getProjects);
   const dispatch = useDispatch();
 
-  const errorFromState = useSelector(state =>
-    projectsSelectors.getErrorMessage(state),
-  );
+  const errorFromState = useSelector(errorSelectors);
 
   let errorMessage = errorFromState ? createErrorMessage(errorFromState) : null;
 

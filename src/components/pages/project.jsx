@@ -1,8 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation, useHistory } from 'react-router';
-import sprintsSelectors from '../../redux/sprints/sprints-selectors';
-import sprintsOperations from '../../redux/sprints/sprints-operations';
+import { sprintsSelectors, sprintsOperations } from '../../redux/sprints';
 import СreatingSprint from '../СreatingSprint';
 import SprintsItem from '../SprintsItem';
 import Modal from '../Modal';

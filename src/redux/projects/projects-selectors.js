@@ -1,6 +1,4 @@
-const getProjects = state => state.projects.projects;
-
-const getErrorMessage = state => state?.projects?.error.payload;
+const getProjects = state => state.projects;
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default { getProjects, getErrorMessage };
+export default { getProjects };
