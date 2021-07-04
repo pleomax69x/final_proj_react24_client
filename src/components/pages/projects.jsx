@@ -1,12 +1,11 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import projectsSelectors from '../../redux/projects/projects-selectors';
+import { projectsOperations, projectsSelectors } from '../../redux/projects';
 import Modal from '../Modal';
 import СreatingProject from '../СreatingProject';
 import ProjectCard from '../ProjectCard/ProjectCard';
 import { useHistory } from 'react-router';
 import Container from '../ContainerProjects';
-import projectsOperations from '../../redux/projects/projects-operations';
 
 const Projects = () => {
   const dispatch = useDispatch();
