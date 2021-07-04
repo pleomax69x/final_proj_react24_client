@@ -7,7 +7,8 @@ import styles from './login.module.scss';
 
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { authOperations, authSelectors } from '../../redux/auth/';
+import { authOperations } from '../../redux/auth/';
+import { errorSelectors } from '../../redux/error/';
 
 const schema = yup.object({
   email: yup
@@ -52,9 +53,7 @@ const Login = () => {
     resetForm();
   };
 
-  const errorFromState = useSelector(state =>
-    authSelectors.getErrorMessage(state),
-  );
+  const errorFromState = useSelector(errorSelectors);
 
   const errorMessage = errorFromState
     ? createErrorMessage(errorFromState)
