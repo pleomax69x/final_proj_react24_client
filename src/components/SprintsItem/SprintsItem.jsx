@@ -1,5 +1,5 @@
 import s from './SprintsItem.module.scss';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const SprintItem = ({ sprints, to, del, toggleModal }) => {
   return (

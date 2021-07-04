@@ -15,6 +15,7 @@ import { projectsReducer } from './projects';
 import { sprintsReducer } from './sprints';
 import { tasksReducer } from './tasks';
 import { loadingReducer } from './loading';
+import { errorReducer } from './error';
 import { authReducer } from './auth';
 
 const middleware = [
@@ -38,6 +39,7 @@ const store = configureStore({
     sprints: sprintsReducer,
     tasks: tasksReducer,
     loading: loadingReducer,
+    error: errorReducer,
     auth: persistReducer(authPersistConfig, authReducer),
   },
   middleware,

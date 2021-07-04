@@ -36,7 +36,6 @@ const Sprint = () => {
         del={deleteSprint}
         toggleModal={toggleModal}
       />
-
       {showModal && (
         <Modal onClose={toggleModal}>
           <СreatingSprint onSave={toggleModal} prId={projectId} />

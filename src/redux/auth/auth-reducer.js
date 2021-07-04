@@ -2,43 +2,42 @@ import { createReducer } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import actions from './auth-actions';
 
+const {
+  registerSuccess,
+  registerError,
+  loginSuccess,
+  loginError,
+  logoutSuccess,
+  getCurrUserSuccess,
+  getCurrUserError,
+} = actions;
+
 const userInitialState = { email: '' };
 const user = createReducer(userInitialState, {
-  [actions.registerSuccess]: (_, { payload }) => payload.user,
-  [actions.loginSuccess]: (_, { payload }) => payload.user,
-  [actions.logoutSuccess]: () => userInitialState,
-  [actions.getCurrUserSuccess]: (_, { payload }) => payload,
+  [registerSuccess]: (_, { payload }) => payload.user,
+  [loginSuccess]: (_, { payload }) => payload.user,
+  [logoutSuccess]: () => userInitialState,
+  [getCurrUserSuccess]: (_, { payload }) => payload,
 });
 
 const token = createReducer(null, {
-  [actions.registerSuccess]: (_, { payload }) => payload.token,
-  [actions.loginSuccess]: (_, { payload }) => payload.token,
-  [actions.logoutSuccess]: () => null,
-});
-
-const error = createReducer(null, {
-  [actions.registerError]: (_, { payload }) => payload,
-  [actions.registerSuccess]: () => null,
-  [actions.loginError]: (_, { payload }) => payload,
-  [actions.loginSuccess]: () => null,
-  [actions.logoutError]: (_, { payload }) => payload,
-  [actions.logoutSuccess]: () => null,
-  [actions.getCurrUserError]: (_, { payload }) => payload,
+  [registerSuccess]: (_, { payload }) => payload.token,
+  [loginSuccess]: (_, { payload }) => payload.token,
+  [logoutSuccess]: () => null,
 });
 
 const isLogedIn = createReducer(false, {
-  [actions.registerSuccess]: () => true,
-  [actions.loginSuccess]: () => true,
-  [actions.getCurrUserSuccess]: () => true,
-  [actions.logoutSuccess]: () => false,
-  [actions.registerError]: () => false,
-  [actions.loginError]: () => false,
-  [actions.getCurrUserError]: () => false,
+  [registerSuccess]: () => true,
+  [loginSuccess]: () => true,
+  [getCurrUserSuccess]: () => true,
+  [logoutSuccess]: () => false,
+  [registerError]: () => false,
+  [loginError]: () => false,
+  [getCurrUserError]: () => false,
 });
 
 export default combineReducers({
   user,
   isLogedIn,
   token,
-  error,
 });
