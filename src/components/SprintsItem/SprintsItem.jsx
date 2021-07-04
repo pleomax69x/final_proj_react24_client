@@ -1,28 +1,40 @@
 import s from './SprintsItem.module.scss';
 import { Link } from 'react-router-dom';
 
-const SprintItem = ({ title, date, duration, to, onClick }) => {
+const SprintItem = ({ sprints, to, del, toggleModal }) => {
   return (
     <div>
-      <li className={s.sprintItem}>
-        <Link onClick={to} className={s.projectLink}>
-          <div className={s.date}>
-            <h3 className={s.cardTitle}>{title}</h3>
-            <p className={s.cardDateContainer}>
-              Start date <span className={s.cardDate}>{date}</span>
-            </p>
-            <p className={s.cardDateContainer}>
-              End date <span className={s.cardDate}>end</span>
-            </p>
-            <p className={s.cardDateContainer}>
-              Duration <span className={s.cardDate}>{duration}</span>
-            </p>
-          </div>
-        </Link>
-        <button type="button" onClick={onClick} className={s.buttonDelete}>
-          X
-        </button>
-      </li>
+      <h1>Sprints</h1>
+      <button type="button" onClick={toggleModal}>
+        Сreat sprint
+      </button>
+      <ul>
+        {sprints?.map(sprint => (
+          <li className={s.sprintItem} key={sprint._id}>
+            <Link onClick={() => to(sprint._id)} className={s.projectLink}>
+              <div className={s.date}>
+                <h3 className={s.cardTitle}>{sprint.title}</h3>
+                <p className={s.cardDateContainer}>
+                  Start date <span className={s.cardDate}>{sprint.date}</span>
+                </p>
+                <p className={s.cardDateContainer}>
+                  End date <span className={s.cardDate}>end</span>
+                </p>
+                <p className={s.cardDateContainer}>
+                  Duration <span className={s.cardDate}>{sprint.duration}</span>
+                </p>
+              </div>
+            </Link>
+            <button
+              type="button"
+              onClick={() => del(sprint._id)}
+              className={s.buttonDelete}
+            >
+              X
+            </button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

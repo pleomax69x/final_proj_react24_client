@@ -9,43 +9,33 @@ import Modal from '../Modal';
 
 const Sprint = () => {
   const dispatch = useDispatch();
-  const sprints = useSelector(sprintsSelectors.getSprints);
-
-  const history = useHistory();
-  const projectId = history.location.state;
-
   const deleteSprint = id => dispatch(sprintsOperations.deleteSprint(id));
 
-  useEffect(() => {
-    dispatch(sprintsOperations.getSprints(projectId));
-  }, [dispatch, projectId]);
-
+  const history = useHistory();
   const addSprints = id => history.push(`/projects/${projectId}/${id}`, id);
+
+  const sprints = useSelector(sprintsSelectors.getSprints);
+
+  const projectId = history.location.state;
 
   const [showModal, setShowModal] = useState(false);
   const toggleModal = useCallback(() => {
     setShowModal(prevShowModal => !prevShowModal);
   }, []);
 
+  useEffect(() => {
+    dispatch(sprintsOperations.getSprints(projectId));
+  }, [dispatch, projectId]);
+
   console.log(projectId, 'Sprints:', sprints);
   return (
     <div>
-      <h1>Sprints</h1>
-      <button type="button" onClick={toggleModal}>
-        Сreat sprint
-      </button>
-      <ul>
-        {sprints?.map(sprint => (
-          <SprintsItem
-            key={sprint._id}
-            title={sprint.title}
-            date={sprint.date}
-            duration={sprint.duration}
-            to={() => addSprints(sprint._id)}
-            onClick={() => deleteSprint(sprint._id)}
-          />
-        ))}
-      </ul>
+      <SprintsItem
+        sprints={sprints}
+        to={addSprints}
+        del={deleteSprint}
+        toggleModal={toggleModal}
+      />
 
       {showModal && (
         <Modal onClose={toggleModal}>

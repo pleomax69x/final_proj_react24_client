@@ -1,3 +1,18 @@
+.container {
+  max-width: 320px;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  @media screen and (min-width: 767px) and (max-width: 1199px) {
+    max-width: 720px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    max-width: 1200px;
+  }
+}
+
 .headWrapper {
   display: flex;
   align-items: center;
@@ -46,12 +61,6 @@
     right: 3%;
     z-index: 20;
   }
-}
-
-.list {
-  display: flex;
-  flex-wrap: wrap;
-  position: relative;
 }
 
 .text {
