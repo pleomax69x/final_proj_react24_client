@@ -12,11 +12,11 @@ const Sprint = () => {
   const deleteSprint = id => dispatch(sprintsOperations.deleteSprint(id));
 
   const history = useHistory();
-  const addSprints = id => history.push(`/projects/${projectId}/${id}`, id);
 
   const sprints = useSelector(sprintsSelectors.getSprints);
 
   const projectId = history.location.state;
+  const addSprints = id => history.push(`/projects/${projectId}/${id}`, id);
 
   const [showModal, setShowModal] = useState(false);
   const toggleModal = useCallback(() => {

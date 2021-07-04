@@ -11,7 +11,7 @@ const SprintItem = ({ sprints, to, del, toggleModal }) => {
       <ul>
         {sprints?.map(sprint => (
           <li className={s.sprintItem} key={sprint._id}>
-            <Link onClick={() => to(sprint._id)} className={s.projectLink}>
+            <div onClick={() => to(sprint._id)} className={s.projectLink}>
               <div className={s.date}>
                 <h3 className={s.cardTitle}>{sprint.title}</h3>
                 <p className={s.cardDateContainer}>
@@ -24,7 +24,7 @@ const SprintItem = ({ sprints, to, del, toggleModal }) => {
                   Duration <span className={s.cardDate}>{sprint.duration}</span>
                 </p>
               </div>
-            </Link>
+            </div>
             <button
               type="button"
               onClick={() => del(sprint._id)}
