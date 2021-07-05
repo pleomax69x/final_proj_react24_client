@@ -14,6 +14,9 @@ const Projects = () => {
   const history = useHistory();
   const transitiontoProject = id => history.push(`/projects/${id}`, id);
 
+  const getStorageData = localStorage.getItem('persist:token');
+  const token = JSON.parse(getStorageData).token;
+
   const projects = useSelector(projectsSelectors.getProjects);
 
   const [showModal, setShowModal] = useState(false);
@@ -24,7 +27,11 @@ const Projects = () => {
   useEffect(() => {
     dispatch(projectsOperations.getProjects());
   }, [dispatch]);
+  console.log('history', history);
 
+  useEffect(() => {
+    !token && history.push('/register');
+  }, [history, token]);
   return (
     <ContainerProjects onClick={toggleModal}>
       <ProjectCard
