@@ -19,9 +19,7 @@ const TaskItem = ({ ...props }) => {
           <span className={s.itemRezult}>{totalHours}</span>
         </li>
         <li className={s.item}>
-          <button onClick={onClick} className={s.button} type="button">
-            X
-          </button>
+          <button onClick={onClick} className={s.button} type="button"></button>
         </li>
       </ul>
     </div>

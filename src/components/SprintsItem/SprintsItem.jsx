@@ -1,5 +1,4 @@
 import s from './SprintsItem.module.scss';
-import { Link } from 'react-router-dom';
 
 const SprintItem = ({ sprints, to, del, toggleModal }) => {
   return (
@@ -29,9 +28,7 @@ const SprintItem = ({ sprints, to, del, toggleModal }) => {
               type="button"
               onClick={() => del(sprint._id)}
               className={s.buttonDelete}
-            >
-              X
-            </button>
+            ></button>
           </li>
         ))}
       </ul>
