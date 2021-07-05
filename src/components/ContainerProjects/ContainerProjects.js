@@ -1,8 +1,9 @@
 import s from './ContainerProjects.module.scss';
+import Container from '../Container';
 
-export default function Container({ onClick, children }) {
+export default function ContainerProjects({ onClick, children }) {
   return (
-    <div className={s.container}>
+    <Container>
       <div className={s.wrapper}>
         <div className={s.headWrapper}>
           <h2>Projects</h2>
@@ -13,6 +14,6 @@ export default function Container({ onClick, children }) {
         </div>
         {children}
       </div>
-    </div>
+    </Container>
   );
 }

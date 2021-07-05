@@ -5,7 +5,7 @@ import Modal from '../Modal';
 import СreatingProject from '../СreatingProject';
 import ProjectCard from '../ProjectCard/ProjectCard';
 import { useHistory } from 'react-router';
-import Container from '../ContainerProjects';
+import ContainerProjects from '../ContainerProjects';
 
 const Projects = () => {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const Projects = () => {
   }, [dispatch]);
 
   return (
-    <Container onClick={toggleModal}>
+    <ContainerProjects onClick={toggleModal}>
       <ProjectCard
         projects={projects}
         to={transitiontoProject}
@@ -38,7 +38,7 @@ const Projects = () => {
           <СreatingProject onSave={toggleModal} />
         </Modal>
       )}
-    </Container>
+    </ContainerProjects>
   );
 };
 
