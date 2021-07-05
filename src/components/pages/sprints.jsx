@@ -27,7 +27,7 @@ const Sprint = () => {
     dispatch(sprintsOperations.getSprints(projectId));
   }, [dispatch, projectId]);
 
-  console.log(projectId, 'Sprints:', sprints);
+  // console.log(projectId, 'Sprints:', sprints);
   return (
     <div>
       <SprintsItem
