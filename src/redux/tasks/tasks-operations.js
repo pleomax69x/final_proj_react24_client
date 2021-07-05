@@ -37,7 +37,7 @@ const addTask = (sprintId, title, scheduledHours) => async dispatch => {
       title,
       scheduledHours,
     });
-    dispatch(addTaskSuccess(data.data.task));
+    dispatch(addTaskSuccess(data.data.newTask));
   } catch (error) {
     dispatch(addTaskError(error.message));
   }
