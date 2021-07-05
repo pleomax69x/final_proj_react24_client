@@ -1,13 +1,11 @@
 .modal_backdrop {
   width: 100vw;
   height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
   @media screen and (min-width: 767px) {
-    position: fixed;
-    top: 0;
-    left: 0;
-
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 100;
   }
 }
 
