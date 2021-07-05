@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { tasksOperations, tasksSelectors } from '../../redux/tasks';
-import { errorSelectors } from '../../redux/tasks';
 import s from './СreatingTask.module.scss';
 
 const СreatingTask = ({ onSave, sprintId }) => {

@@ -29,14 +29,13 @@ const Sprint = () => {
   useEffect(() => {
     dispatch(sprintsOperations.getSprints(projectId));
   }, [dispatch, projectId]);
-
+  
   useEffect(() => {
     if (compareWithPathName !== getState && !token) {
       history.push('/register');
     }
   }, [compareWithPathName, getState, history, token]);
-
-  console.log(projectId, 'Sprints:', sprints);
+  
   return (
     <div>
       <SprintsItem
