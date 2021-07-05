@@ -19,6 +19,7 @@ const schema = yup.object({
 });
 
 const createErrorMessage = error => {
+  console.log('createErrorMessage', error);
   if (error.includes('400')) return 'Bad request. Please try again';
   if (error.includes('401')) return 'User not authorized';
   return 'Unknown error. Please try again';
@@ -58,7 +59,7 @@ const СreatingSprint = ({ onSave, prId }) => {
   let errorMessage = errorFromState ? createErrorMessage(errorFromState) : null;
 
   const handleSubmit = ({ name, number }, { resetForm, setSubmitting }) => {
-    if (sprints.some(sprint => sprint.title === name)) {
+    if (sprints.length > 0 && sprints.some(sprint => sprint.title === name)) {
       return (errorMessage = `Name "${name}" already exists, please enter another name.`);
     } else dispatch(sprintsOperations.addSprint(prId, name, data, number));
 

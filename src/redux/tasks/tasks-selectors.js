@@ -15,4 +15,4 @@ const getVisibleTasks = createSelector(
 );
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default { getCurrentDay, getTasks, getVisibleTasks };
+export default { getCurrentDay, getTasks, getFilter, getVisibleTasks };

@@ -15,7 +15,8 @@ import TaskItem from '../TaskItem/TaskItem';
 
 const Tasks = () => {
   const history = useHistory();
-  const userId = history.location.state;
+  const sprintId = history.location.state;
+
   const tasks = useSelector(tasksSelectors.getVisibleTasks);
   const dispatch = useDispatch();
   const deleteTask = id => dispatch(tasksOperations.deleteTask(id));
@@ -27,9 +28,8 @@ const Tasks = () => {
     [dispatch],
   );
   useEffect(() => {
-    dispatch(tasksOperations.getTasks(userId));
+    dispatch(tasksOperations.getTasks(sprintId));
   }, [dispatch]);
-  console.log(tasks);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -77,9 +77,10 @@ const Tasks = () => {
           />
         ))}
       </ul>
+
       {showModal && (
         <Modal onClose={toggleModal}>
-          <СreatingTask onSave={toggleModal} />
+          <СreatingTask onSave={toggleModal} sprintId={sprintId} />
         </Modal>
       )}
       <button onClick={toggleModal}>+</button>

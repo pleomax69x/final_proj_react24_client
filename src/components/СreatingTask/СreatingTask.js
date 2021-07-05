@@ -4,7 +4,7 @@ import { tasksOperations, tasksSelectors } from '../../redux/tasks';
 import { errorSelectors } from '../../redux/tasks';
 import s from './СreatingTask.module.scss';
 
-const СreatingTask = ({ onSave }) => {
+const СreatingTask = ({ onSave, sprintId }) => {
   const [taskName, setTaskName] = useState('');
   const handleTaskName = e => {
     setTaskName(e.target.value);
@@ -26,7 +26,7 @@ const СreatingTask = ({ onSave }) => {
     //     `Name "${taskName}" already exists, please enter another name.`,
     //   );
     // } else
-    dispatch(tasksOperations.addTasks(taskName, hours));
+    dispatch(tasksOperations.addTask(sprintId, taskName, hours));
 
     console.log(tasks);
     console.log(taskName, hours);
