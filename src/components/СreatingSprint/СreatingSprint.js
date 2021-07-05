@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { sprintsOperations, sprintsSelectors } from '../../redux/sprints';
 import { errorSelectors } from '../../redux/error';
 import currentDate from '../../helpers/currentDate';
+import sprintData from '../../helpers/sprintData';
 import s from './СreatingSprint.module.scss';
 
 const schema = yup.object({
@@ -66,7 +67,16 @@ const СreatingSprint = ({ onSave, prId }) => {
     setSubmitting(false);
     resetForm();
 
-    // console.log(prId, name, data, number);
+    console.log(prId, name, data, number);
+    var d1 = new Date(data);
+    console.log(d1);
+    console.log(d1.getDay());
+
+    const sprintDataArr = sprintData(data, number);
+    console.log('sprintData>>', sprintDataArr);
+    const endData = sprintDataArr[sprintDataArr.length - 1];
+    console.log('endData>>', endData);
+
     onSave();
   };
 
