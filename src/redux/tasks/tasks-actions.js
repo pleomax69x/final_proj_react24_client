@@ -22,8 +22,6 @@ const addTaskHoursError = createAction('tasks/addTaskHoursError');
 
 const changeFilter = createAction('tasks/filter');
 
-const changeDayIndex = createAction('tasks/changeDayIndex');
-
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getTasksRequest,
@@ -42,5 +40,4 @@ export default {
   addTaskHoursSuccess,
   addTaskHoursError,
   changeFilter,
-  changeDayIndex,
 };
