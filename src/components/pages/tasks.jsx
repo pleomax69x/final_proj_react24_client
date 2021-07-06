@@ -1,7 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router';
-import TaskPagination from '../TaskPagination';
 import {
   tasksSelectors,
   tasksOperations,
@@ -12,35 +10,29 @@ import СreatingTask from '../СreatingTask';
 import sprintsSelectors from '../../redux/sprints/sprints-selectors';
 
 import s from './tasks.module.scss';
+import { useHistory } from 'react-router';
 import Container from '../Container/Container';
 import TaskItem from '../TaskItem/TaskItem';
 import Sidebar from '../Sidebar/Sidebar';
-import sprintsOperations from '../../redux/sprints/sprints-operations';
-
+import TaskPagination from '../TaskPagination';
+import { sprintsOperations } from '../../redux/sprints/';
 
 const Tasks = () => {
   const dispatch = useDispatch();
-  const deleteTask = id => dispatch(tasksOperations.deleteTask(id));
-
 
   const history = useHistory();
   const sprintId = history.location.state;
+  console.log(
+    'sprintId',
+    history.location.pathname,
+    history.location.pathname.slice(10, 34),
+  );
+  const projectId = history.location.pathname.slice(10, 34);
 
   // console.log( projectId);
 
-  const tasks = useSelector(tasksSelectors.getVisibleTasks);
+  const deleteTask = id => dispatch(tasksOperations.deleteTask(id));
   const filter = useSelector(tasksSelectors.getFilter);
-
-  const [showModal, setShowModal] = useState(false);
-  const toggleModal = useCallback(() => {
-    setShowModal(prevShowModal => !prevShowModal);
-  }, []);
-
-  const [pagDate, setPagDate] = useState('');
-  const updatePagDate = useCallback(() => {
-    setPagDate();
-  }, []);
-
   const onChange = useCallback(
     e => {
       dispatch(tasksActions.changeFilter(e.target.value));
@@ -51,24 +43,56 @@ const Tasks = () => {
   useEffect(() => {
     dispatch(tasksOperations.getTasks(sprintId));
     dispatch(sprintsOperations.getSprints(projectId));
-  }, [dispatch]);
+  }, [dispatch, sprintId, projectId]);
 
-  useEffect(() => {
-    console.log('pagDate', pagDate);
-    console.log('tasks', tasks);
-    const hoursPerDay = tasks.map(el => el.hoursPerDay);
-    console.log('hoursPerDay', hoursPerDay);
-    const updatedAt = tasks.map(el => el.updatedAt.slice(0, 10));
-    console.log('updatedAt', updatedAt);
-  });
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleModal = useCallback(() => {
+    setShowModal(prevShowModal => !prevShowModal);
+  }, []);
+
+  const [pagDate, setPagDate] = useState('');
+  const [pagDateIndex, setPagDateIndex] = useState(0);
 
   const sprints = useSelector(sprintsSelectors.getSprints);
 
+  const currSprint = sprints.find(item => item._id === sprintId);
+  const tasks = useSelector(tasksSelectors.getVisibleTasks);
+
+  useEffect(() => {
+    if (currSprint !== undefined) {
+      setPagDateIndex(currSprint?.listOfDates.indexOf(pagDate));
+    }
+  }, [pagDate]);
+
   return (
     <Container>
+      <div className={s.pageWrapper}>
+        <Sidebar
+          listItem={s.listItem}
+          value={'Show sprints'}
+          fakeData={sprints}
+          // to={`/projects/${projectId}`}
+        />
 
-      <TaskPagination sprintId={sprintId} pagDate={setPagDate} />
-
+        <div className={s.contentWrapper}>
+          <div style={{ position: 'relative' }}>
+            {/* <div className={s.current_date_wrapper}>
+              <div className={s.days_wrapper}>
+                <button className={s.back_button} type="button"></button>
+                <p className={s.сurrent_day}>
+                  2<span className={s.slash_days}>/</span>
+                  <span className={s.duration_days}>12</span>
+                </p>
+                <button className={s.forward_button}></button>
+              </div>
+              <p className={s.date}>01.01.2021</p>
+            </div> */}
+            <TaskPagination
+              sprint={currSprint}
+              pagDate={setPagDate}
+              // pagIndex={setPagDateIndex}
+            />
 
             {/* <input
         className={s}
@@ -86,7 +110,7 @@ const Tasks = () => {
             <div className={s.wrapper_all}>
               <div className={s.wrapper_wr}>
                 <div className={s.wrapper_tasks}>
-                  <h1 className={s.sprint_name}>Sprint Burndown Chart 1</h1>
+                  <h1 className={s.sprint_name}>{currSprint?.title}</h1>
                   <button className={s.edit_sprint_name_button}></button>
                 </div>
                 <div className={s.wrap_tasks}>
@@ -130,7 +154,7 @@ const Tasks = () => {
               </div>
             </div>
           </div>
-
+          {console.log('tasks', tasks)}
           <ul className={s.card_list}>
             {tasks?.map(task => (
               <TaskItem
@@ -138,7 +162,7 @@ const Tasks = () => {
                 key={task._id}
                 title={task.title}
                 scheduledHours={task.scheduledHours}
-                hoursPerDay={task.hoursPerDay}
+                hoursPerDay={task.hoursPerDay[pagDateIndex].hours}
                 totalHours={task.totalHours}
                 onClick={() => deleteTask(task._id)}
               />

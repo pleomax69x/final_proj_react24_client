@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import sprintsSelectors from '../../redux/sprints/sprints-selectors';
 import currentDate from '../../helpers/currentDate';
 import s from './TaskPagination.module.scss';
 
-const TaskPagination = ({ sprintId, pagDate }) => {
-  const sprints = useSelector(sprintsSelectors.getSprints);
-  const sprint = sprints?.find(el => el._id === sprintId);
-  const arr = sprint.listOfDates;
+const TaskPagination = ({ sprint, pagDate, pagIndex }) => {
+  const arr = sprint?.listOfDates;
 
-  // const data = task1.hoursPerDay.find(el => el.date === "22-12-2021")
-
-  const [day, setDay] = useState(arr.indexOf(currentDate) + 1);
+  const [day, setDay] = useState(1);
   const [date, setDate] = useState(currentDate);
 
   const handlePrevDay = e => {
@@ -29,26 +23,39 @@ const TaskPagination = ({ sprintId, pagDate }) => {
   };
 
   useEffect(() => {
-    pagDate(date);
+    try {
+      pagDate(date);
+      // pagIndex(arr?.indexOf(date));
+    } catch (e) {
+      console.log(e);
+      // pagIndex(0);
+    }
+
     console.log(day, date);
-  }, [day, date]);
+  }, [day, date, pagDate]);
 
   return (
     <div>
       <div className={s.current_date_wrapper}>
         <div className={s.days_wrapper}>
-          <button
-            className={s.back_button}
-            type="button"
-            onClick={handlePrevDay}
-          ></button>
+          {day > 1 ? (
+            <button
+              className={s.back_button}
+              type="button"
+              onClick={handlePrevDay}
+            ></button>
+          ) : null}
           <p className={s.сurrent_day}>
             {day}
             <span className={s.slash_days}>/</span>
-            <span className={s.duration_days}>{arr.length}</span>
-            {/* sprint.arr */}
+            <span className={s.duration_days}>{arr?.length}</span>
           </p>
-          <button className={s.forward_button} onClick={handleNextDay}></button>
+          {day < arr?.length ? (
+            <button
+              className={s.forward_button}
+              onClick={handleNextDay}
+            ></button>
+          ) : null}
         </div>
         <p className={s.date}>{date}</p>
       </div>
