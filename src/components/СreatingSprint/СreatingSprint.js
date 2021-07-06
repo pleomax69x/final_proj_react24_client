@@ -62,20 +62,23 @@ const СreatingSprint = ({ onSave, prId }) => {
   const handleSubmit = ({ name, number }, { resetForm, setSubmitting }) => {
     if (sprints.length > 0 && sprints.some(sprint => sprint.title === name)) {
       return (errorMessage = `Name "${name}" already exists, please enter another name.`);
-    } else dispatch(sprintsOperations.addSprint(prId, name, data, number));
+    } else {
+      console.log(prId, name, data, number);
+      var d1 = new Date(data);
+      console.log(d1);
+      console.log(d1.getDay());
+
+      const sprintDataArr = sprintData(data, number);
+      console.log('sprintData>>', sprintDataArr);
+      const endData = sprintDataArr[sprintDataArr.length - 1];
+      console.log('endData>>', endData);
+      dispatch(
+        sprintsOperations.addSprint(prId, name, data, number, sprintDataArr),
+      );
+    }
 
     setSubmitting(false);
     resetForm();
-
-    console.log(prId, name, data, number);
-    var d1 = new Date(data);
-    console.log(d1);
-    console.log(d1.getDay());
-
-    const sprintDataArr = sprintData(data, number);
-    console.log('sprintData>>', sprintDataArr);
-    const endData = sprintDataArr[sprintDataArr.length - 1];
-    console.log('endData>>', endData);
 
     onSave();
   };
