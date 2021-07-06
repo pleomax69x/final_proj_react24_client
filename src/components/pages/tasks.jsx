@@ -22,11 +22,11 @@ const Tasks = () => {
 
   const history = useHistory();
   const sprintId = history.location.state;
-  console.log(
-    'sprintId',
-    history.location.pathname,
-    history.location.pathname.slice(10, 34),
-  );
+  // console.log(
+  //   'sprintId',
+  //   history.location.pathname,
+  //   history.location.pathname.slice(10, 34),
+  // );
   const projectId = history.location.pathname.slice(10, 34);
 
   // console.log( projectId);
@@ -63,7 +63,7 @@ const Tasks = () => {
     if (currSprint !== undefined) {
       setPagDateIndex(currSprint?.listOfDates.indexOf(pagDate));
     }
-  }, [pagDate]);
+  }, [pagDate, currSprint]);
 
   return (
     <Container>
