@@ -113,20 +113,13 @@
   bottom: 10px;
   width: 20px;
   height: 20px;
-
-  background-image: url(../../img/header/delete.svg);
-  background-repeat: no-repeat;
-
+  background: #a6a6a6;
   border: none;
   outline: none;
   border-radius: 50%;
 
-  transition: all 250ms linear;
-  cursor: pointer;
-
   &:hover {
-    box-shadow: 0px 0px 15px #ff6c00;
-    transform: scale(1.2);
+    background: #ff6c00;
   }
 
   @media screen and (min-width: 1200px) {

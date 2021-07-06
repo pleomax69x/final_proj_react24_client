@@ -11,15 +11,21 @@
 }
 
 .days_wrapper {
+  position: relative;
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 90px;
+
   flex-wrap: nowrap;
-  align-items: flex-end;
+  // align-items: flex-end;
   @media screen and (min-width: 768px) {
     margin-right: 39px;
   }
 }
 .back_button {
   display: inline-block;
+  position: absolute;
   margin-left: 20px;
   margin-right: 20px;
   width: 10px;
@@ -35,6 +41,8 @@
 }
 
 .forward_button {
+  position: absolute;
+  left: 40px;
   display: inline-block;
   margin-left: 20px;
   margin-right: 0;
@@ -47,6 +55,9 @@
   cursor: pointer;
 }
 .сurrent_day {
+  position: absolute;
+  bottom: -7px;
+  left: 20px;
   font-family: Montserrat;
   font-size: 18px;
   font-style: normal;
@@ -55,6 +66,7 @@
   letter-spacing: 0.04em;
   text-align: left;
   color: #181c27;
+  min-width: 40px;
 }
 .slash_days {
   font-family: Montserrat;
