@@ -17,6 +17,9 @@ const {
   addTaskHoursRequest,
   addTaskHoursSuccess,
   addTaskHoursError,
+  editScheduledHoursRequest,
+  editScheduledHoursSuccess,
+  editScheduledHoursError,
 } = actions;
 
 const getTasks = sprintId => async dispatch => {
@@ -73,6 +76,20 @@ const editTaskHours = (taskId, date, hours) => async dispatch => {
   }
 };
 
+const editScheduledTaskHours = (taskId, scheduledHours) => async dispatch => {
+  dispatch(editScheduledHoursRequest());
+  try {
+    console.log('scheduledHours', scheduledHours);
+    const { data } = await axios.patch(`/tasks/scheduledHours/${taskId}`, {
+      scheduledHours,
+    });
+    console.log('data.data', data.data);
+    dispatch(editScheduledHoursSuccess(data.data));
+  } catch (error) {
+    dispatch(editScheduledHoursError(error.message));
+  }
+};
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getTasks,
@@ -80,4 +97,5 @@ export default {
   deleteTask,
   editTaskName,
   editTaskHours,
+  editScheduledTaskHours,
 };

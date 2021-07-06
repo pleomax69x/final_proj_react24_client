@@ -4,16 +4,15 @@ import { getChartOptions, getChartData } from '../../helpers/chart/utils';
 
 // var ctx = document.getElementById('myChart');
 
-const SprintChart = ({ onClose, tasks, sprintDuration, sprintName }) => {
+const SprintChart = ({ onClose, tasks, sprintDuration, sprintTitle }) => {
   var chart = null;
-
   useEffect(() => {
     const ctx = document.getElementById('BurndownChart');
     const data = getChartData(tasks, sprintDuration);
     chart = new Chart(ctx, {
       type: 'line',
       data: data,
-      options: getChartOptions(sprintName),
+      options: getChartOptions(sprintTitle),
     });
 
     chart.canvas.parentNode.style.height = '100vh';

@@ -8,6 +8,7 @@ const {
   deleteTaskSuccess,
   editTaskSuccess,
   addTaskHoursSuccess,
+  editScheduledHoursSuccess,
   changeFilter,
 } = actions;
 
@@ -24,6 +25,12 @@ const tasks = createReducer([], {
   [addTaskHoursSuccess]: (state, { payload }) =>
     state.map(item => {
       if (item._id === payload._id) return payload;
+      else return item;
+    }),
+  [editScheduledHoursSuccess]: (state, { payload }) =>
+    state.map(item => {
+      if (item._id === payload.taskId)
+        return { ...item, scheduledHours: payload.scheduledHours };
       else return item;
     }),
 });
