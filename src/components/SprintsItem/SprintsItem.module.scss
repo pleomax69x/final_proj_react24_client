@@ -6,6 +6,7 @@
   box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
   border-radius: 5px;
   position: relative;
+  transition: all 0.25s linear;
 
   &:hover {
     transform: scale(1.05);
@@ -18,7 +19,7 @@
   }
   @media screen and (min-width: 1280px) {
     width: 270px;
-    min-height: 224px;
+    // min-height: 224px;
   }
 }
 
@@ -77,18 +78,25 @@
 }
 
 .buttonDelete {
+  z-index: 2;
   position: absolute;
   right: 10px;
   bottom: 10px;
-  z-index: 2;
+  width: 20px;
+  height: 20px;
+
+  background-image: url(../../img/header/delete.svg);
+  background-repeat: no-repeat;
+
   outline: none;
   border: none;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  background-color: #a6a6a6;
+
+  transition: all 250ms linear;
+  cursor: pointer;
 
   &:hover {
-    background-color: #ff6c00;
+    box-shadow: 0px 0px 15px #ff6c00;
+    transform: scale(1.2);
   }
 }

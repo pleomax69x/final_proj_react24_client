@@ -64,10 +64,12 @@ const СreatingSprint = ({ onSave, prId }) => {
 
     if (sprints.length > 0 && sprints.some(sprint => sprint.title === name)) {
       return (errorMessage = `Name "${name}" already exists, please enter another name.`);
+
     } else
       dispatch(
         sprintsOperations.addSprint(prId, name, data, number, listOfDates),
       );
+
 
     setSubmitting(false);
     resetForm();

@@ -28,9 +28,7 @@ const SprintItem = ({ sprints, to, del, toggleModal }) => {
               type="button"
               onClick={() => del(sprint._id)}
               className={s.buttonDelete}
-            >
-              X
-            </button>
+            ></button>
           </li>
         ))}
       </ul>

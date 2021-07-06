@@ -3,36 +3,24 @@
   font-size: 26px;
   font-style: normal;
   font-weight: 500;
-  line-height: 32px;
+  line-height: 1.23;
   letter-spacing: 0.04em;
   text-align: left;
-}
+  margin-bottom: 30px;
 
-.form_input {
-  width: 280px;
-  height: 29px;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 22px;
-  display: flex;
-  align-items: center;
-  letter-spacing: 0.04em;
-  color: rgba(24, 28, 39, 0.6);
-  border: none;
-  border-bottom: 1px solid rgba(24, 28, 39, 0.1);
-  background-color: transparent;
-  @media screen and (min-width: 767px) {
-    width: 429px;
-    height: 30px;
+  @media screen and (min-width: 768px) {
+    margin-right: 40px;
+    font-size: 36px;
+    line-height: 1.22;
+  }
+  @media screen and (min-width: 1200px) {
+    margin-right: 42px;
   }
 }
 
 .edit_sprint_name_button {
-  display: inline-block;
   margin-left: 0px;
-  margin-right: 00px;
+  // margin-right: 00px;
   width: 20px;
   height: 20px;
   background-color: transparent;
@@ -40,9 +28,26 @@
   background-repeat: no-repeat;
   border: none;
   cursor: pointer;
+  @media screen and (max-width: 767px) {
+    display: inline-block;
+    background-repeat: round;
+    width: 39px;
+    height: 28px;
+  }
+  @media screen and (min-width: 768px) {
+    display: inline-block;
+    margin-right: 34px;
+    background-repeat: round;
+    width: 29px;
+    height: 28px;
+  }
 }
 
-.button_create {
+.wrap_tasks {
+  display: flex;
+  align-items: center;
+}
+.add_task_button {
   width: 44px;
   height: 44px;
   margin-right: 20px;
@@ -64,10 +69,146 @@
   }
   @media screen and (max-width: 767px) {
     margin-right: 0;
-    position: absolute;
+    position: fixed;
     bottom: 20px;
-    center: 20px;
+    right: 20px;
     z-index: 20;
+  }
+}
+.task_name {
+  display: none;
+
+  @media screen and (min-width: 1200px) {
+    display: block;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.22;
+    letter-spacing: 0.04em;
+    color: #181c27;
+  }
+}
+.table_list_wrapper {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(91, 115, 182, 0.1);
+  padding-bottom: 10px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 20px;
+  }
+  @media screen and (max-width: 767px) {
+    padding: 0;
+    margin-bottom: 20px;
+  }
+}
+.table_list {
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: block;
+    margin-top: 36px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+  }
+}
+.table_item {
+  &:first-child {
+    @media screen and (min-width: 768px) and (max-width: 1199px) {
+      display: none;
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    margin-right: 60px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    margin-right: 90px;
+  }
+}
+.table_item:last-child {
+  margin-right: 0;
+}
+
+.table_title {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  color: #181c27;
+}
+
+.search_form {
+  display: flex;
+  background-color: transparent;
+  @media screen and (max-width: 767px) {
+    flex-direction: row-reverse;
+  }
+  @media screen and (min-width: 768px) {
+    margin-right: 36px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+.search_form_button {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 0;
+  background: #e5e5e5;
+  background-image: url('https://image.flaticon.com/icons/svg/149/149852.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.6;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  outline: none;
+}
+
+.search_form_button:hover {
+  opacity: 1;
+}
+
+.searchFormButtonLabel {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
+}
+.search_form_input {
+  display: inline-block;
+  width: 100%;
+  font: inherit;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  padding-left: 4px;
+  padding-right: 4px;
+  background-color: transparent;
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    border-bottom: 1px solid rgba(24, 28, 39, 0.1);
+  }
+}
+
+.card_list {
+  margin-top: 20px;
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    display: flex;
+    flex-wrap: wrap;
   }
 }
 
@@ -128,4 +269,8 @@
 //   line-height: 17px;
 //   letter-spacing: 0.04em;
 //   text-align: right;
+// }
+
+// .listItem::before {
+//   background-color: #fff;
 // }

@@ -1,6 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-const getCurrentDay = state => state.tasks.indexCurrentDay;
 const getFilter = state => state.tasks.filter;
 const getTasks = state => state.tasks.tasks;
 
@@ -15,4 +14,4 @@ const getVisibleTasks = createSelector(
 );
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default { getCurrentDay, getTasks, getFilter, getVisibleTasks };
+export default { getTasks, getFilter, getVisibleTasks };

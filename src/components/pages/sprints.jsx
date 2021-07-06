@@ -12,12 +12,15 @@ const Sprint = () => {
   const deleteSprint = id => dispatch(sprintsOperations.deleteSprint(id));
 
   const history = useHistory();
+  const getState = history.location.state;
+  const compareWithPathName = history.location.pathname.slice(10);
+  const getStorageData = localStorage.getItem('persist:token');
+  const token = JSON.parse(getStorageData).token;
 
   const sprints = useSelector(sprintsSelectors.getSprints);
 
   const projectId = history.location.state;
   const addSprints = id => history.push(`/projects/${projectId}/${id}`, id);
-
   const [showModal, setShowModal] = useState(false);
   const toggleModal = useCallback(() => {
     setShowModal(prevShowModal => !prevShowModal);
@@ -26,8 +29,13 @@ const Sprint = () => {
   useEffect(() => {
     dispatch(sprintsOperations.getSprints(projectId));
   }, [dispatch, projectId]);
-
-  // console.log(projectId, 'Sprints:', sprints);
+  
+  useEffect(() => {
+    if (compareWithPathName !== getState && !token) {
+      history.push('/register');
+    }
+  }, [compareWithPathName, getState, history, token]);
+  
   return (
     <div>
       <SprintsItem
