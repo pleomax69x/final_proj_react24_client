@@ -30,7 +30,6 @@ const Header = () => {
           <div className={s.userMenu}>
             <span className={s.userName}>{userName}</span>
             <button type="button" className={s.logOutBtn} onClick={logout}>
-              {/* <LogOut fill={'red'} /> */}
               <span className={s.txtBtn}>Log out</span>
             </button>
           </div>
