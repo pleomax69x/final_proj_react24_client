@@ -265,14 +265,17 @@
 .search_form {
   display: flex;
   background-color: transparent;
+  @media screen and (max-width: 767px) {
+    flex-direction: row-reverse;
+  }
+  @media screen and (min-width: 768px) {
+    margin-right: 36px;
+  }
   @media screen and (min-width: 768px) and (max-width: 1199px) {
     display: flex;
     position: absolute;
     top: 0;
     right: 0;
-  }
-  @media screen and (min-width: 768px) {
-    margin-right: 36px;
   }
 }
 .search_form_button {
