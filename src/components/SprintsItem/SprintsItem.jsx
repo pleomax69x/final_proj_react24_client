@@ -1,5 +1,4 @@
 import s from './SprintsItem.module.scss';
-import { Link } from 'react-router-dom';
 
 const SprintItem = ({ sprints, to, del, toggleModal }) => {
   return (
@@ -18,7 +17,7 @@ const SprintItem = ({ sprints, to, del, toggleModal }) => {
                   Start date <span className={s.cardDate}>{sprint.date}</span>
                 </p>
                 <p className={s.cardDateContainer}>
-                  End date <span className={s.cardDate}>end</span>
+                  End date <span className={s.cardDate}>endData</span>
                 </p>
                 <p className={s.cardDateContainer}>
                   Duration <span className={s.cardDate}>{sprint.duration}</span>
