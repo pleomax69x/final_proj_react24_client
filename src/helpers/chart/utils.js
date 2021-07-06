@@ -49,11 +49,9 @@ export const getChartOptions = sprintName => {
 };
 
 export const getChartData = (tasks, sprintDuration) => {
-  console.log('getChartData', tasks);
   const data = dataOptions;
   data.labels = createXAxisLabels(tasks[0]);
   data.datasets[0].data = createPerfectChartData(tasks, sprintDuration);
   data.datasets[1].data = createActualChartData(tasks, sprintDuration);
-  console.log(data);
   return data;
 };
