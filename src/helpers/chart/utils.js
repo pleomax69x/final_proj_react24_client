@@ -18,7 +18,7 @@ const createActualChartData = (tasks, sprintDuration) => {
   const result = [sprintHours];
   for (let i = 0; i < sprintDuration; i++) {
     const hourPerDaySumm = tasks
-      .map(task => task.hoursPerDay[i].hoursSpent)
+      .map(task => task.hoursPerDay[i].hours)
       .reduce((acc, item) => acc + item);
     sprintHours -= hourPerDaySumm;
     result.push(sprintHours);
@@ -27,9 +27,9 @@ const createActualChartData = (tasks, sprintDuration) => {
 };
 
 const formateDate = date => {
-  const parseDate = date.split('.');
+  const parseDate = date.split('-');
   parseDate[1] -= 1;
-  const newdate = new Date(...parseDate.reverse());
+  const newdate = new Date(...parseDate);
   const options = {
     month: 'short',
     day: 'numeric',

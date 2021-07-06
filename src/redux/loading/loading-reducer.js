@@ -68,6 +68,9 @@ const {
   addTaskHoursRequest,
   addTaskHoursSuccess,
   addTaskHoursError,
+  editScheduledHoursRequest,
+  editScheduledHoursSuccess,
+  editScheduledHoursError,
 } = tasksActions;
 
 const loading = createReducer(false, {
@@ -125,6 +128,9 @@ const loading = createReducer(false, {
   [addTaskHoursSuccess]: () => true,
   [addTaskHoursRequest]: () => false,
   [addTaskHoursError]: () => false,
+  [editScheduledHoursRequest]: () => true,
+  [editScheduledHoursSuccess]: () => false,
+  [editScheduledHoursError]: () => false,
 });
 
 export default loading;

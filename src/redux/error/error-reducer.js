@@ -50,6 +50,8 @@ const {
   editTaskError,
   addTaskHoursRequest,
   addTaskHoursError,
+  editScheduledHoursRequest,
+  editScheduledHoursError,
 } = tasksActions;
 
 const error = createReducer(null, {
@@ -89,6 +91,8 @@ const error = createReducer(null, {
   [editTaskError]: (_, { payload }) => payload,
   [addTaskHoursRequest]: () => null,
   [addTaskHoursError]: (_, { payload }) => payload,
+  [editScheduledHoursRequest]: () => null,
+  [editScheduledHoursError]: (_, { payload }) => payload,
 });
 
 export default error;

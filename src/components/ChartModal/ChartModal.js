@@ -9,7 +9,7 @@ export default function ChartModal({
   onClose,
   tasks,
   sprintDuration,
-  sprintName,
+  sprintTitle,
 }) {
   useEffect(() => {
     const handleEscape = e => {
@@ -47,7 +47,7 @@ export default function ChartModal({
         <SprintChart
           tasks={tasks}
           sprintDuration={sprintDuration}
-          sprintName={sprintName}
+          sprintTitle={sprintTitle}
         />
       </div>
     </div>,
