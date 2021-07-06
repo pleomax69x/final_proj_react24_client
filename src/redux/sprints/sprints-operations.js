@@ -30,7 +30,7 @@ const getSprints = projId => async dispatch => {
 
 const addSprint =
   (projId, title, date, duration, listOfDates) => async dispatch => {
-    console.log('addSprint', projId, title, date, duration, listOfDates);
+
     dispatch(addSprintRequest());
     try {
       const { data } = await axios.post(`/sprints/${projId}`, {
