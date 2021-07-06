@@ -1,9 +1,12 @@
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  border-right: 1px solid rgba(24, 28, 39, 0.1);
-  padding: 0 30px;
-  padding-bottom: 20px;
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgba(24, 28, 39, 0.1);
+
+    padding-bottom: 20px;
+  }
 }
 
 .linkProjects {
@@ -27,9 +30,25 @@
 }
 .list {
   display: flex;
+  margin-top: 80px;
+  margin-bottom: 80px;
   flex-direction: column;
-  height: 80vh;
-  justify-content: center;
+  justify-content: start;
+  padding-top: 20px;
+  height: 300px;
+  width: 200px;
+  padding-top: 8px;
+  overflow-y: auto;
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #ff6b08;
+  }
+
+  &::-webkit-scrollbar {
+    width: 3px; /* ширина для вертикального скролла */
+    height: 0; /* высота для горизонтального скролла */
+    background-color: transparent;
+  }
 }
 
 .listItem {
