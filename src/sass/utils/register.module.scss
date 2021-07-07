@@ -203,3 +203,17 @@
     color: rgba(24, 28, 39, 0.6);
   }
 }
+
+.addPeopleBtn {
+  width: 44px;
+  height: 44px;
+  margin-right: 20px;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABeSURBVHgB7ZLBCcAgEAQvIQWkg7SQEizNDizBGqxAS7KDcx++3XuIILiw+BmGBU+ERFUD6hl3C8+PfjNEphzRQtGFG4mEcf0tA6ZaFr0yI1icDavP928pegxMQiuDGlpQFg9dX/4lAAAAAElFTkSuQmCC);
+  background-position: 50%;
+  border: none;
+  border-radius: 50%;
+  transition: all 0.3s linear;
+  background-color: #ff6b08;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}

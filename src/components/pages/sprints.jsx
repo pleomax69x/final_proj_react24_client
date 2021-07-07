@@ -10,7 +10,6 @@ import СreatingProject from '../СreatingProject';
 import SprintsItem from '../SprintsItem';
 import Modal from '../Modal';
 import Sidebar from '../Sidebar';
-// import Sidebar from '../Sidebar/Sidebar';
 import s from './sprints.module.scss';
 
 const Sprint = () => {
@@ -24,13 +23,20 @@ const Sprint = () => {
   const token = JSON.parse(getStorageData).token;
 
   const sprints = useSelector(sprintsSelectors.getSprints);
+  const teammate = useSelector(peopleSelectors.getPeople);
   const projects = useSelector(projectsSelectors.getProjects);
+
 
   const projectId = history.location.state;
   const addSprints = id => history.push(`/projects/${projectId}/${id}`, id);
   const [showModal, setShowModal] = useState(false);
+  const [addPeopleModal, setAddPeopleModal] = useState(false);
   const toggleModal = useCallback(() => {
     setShowModal(prevShowModal => !prevShowModal);
+  }, []);
+
+  const togglePeopleModal = useCallback(() => {
+    setAddPeopleModal(prevShowModal => !prevShowModal);
   }, []);
 
   useEffect(() => {
@@ -85,6 +91,17 @@ const Sprint = () => {
         <Modal onClose={toggleModal}>
           <СreatingSprint onSave={toggleModal} prId={projectId} />
         </Modal>
+      )}{' '}
+      <AddPeople
+        teammate={teammate}
+        // to={addSprints}
+        // del={deleteSprint}
+        toggleModal={togglePeopleModal}
+      />
+      {addPeopleModal && (
+        <PeopleModal onClose={togglePeopleModal}>
+          <СreatingPeopleItem onSave={toggleModal} prId={projectId} />
+        </PeopleModal>
       )}
     </div>
   );
