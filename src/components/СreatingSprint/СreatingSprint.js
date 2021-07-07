@@ -60,22 +60,21 @@ const СreatingSprint = ({ onSave, prId }) => {
   let errorMessage = errorFromState ? createErrorMessage(errorFromState) : null;
 
   const handleSubmit = ({ name, number }, { resetForm, setSubmitting }) => {
+    const listOfDates = sprintData(data, number);
+
     if (sprints.length > 0 && sprints.some(sprint => sprint.title === name)) {
       return (errorMessage = `Name "${name}" already exists, please enter another name.`);
-    } else dispatch(sprintsOperations.addSprint(prId, name, data, number));
+
+    } else
+      dispatch(
+        sprintsOperations.addSprint(prId, name, data, number, listOfDates),
+      );
+
 
     setSubmitting(false);
     resetForm();
 
-    console.log(prId, name, data, number);
-    var d1 = new Date(data);
-    console.log(d1);
-    console.log(d1.getDay());
-
-    const sprintDataArr = sprintData(data, number);
-    console.log('sprintData>>', sprintDataArr);
-    const endData = sprintDataArr[sprintDataArr.length - 1];
-    console.log('endData>>', endData);
+    console.log(prId, name, data, number, listOfDates);
 
     onSave();
   };
