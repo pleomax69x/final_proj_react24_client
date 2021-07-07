@@ -95,6 +95,7 @@ const Tasks = () => {
           transition={transitiontoProject}
           type="sprint"
           Creating={СreatingSprint}
+          activeItemId={currSprint._id}
         />
 
         <div className={s.contentWrapper}>

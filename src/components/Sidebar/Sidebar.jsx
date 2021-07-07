@@ -3,7 +3,15 @@ import { NavLink, useHistory } from 'react-router-dom';
 import styles from './Sidebar.module.scss';
 import Modal from '../Modal';
 
-const Sidebar = ({ projectId, data, link, transition, type, Creating }) => {
+const Sidebar = ({
+  projectId,
+  activeItemId,
+  data,
+  link,
+  transition,
+  type,
+  Creating,
+}) => {
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
   const toggleModal = useCallback(() => {
@@ -26,12 +34,17 @@ const Sidebar = ({ projectId, data, link, transition, type, Creating }) => {
             className={styles.listItem}
             onClick={() => transition(item._id)}
           >
+            {console.log('activeItemId', activeItemId, 'item._id', item._id)}
             <NavLink
               to={`/projects/${item._id}`}
-              className={styles.itemLink}
-              activeClassName={styles.linkProjectsActive}
+              className={
+                activeItemId === item._id
+                  ? [styles.itemLink, styles.linkProjectsActive].join(' ')
+                  : styles.itemLink
+              }
+              // activeClassName={styles.linkProjectsActive}
             >
-              <h2>{type === 'sprint' ? item.title : item.name}</h2>
+              <p>{type === 'sprint' ? item.title : item.name}</p>
             </NavLink>
           </li>
         ))}
