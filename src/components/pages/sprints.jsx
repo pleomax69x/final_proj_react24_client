@@ -2,8 +2,9 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { sprintsSelectors, sprintsOperations } from '../../redux/sprints';
-import { projectsSelectors } from '../../redux/projects';
+import { projectsOperations, projectsSelectors } from '../../redux/projects';
 import СreatingSprint from '../СreatingSprint/СreatingSprint.js';
+
 import SprintsItem from '../SprintsItem';
 import Modal from '../Modal';
 import Sidebar from '../Sidebar/SidebarSprints';
@@ -32,6 +33,9 @@ const Sprint = () => {
   useEffect(() => {
     dispatch(sprintsOperations.getSprints(projectId));
   }, [dispatch, projectId]);
+  useEffect(() => {
+    dispatch(projectsOperations.getProjects());
+  }, [dispatch]);
 
   useEffect(() => {
     if (compareWithPathName !== getState && !token) {
@@ -39,9 +43,11 @@ const Sprint = () => {
     }
   }, [compareWithPathName, getState, history, token]);
 
+  const transitiontoProject = id => history.push(`/projects/${id}`, id);
+
   return (
     <div className={s.project_wrapper}>
-      <Sidebar data={projects} />
+      <Sidebar data={projects} to={transitiontoProject} />
       <div className={s.sprints}>
         <div className={s.sprints_btn}>
           <h2 className={s.project_tittle}>Project 1</h2>

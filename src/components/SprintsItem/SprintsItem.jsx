@@ -3,9 +3,7 @@ import s from './SprintsItem.module.scss';
 const SprintItem = ({ sprints, to, del }) => {
   return (
     <div>
-      <h1>Sprints</h1>
-
-      <ul>
+      <ul className={s.sprintItem_list}>
         {sprints?.map(sprint => (
           <li className={s.sprintItem} key={sprint._id}>
             <div onClick={() => to(sprint._id)} className={s.projectLink}>
