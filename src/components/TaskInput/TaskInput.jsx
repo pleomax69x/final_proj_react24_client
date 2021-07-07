@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { tasksOperations } from '../../redux/tasks';
 
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
 import s from './TaskInput.module.scss';
+import { useDispatch } from 'react-redux';
 
 const HoursWasted = withStyles({
   root: {
@@ -66,19 +68,22 @@ const HoursWasted = withStyles({
   },
 })(TextField);
 
-const TaskInput = () => {
+const TaskInput = ({ id, hoursPerDay, currDate }) => {
+  const dispatch = useDispatch();
+
   const [noValid, setNoValid] = useState('');
-  const [inputValue, setInputValue] = useState(0);
+  const [inputValue, setInputValue] = useState(hoursPerDay);
+
+  useEffect(() => setInputValue(hoursPerDay), [hoursPerDay]);
 
   const validation = value => {
     const num = Number(value);
-
     if (value.length > 1 && value[0] === '0') {
       setNoValid('number greater than 0');
       return false;
     }
 
-    if (num < 0) {
+    if (num <= 0) {
       setNoValid('number greater than 0');
       return false;
     }
@@ -96,19 +101,22 @@ const TaskInput = () => {
   };
 
   const handleOnChange = ({ target: { value } }) => {
-    const isValid = validation(value);
     setInputValue(value);
+    const isValid = validation(value);
+    if (isValid) {
+      dispatch(tasksOperations.editTaskHours(id, currDate, Number(value)));
+    }
   };
   return (
     <HoursWasted
-      id="standard-error"
-      // defaultValue=" "
-      // value={inputValue}
+      id={id}
+      value={inputValue}
       onChange={handleOnChange}
-      error={noValid ? true : undefined}
+      error={noValid ? true : false}
       helperText={noValid}
       margin="none"
       className={s.input}
+      autoComplete="off"
     />
   );
 };
