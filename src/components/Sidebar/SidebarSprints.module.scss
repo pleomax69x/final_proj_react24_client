@@ -5,6 +5,7 @@
     flex-direction: column;
     border-right: 1px solid rgba(24, 28, 39, 0.1);
     height: 90vh;
+    position: relative;
   }
 }
 
@@ -123,9 +124,9 @@
 }
 .btnWrapper {
   text-align: center;
-  position: fixed;
+  position: absolute;
   bottom: 80px;
-  left: 70px;
+  left: 40px;
 
   @media screen and (min-width: 320px) and (max-width: 767px) {
     display: none;

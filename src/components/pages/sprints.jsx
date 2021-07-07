@@ -4,7 +4,7 @@ import { useHistory } from 'react-router';
 import { sprintsSelectors, sprintsOperations } from '../../redux/sprints';
 import { projectsOperations, projectsSelectors } from '../../redux/projects';
 import СreatingSprint from '../СreatingSprint/СreatingSprint.js';
-
+import Container from '../Container';
 import SprintsItem from '../SprintsItem';
 import Modal from '../Modal';
 import Sidebar from '../Sidebar/SidebarSprints';
