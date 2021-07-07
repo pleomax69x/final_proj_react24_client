@@ -57,6 +57,7 @@ const Sprint = () => {
         transition={transitiontoProject}
         type="project"
         Creating={СreatingProject}
+        activeItemId={projectId}
       />
       <div className={s.sprints}>
         <div className={s.sprints_btn}>
