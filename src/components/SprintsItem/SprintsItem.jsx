@@ -1,12 +1,10 @@
 import s from './SprintsItem.module.scss';
 
-const SprintItem = ({ sprints, to, del, toggleModal }) => {
+const SprintItem = ({ sprints, to, del }) => {
   return (
     <div>
       <h1>Sprints</h1>
-      <button type="button" onClick={toggleModal}>
-        Сreat sprint
-      </button>
+
       <ul>
         {sprints?.map(sprint => (
           <li className={s.sprintItem} key={sprint._id}>
