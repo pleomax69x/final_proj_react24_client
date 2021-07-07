@@ -135,6 +135,10 @@
   @media screen and (min-width: 1200px) {
     margin-right: 42px;
   }
+
+  &:first-child {
+    margin-top: 40px;
+  }
 }
 
 .edit_sprint_name_button {

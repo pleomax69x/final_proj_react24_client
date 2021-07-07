@@ -79,11 +79,9 @@ const editTaskHours = (taskId, date, hours) => async dispatch => {
 const editScheduledTaskHours = (taskId, scheduledHours) => async dispatch => {
   dispatch(editScheduledHoursRequest());
   try {
-    console.log('scheduledHours', scheduledHours);
     const { data } = await axios.patch(`/tasks/scheduledHours/${taskId}`, {
       scheduledHours,
     });
-    console.log('data.data', data.data);
     dispatch(editScheduledHoursSuccess(data.data));
   } catch (error) {
     dispatch(editScheduledHoursError(error.message));

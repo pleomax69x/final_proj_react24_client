@@ -13,9 +13,10 @@ import s from './tasks.module.scss';
 import { useHistory } from 'react-router';
 import Container from '../Container/Container';
 import TaskItem from '../TaskItem/TaskItem';
-import Sidebar from '../Sidebar/Sidebar';
+import Sidebar from '../Sidebar';
 import TaskPagination from '../TaskPagination';
 import { sprintsOperations } from '../../redux/sprints/';
+import СreatingSprint from '../СreatingSprint';
 
 const Tasks = () => {
   const history = useHistory();
@@ -23,6 +24,8 @@ const Tasks = () => {
 
   const projectId = history.location.pathname.slice(10, 34);
 
+  const transitiontoProject = id =>
+    history.push(`/projects/${projectId}/${id}`, id);
   const dispatch = useDispatch();
 
   const getTasks = useCallback(
@@ -36,9 +39,12 @@ const Tasks = () => {
   );
 
   useEffect(() => {
-    getTasks();
     getSprints();
-  }, [getSprints, getTasks]);
+  }, [getSprints]);
+
+  useEffect(() => {
+    getTasks();
+  }, [getTasks]);
 
   const deleteTask = id => dispatch(tasksOperations.deleteTask(id));
 
@@ -76,10 +82,12 @@ const Tasks = () => {
     <Container>
       <div className={s.pageWrapper}>
         <Sidebar
-          listItem={s.listItem}
-          value={'Show sprints'}
-          fakeData={sprints}
-          // to={`/projects/${projectId}`}
+          projectId={projectId}
+          data={sprints}
+          link={`/projects/${projectId}`}
+          transition={transitiontoProject}
+          type="sprint"
+          Creating={СreatingSprint}
         />
 
         <div className={s.contentWrapper}>
@@ -95,12 +103,14 @@ const Tasks = () => {
               </div>
               <p className={s.date}>01.01.2021</p>
             </div> */}
-            <TaskPagination
-              sprintId={sprintId}
-              // sprint={currSprint}
-              pagDate={updatePagDate}
-              pagIndex={updatePagDateIndex}
-            />
+            {tasks.length > 0 ? (
+              <TaskPagination
+                sprintId={sprintId}
+                // sprint={currSprint}
+                pagDate={updatePagDate}
+                pagIndex={updatePagDateIndex}
+              />
+            ) : null}
 
             {/* <input
         className={s}
