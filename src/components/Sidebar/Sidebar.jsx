@@ -1,48 +1,54 @@
-import { NavLink, Link } from 'react-router-dom';
+import React, { useState, useCallback } from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
 import styles from './Sidebar.module.scss';
+import Modal from '../Modal';
 
-const Sidebar = () => {
-  const fakeData = [
-    {
-      title: '1-project',
-      descr: 'It is my 1 project',
-    },
-    {
-      title: '2-project',
-      descr: 'It is my 2 project',
-    },
-    {
-      title: '3-project',
-      descr: 'It is my 3 project',
-    },
-    {
-      title: '4-project',
-      descr: 'It is my 1 project',
-    },
-  ];
+const Sidebar = ({ projectId, data, link, transition, type, Creating }) => {
+  const history = useHistory();
+  const [showModal, setShowModal] = useState(false);
+  const toggleModal = useCallback(() => {
+    setShowModal(prevShowModal => !prevShowModal);
+  }, []);
+
+  const goBackHandle = () => {
+    history.push(link, projectId);
+  };
 
   return (
     <div className={styles.wrapper}>
-      <Link to="/projects" className={styles.linkProjects}>
-        Show projects
-      </Link>
+      <button to={link} className={styles.goBackButton} onClick={goBackHandle}>
+        Show {`${type}s`}
+      </button>
       <ul className={styles.list}>
-        {fakeData.map(item => (
-          <li key={item.title} className={styles.listItem}>
+        {data.map(item => (
+          <li
+            key={item._id}
+            className={styles.listItem}
+            onClick={() => transition(item._id)}
+          >
             <NavLink
-              to="/projects"
+              to={`/projects/${item._id}`}
               className={styles.itemLink}
               activeClassName={styles.linkProjectsActive}
             >
-              <h2>{item.title}</h2>
+              <h2>{type === 'sprint' ? item.title : item.name}</h2>
             </NavLink>
           </li>
         ))}
       </ul>
       <div className={styles.btnWrapper}>
-        <button type="button" className={styles.btn}></button>
+        <button
+          type="button"
+          className={styles.btn}
+          onClick={toggleModal}
+        ></button>
         <p className={styles.text}>Create a project</p>
       </div>
+      {showModal && (
+        <Modal onClose={toggleModal}>
+          <Creating onSave={toggleModal} prId={projectId} />
+        </Modal>
+      )}
     </div>
   );
 };

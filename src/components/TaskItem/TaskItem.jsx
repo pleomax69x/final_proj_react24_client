@@ -17,10 +17,9 @@ const TaskItem = ({ ...props }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('TaskItem useEffect');
     if (totalHours > scheduledHours)
       dispatch(tasksOperations.editScheduledTaskHours(id, totalHours));
-  }, [totalHours, dispatch]);
+  }, [totalHours, dispatch, id, scheduledHours]);
 
   return (
     <div className={s.card}>
@@ -32,7 +31,6 @@ const TaskItem = ({ ...props }) => {
         </li>
         <li className={s.item}>
           <span className={s.itemName}>Spent hour/day</span>
-          {/* <input className={s.input} type="number" placeholder={hoursPerDay} /> */}
           <TaskInput id={id} hoursPerDay={hoursPerDay} currDate={currDate} />
         </li>
         <li className={s.item}>

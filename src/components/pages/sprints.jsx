@@ -5,9 +5,12 @@ import { sprintsSelectors, sprintsOperations } from '../../redux/sprints';
 import { projectsOperations, projectsSelectors } from '../../redux/projects';
 import СreatingSprint from '../СreatingSprint/СreatingSprint.js';
 import Container from '../Container';
+import СreatingProject from '../СreatingProject';
+
 import SprintsItem from '../SprintsItem';
 import Modal from '../Modal';
-import Sidebar from '../Sidebar/SidebarSprints';
+import Sidebar from '../Sidebar';
+// import Sidebar from '../Sidebar/Sidebar';
 import s from './sprints.module.scss';
 
 const Sprint = () => {
@@ -47,7 +50,15 @@ const Sprint = () => {
 
   return (
     <div className={s.project_wrapper}>
-      <Sidebar data={projects} to={transitiontoProject} />
+      <Sidebar
+        projectId={projectId}
+        data={projects}
+        link={`/projects`}
+        transition={transitiontoProject}
+        type="project"
+        Creating={СreatingProject}
+      />
+      ;
       <div className={s.sprints}>
         <div className={s.sprints_btn}>
           <h2 className={s.project_tittle}>Project 1</h2>
