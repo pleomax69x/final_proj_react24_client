@@ -2,6 +2,9 @@
 export default {
   responsive: false,
   maintainAspectRatio: true,
+  layout: {
+    padding: 10,
+  },
   plugins: {
     legend: {
       position: 'top',
@@ -13,12 +16,18 @@ export default {
         boxHeight: 10,
         font: {
           size: 14,
+          family: 'Montserrat',
+          style: 'normal',
+          weight: 400,
         },
       },
     },
     title: {
       font: {
         size: 18,
+        family: 'Montserrat',
+        style: 'normal',
+        weight: 500,
       },
       padding: 5,
       display: true,
