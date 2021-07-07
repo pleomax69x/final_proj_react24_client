@@ -48,6 +48,13 @@
   color: #181c27;
   margin-right: 20px;
 
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    width: 110px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
   @media screen and (min-width: 768px) {
     margin-right: 67px;
   }
