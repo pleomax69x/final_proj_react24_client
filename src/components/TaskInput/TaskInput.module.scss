@@ -1,0 +1,11 @@
+.input {
+  width: 60px;
+
+  @media screen and (min-width: 768px) {
+    width: 78px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 105px;
+  }
+}
