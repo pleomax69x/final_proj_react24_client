@@ -3,8 +3,15 @@
   padding-left: 20px;
   padding-right: 20px;
   margin: auto;
+  max-width: 320px;
   @media screen and (min-width: 320px) and (max-width: 767px) {
     flex-direction: column;
+  }
+  @media screen and (min-width: 767px) and (max-width: 1199px) {
+    max-width: 768px;
+  }
+  @media screen and (min-width: 1200px) {
+    max-width: 1200px;
   }
 }
 
@@ -48,13 +55,14 @@
   // @media screen and (min-width: 320px) and (max-width: 767px) {
   // }
   @media screen and (min-width: 767px) and (max-width: 1023px) {
-    // position: absolute;
-    top: 120px;
+    position: absolute;
+    top: 30px;
     right: 40px;
   }
   @media screen and (min-width: 1024px) {
-    top: 120px;
-    right: 10%;
+    position: absolute;
+    top: 30px;
+    right: -50px;
     display: flex;
     height: fit-content;
     align-items: center;
