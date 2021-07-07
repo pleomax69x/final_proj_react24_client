@@ -26,6 +26,7 @@ const getTasks = sprintId => async dispatch => {
   dispatch(getTasksRequest());
   try {
     const { data } = await axios.get(`/tasks/${sprintId}`);
+    console.log('data.data.tasks', data.data.tasks);
     dispatch(getTasksSuccess(data.data.tasks));
   } catch (error) {
     dispatch(getTasksError(error.message));
