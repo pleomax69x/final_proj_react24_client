@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import sprintsSelectors from '../../redux/sprints/sprints-selectors';
+
+import { sprintsSelectors } from '../../redux/sprints';
 import currentDate from '../../helpers/currentDate';
 import s from './TaskPagination.module.scss';
 
@@ -13,6 +14,10 @@ const TaskPagination = ({ sprintId, pagDate, pagIndex }) => {
 
   const [day, setDay] = useState(1);
   const [date, setDate] = useState(currentDate);
+
+  useEffect(() => {
+    if (arr) setDay(arr.indexOf(currentDate) + 1);
+  }, [setDay, arr]);
 
   const handlePrevDay = e => {
     if (day > 1) {
@@ -29,15 +34,8 @@ const TaskPagination = ({ sprintId, pagDate, pagIndex }) => {
   };
 
   useEffect(() => {
-    try {
-      pagDate(date);
-      pagIndex(arr?.indexOf(date));
-    } catch (e) {
-      console.log(e);
-      // pagIndex(0);
-    }
-
-    console.log(day, date);
+    pagDate(date);
+    pagIndex(arr?.indexOf(date));
   }, [day, date, pagDate, pagIndex, arr]);
 
   return (

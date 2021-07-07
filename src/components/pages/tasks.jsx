@@ -169,10 +169,12 @@ const Tasks = () => {
                   <TaskItem
                     // className={s.item}
                     key={task._id}
+                    id={task._id}
                     title={task.title}
                     scheduledHours={task.scheduledHours}
                     hoursPerDay={task.hoursPerDay[pagDateIndex].hours}
                     totalHours={task.totalHours}
+                    currDate={pagDate}
                     onClick={() => deleteTask(task._id)}
                   />
                 ))

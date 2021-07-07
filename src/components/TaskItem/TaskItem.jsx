@@ -1,8 +1,27 @@
 import s from './TaskItem.module.scss';
 import TaskInput from '../TaskInput';
+import { useEffect } from 'react';
+import { tasksOperations } from '../../redux/tasks';
+import { useDispatch } from 'react-redux';
 
 const TaskItem = ({ ...props }) => {
-  const { title, scheduledHours, hoursPerDay, totalHours, onClick } = props;
+  const {
+    id,
+    title,
+    scheduledHours,
+    hoursPerDay,
+    totalHours,
+    currDate,
+    onClick,
+  } = props;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log('TaskItem useEffect');
+    if (totalHours > scheduledHours)
+      dispatch(tasksOperations.editScheduledTaskHours(id, totalHours));
+  }, [totalHours, dispatch]);
+
   return (
     <div className={s.card}>
       <h2 className={s.title}>{title}</h2>
@@ -14,7 +33,7 @@ const TaskItem = ({ ...props }) => {
         <li className={s.item}>
           <span className={s.itemName}>Spent hour/day</span>
           {/* <input className={s.input} type="number" placeholder={hoursPerDay} /> */}
-          <TaskInput />
+          <TaskInput id={id} hoursPerDay={hoursPerDay} currDate={currDate} />
         </li>
         <li className={s.item}>
           <span className={s.itemName}>Hours spent</span>
