@@ -58,7 +58,6 @@ const Sprint = () => {
         type="project"
         Creating={СreatingProject}
       />
-      ;
       <div className={s.sprints}>
         <div className={s.sprints_btn}>
           <h2 className={s.project_tittle}>Project 1</h2>

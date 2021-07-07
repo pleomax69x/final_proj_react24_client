@@ -26,7 +26,7 @@
 .back_button {
   display: inline-block;
   position: absolute;
-  margin-left: 20px;
+  margin-left: 0px;
   margin-right: 20px;
   width: 10px;
   height: 18px;
@@ -35,9 +35,6 @@
   background-repeat: no-repeat;
   border: none;
   cursor: pointer;
-  @media screen and (min-width: 768px) {
-    margin-left: 0px;
-  }
 }
 
 .forward_button {

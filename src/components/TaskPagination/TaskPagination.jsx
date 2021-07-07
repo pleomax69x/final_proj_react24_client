@@ -16,7 +16,11 @@ const TaskPagination = ({ sprintId, pagDate, pagIndex }) => {
   const [date, setDate] = useState(currentDate);
 
   useEffect(() => {
-    if (arr) setDay(arr.indexOf(currentDate) + 1);
+    if (arr) {
+      const currDateIndex = arr.indexOf(currentDate);
+      if (currDateIndex >= 0) setDay(arr.indexOf(currentDate) + 1);
+      else setDay(1);
+    }
   }, [setDay, arr]);
 
   const handlePrevDay = e => {

@@ -17,6 +17,7 @@ import Sidebar from '../Sidebar';
 import TaskPagination from '../TaskPagination';
 import { sprintsOperations } from '../../redux/sprints/';
 import СreatingSprint from '../СreatingSprint';
+import ChartModal from '../ChartModal';
 
 const Tasks = () => {
   const history = useHistory();
@@ -78,6 +79,12 @@ const Tasks = () => {
     setPagDateIndex(value);
   };
 
+  const [showChartModal, setShowChartModal] = useState(false);
+
+  const toggleChartModal = useCallback(() => {
+    setShowChartModal(prevShowModal => !prevShowModal);
+  }, []);
+
   return (
     <Container>
       <div className={s.pageWrapper}>
@@ -92,38 +99,13 @@ const Tasks = () => {
 
         <div className={s.contentWrapper}>
           <div style={{ position: 'relative' }}>
-            {/* <div className={s.current_date_wrapper}>
-              <div className={s.days_wrapper}>
-                <button className={s.back_button} type="button"></button>
-                <p className={s.сurrent_day}>
-                  2<span className={s.slash_days}>/</span>
-                  <span className={s.duration_days}>12</span>
-                </p>
-                <button className={s.forward_button}></button>
-              </div>
-              <p className={s.date}>01.01.2021</p>
-            </div> */}
             {tasks.length > 0 ? (
               <TaskPagination
                 sprintId={sprintId}
-                // sprint={currSprint}
                 pagDate={updatePagDate}
                 pagIndex={updatePagDateIndex}
               />
             ) : null}
-
-            {/* <input
-        className={s}
-        type="text"
-        name="filter"
-        placeholder=""
-        value={filter}
-        onChange={onChange}
-      />
-      <div>
-        <h1 className={s.sprint_name}>Sprint Burndown Chart 1</h1>
-        <button className={s.edit_sprint_name_button}></button>
-      </div> */}
 
             <div className={s.wrapper_all}>
               <div className={s.wrapper_wr}>
@@ -174,7 +156,7 @@ const Tasks = () => {
           </div>
 
           <ul className={s.card_list}>
-            {pagDateIndex !== undefined
+            {pagDateIndex !== undefined && tasks.length > 0
               ? tasks?.map(task => (
                   <TaskItem
                     // className={s.item}
@@ -190,11 +172,24 @@ const Tasks = () => {
                 ))
               : null}
           </ul>
-
+          <div className={s.buttonContainer}>
+            <button
+              className={s.button_analytics}
+              onClick={toggleChartModal}
+            ></button>
+          </div>
           {showModal && (
             <Modal onClose={toggleModal}>
               <СreatingTask onSave={toggleModal} sprintId={sprintId} />
             </Modal>
+          )}
+          {showChartModal && (
+            <ChartModal
+              onClose={toggleChartModal}
+              tasks={tasks}
+              sprintDuration={currSprint.duration}
+              sprintTitle={currSprint.title}
+            />
           )}
           {/* <button onClick={toggleModal}>+</button>
         <button></button> */}

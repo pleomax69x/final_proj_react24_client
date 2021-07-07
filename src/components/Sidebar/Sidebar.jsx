@@ -42,7 +42,7 @@ const Sidebar = ({ projectId, data, link, transition, type, Creating }) => {
           className={styles.btn}
           onClick={toggleModal}
         ></button>
-        <p className={styles.text}>Create a project</p>
+        <p className={styles.text}>Create a {type}</p>
       </div>
       {showModal && (
         <Modal onClose={toggleModal}>
