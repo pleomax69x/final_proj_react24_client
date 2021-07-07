@@ -1,12 +1,34 @@
 .wrapper {
   display: flex;
-  flex-direction: column;
-  border-right: 1px solid rgba(24, 28, 39, 0.1);
-  padding: 0 30px;
   padding-bottom: 20px;
+  @media screen and (min-width: 767px) {
+    flex-direction: column;
+    border-right: 1px solid rgba(24, 28, 39, 0.1);
+    height: 90vh;
+    position: relative;
+    height: 100%;
+  }
 }
 
-.linkProjects {
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .wrapper::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(11, 36, 105, 0.1);
+    top: 110px;
+    left: 0;
+  }
+}
+
+.goBackButton {
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  width: 100px;
   margin-top: 20px;
   position: relative;
   top: 0;
@@ -22,14 +44,40 @@
     left: -40px;
   }
 }
-.linkProjectsActive {
-  font-weight: 700;
-}
+
+// .list {
+//   display: flex;
+//   flex-direction: column;
+//   height: 70vh;
+//   justify-content: center;
+//   @media screen and (min-width: 320px) and (max-width: 767px) {
+//     display: none;
+//   }
+// }
 .list {
   display: flex;
+  margin-top: 80px;
+  margin-bottom: 110px;
   flex-direction: column;
-  height: 80vh;
-  justify-content: center;
+  justify-content: start;
+  padding-top: 20px;
+  height: 300px;
+  width: 200px;
+  padding-top: 8px;
+  overflow-y: auto;
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #ff6b08;
+  }
+
+  &::-webkit-scrollbar {
+    width: 3px; /* ширина для вертикального скролла */
+    height: 0; /* высота для горизонтального скролла */
+    background-color: transparent;
+  }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    display: none;
+  }
 }
 
 .listItem {
@@ -66,6 +114,7 @@
 }
 
 .itemLink {
+  color: black;
   width: 100%;
   display: flex;
   position: relative;
@@ -78,18 +127,38 @@
     font-weight: 700;
   }
 }
+
+.linkProjectsActive {
+  font-weight: 700;
+}
+
 .btnWrapper {
   text-align: center;
+  // position: absolute;
+  bottom: 80px;
+  left: 40px;
+
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    display: none;
+  }
 }
+
 .btn {
-  border-radius: 50%;
   width: 44px;
   height: 44px;
-  background-color: #ff6b08;
   background-image: url(./+.png);
-  background-repeat: no-repeat;
-  border: none;
   background-position: 50%;
+  border: none;
+  border-radius: 50%;
+  transition: all 0.3s linear;
+  background-color: #ff6b08;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  &:hover {
+    outline: none;
+    box-shadow: 0 0 8px #ff6b08;
+  }
 }
 .text {
   font-family: Montserrat;

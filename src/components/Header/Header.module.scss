@@ -28,9 +28,12 @@
 }
 
 .logo {
+  display: block;
+  width: 100px;
   height: 30px;
 
   @media screen and (min-width: 768px) {
+    width: 140px;
     height: 42px;
   }
 }
@@ -44,6 +47,13 @@
   font-weight: 600;
   color: #181c27;
   margin-right: 20px;
+
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    width: 110px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 
   @media screen and (min-width: 768px) {
     margin-right: 67px;
@@ -72,9 +82,10 @@
   padding-left: 4px;
   color: rgba(24, 28, 39, 0.6);
 
+  transition: all 0.3s linear;
+
   &:hover {
     background-color: #ff6b08;
-    // transition: all 0.3s linear;
   }
 
   @media screen and (min-width: 768px) {
@@ -86,7 +97,6 @@
     background-color: transparent;
 
     &:hover {
-      background-color: transparent;
       background-color: #ff6b08;
     }
   }
@@ -102,6 +112,3 @@
     margin-right: 10px;
   }
 }
-
-/* @media screen and (min-width: 1280px) {
-} */

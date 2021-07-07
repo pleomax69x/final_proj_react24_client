@@ -8,8 +8,8 @@ const {
   deleteTaskSuccess,
   editTaskSuccess,
   addTaskHoursSuccess,
+  editScheduledHoursSuccess,
   changeFilter,
-  changeDayIndex,
 } = actions;
 
 const tasks = createReducer([], {
@@ -19,18 +19,20 @@ const tasks = createReducer([], {
     state.filter(({ _id }) => _id !== payload),
   [editTaskSuccess]: (state, { payload }) =>
     state.map(item => {
-      if (item._id === payload.id) return payload;
+      if (item._id === payload._id) return payload;
       else return item;
     }),
   [addTaskHoursSuccess]: (state, { payload }) =>
     state.map(item => {
-      if (item._id === payload.id) return payload;
+      if (item._id === payload._id) return payload;
       else return item;
     }),
-});
-
-const indexCurrentDay = createReducer([0], {
-  [changeDayIndex]: (_, payload) => payload,
+  [editScheduledHoursSuccess]: (state, { payload }) =>
+    state.map(item => {
+      if (item._id === payload.taskId)
+        return { ...item, scheduledHours: payload.scheduledHours };
+      else return item;
+    }),
 });
 
 const filter = createReducer('', {
@@ -40,5 +42,4 @@ const filter = createReducer('', {
 export default combineReducers({
   tasks,
   filter,
-  indexCurrentDay,
 });

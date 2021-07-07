@@ -28,19 +28,21 @@ const getSprints = projId => async dispatch => {
   }
 };
 
-const addSprint = (projId, title, date, duration) => async dispatch => {
-  dispatch(addSprintRequest());
-  try {
-    const { data } = await axios.post(`/sprints/${projId}`, {
-      title,
-      date,
-      duration,
-    });
-    dispatch(addSprintSuccess(data.data.sprint));
-  } catch (error) {
-    dispatch(addSprintError(error.message));
-  }
-};
+const addSprint =
+  (projId, title, date, duration, listOfDates) => async dispatch => {
+    dispatch(addSprintRequest());
+    try {
+      const { data } = await axios.post(`/sprints/${projId}`, {
+        title,
+        date,
+        duration,
+        listOfDates,
+      });
+      dispatch(addSprintSuccess(data.data.sprint));
+    } catch (error) {
+      dispatch(addSprintError(error.message));
+    }
+  };
 
 const deleteSprint = sprintId => async dispatch => {
   dispatch(deleteSprintRequest());

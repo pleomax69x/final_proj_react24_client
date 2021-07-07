@@ -17,7 +17,9 @@ const {
   addTaskHoursRequest,
   addTaskHoursSuccess,
   addTaskHoursError,
-  changeDayIndex,
+  editScheduledHoursRequest,
+  editScheduledHoursSuccess,
+  editScheduledHoursError,
 } = actions;
 
 const getTasks = sprintId => async dispatch => {
@@ -37,7 +39,7 @@ const addTask = (sprintId, title, scheduledHours) => async dispatch => {
       title,
       scheduledHours,
     });
-    dispatch(addTaskSuccess(data.data.task));
+    dispatch(addTaskSuccess(data.data.newTask));
   } catch (error) {
     dispatch(addTaskError(error.message));
   }
@@ -63,18 +65,27 @@ const editTaskName = (taskId, title) => async dispatch => {
   }
 };
 
-const editTaskHours = (taskId, hoursPerDay) => async dispatch => {
+const editTaskHours = (taskId, date, hours) => async dispatch => {
   dispatch(addTaskHoursRequest());
   try {
+    const hoursPerDay = { date, hours };
     const { data } = await axios.patch(`/tasks/${taskId}`, { hoursPerDay });
-    dispatch(addTaskHoursSuccess(data.data.task));
+    dispatch(addTaskHoursSuccess(data.data));
   } catch (error) {
     dispatch(addTaskHoursError(error.message));
   }
 };
 
-const updateDayIndex = newIndex => async dispatch => {
-  dispatch(changeDayIndex(newIndex));
+const editScheduledTaskHours = (taskId, scheduledHours) => async dispatch => {
+  dispatch(editScheduledHoursRequest());
+  try {
+    const { data } = await axios.patch(`/tasks/scheduledHours/${taskId}`, {
+      scheduledHours,
+    });
+    dispatch(editScheduledHoursSuccess(data.data));
+  } catch (error) {
+    dispatch(editScheduledHoursError(error.message));
+  }
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -84,5 +95,5 @@ export default {
   deleteTask,
   editTaskName,
   editTaskHours,
-  updateDayIndex,
+  editScheduledTaskHours,
 };

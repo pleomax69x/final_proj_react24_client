@@ -7,19 +7,15 @@ import SprintsItem from '../SprintsItem';
 import Modal from '../Modal';
 
 const Sprint = () => {
-  const sprints = useSelector(sprintsSelectors.getSprints);
-
   const dispatch = useDispatch();
-
   const deleteSprint = id => dispatch(sprintsOperations.deleteSprint(id));
 
-  useEffect(() => {
-    dispatch(sprintsOperations.getSprints());
-  }, [dispatch]);
+  const history = useHistory();
+
+  const sprints = useSelector(sprintsSelectors.getSprints);
 
   const location = useLocation();
 
-  const history = useHistory();
   const addSprints = id => history.push(`/sprints/${id}`, id);
 
   const [showModal, setShowModal] = useState(false);
@@ -27,6 +23,9 @@ const Sprint = () => {
     setShowModal(prevShowModal => !prevShowModal);
   }, []);
 
+  useEffect(() => {
+    dispatch(sprintsOperations.getSprints());
+  }, [dispatch]);
   return (
     <div>
       <h1>Sprints</h1>

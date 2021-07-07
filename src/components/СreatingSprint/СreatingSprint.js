@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { sprintsOperations, sprintsSelectors } from '../../redux/sprints';
 import { errorSelectors } from '../../redux/error';
 import currentDate from '../../helpers/currentDate';
+import sprintData from '../../helpers/sprintData';
 import s from './СreatingSprint.module.scss';
 
 const schema = yup.object({
@@ -59,14 +60,22 @@ const СreatingSprint = ({ onSave, prId }) => {
   let errorMessage = errorFromState ? createErrorMessage(errorFromState) : null;
 
   const handleSubmit = ({ name, number }, { resetForm, setSubmitting }) => {
+    const listOfDates = sprintData(data, number);
+
     if (sprints.length > 0 && sprints.some(sprint => sprint.title === name)) {
       return (errorMessage = `Name "${name}" already exists, please enter another name.`);
-    } else dispatch(sprintsOperations.addSprint(prId, name, data, number));
+
+    } else
+      dispatch(
+        sprintsOperations.addSprint(prId, name, data, number, listOfDates),
+      );
+
 
     setSubmitting(false);
     resetForm();
 
-    // console.log(prId, name, data, number);
+    console.log(prId, name, data, number, listOfDates);
+
     onSave();
   };
 

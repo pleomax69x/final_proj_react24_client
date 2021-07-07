@@ -20,9 +20,15 @@ const addTaskHoursRequest = createAction('tasks/addTaskHoursRequest');
 const addTaskHoursSuccess = createAction('tasks/addTaskHoursSuccess');
 const addTaskHoursError = createAction('tasks/addTaskHoursError');
 
-const changeFilter = createAction('tasks/filter');
+const editScheduledHoursRequest = createAction(
+  'tasks/editScheduledHoursRequest',
+);
+const editScheduledHoursSuccess = createAction(
+  'tasks/editScheduledHoursSuccess',
+);
+const editScheduledHoursError = createAction('tasks/editScheduledHoursError');
 
-const changeDayIndex = createAction('tasks/changeDayIndex');
+const changeFilter = createAction('tasks/filter');
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -41,6 +47,8 @@ export default {
   addTaskHoursRequest,
   addTaskHoursSuccess,
   addTaskHoursError,
+  editScheduledHoursRequest,
+  editScheduledHoursSuccess,
+  editScheduledHoursError,
   changeFilter,
-  changeDayIndex,
 };
