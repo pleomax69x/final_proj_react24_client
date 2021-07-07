@@ -1,4 +1,5 @@
 import s from './TaskItem.module.scss';
+import TaskInput from '../TaskInput';
 
 const TaskItem = ({ ...props }) => {
   const { title, scheduledHours, hoursPerDay, totalHours, onClick } = props;
@@ -12,7 +13,8 @@ const TaskItem = ({ ...props }) => {
         </li>
         <li className={s.item}>
           <span className={s.itemName}>Spent hour/day</span>
-          <input className={s.input} type="number" placeholder={hoursPerDay} />
+          {/* <input className={s.input} type="number" placeholder={hoursPerDay} /> */}
+          <TaskInput />
         </li>
         <li className={s.item}>
           <span className={s.itemName}>Hours spent</span>
