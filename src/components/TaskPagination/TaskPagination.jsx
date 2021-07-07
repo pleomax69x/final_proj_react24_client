@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import sprintsSelectors from '../../redux/sprints/sprints-selectors';
 import currentDate from '../../helpers/currentDate';
 import s from './TaskPagination.module.scss';
 
-const TaskPagination = ({ sprint, pagDate, pagIndex }) => {
+const TaskPagination = ({ sprintId, pagDate, pagIndex }) => {
+  const sprints = useSelector(sprintsSelectors.getSprints);
+
+  const sprint = sprints?.find(el => el._id === sprintId);
+
   const arr = sprint?.listOfDates;
 
   const [day, setDay] = useState(1);
@@ -25,14 +31,14 @@ const TaskPagination = ({ sprint, pagDate, pagIndex }) => {
   useEffect(() => {
     try {
       pagDate(date);
-      // pagIndex(arr?.indexOf(date));
+      pagIndex(arr?.indexOf(date));
     } catch (e) {
       console.log(e);
       // pagIndex(0);
     }
 
     console.log(day, date);
-  }, [day, date, pagDate]);
+  }, [day, date, pagDate, pagIndex, arr]);
 
   return (
     <div>

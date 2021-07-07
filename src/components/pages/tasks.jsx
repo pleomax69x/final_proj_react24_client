@@ -18,32 +18,39 @@ import TaskPagination from '../TaskPagination';
 import { sprintsOperations } from '../../redux/sprints/';
 
 const Tasks = () => {
-  const dispatch = useDispatch();
-
   const history = useHistory();
   const sprintId = history.location.state;
-  // console.log(
-  //   'sprintId',
-  //   history.location.pathname,
-  //   history.location.pathname.slice(10, 34),
-  // );
+
   const projectId = history.location.pathname.slice(10, 34);
 
-  // console.log( projectId);
+  const dispatch = useDispatch();
+
+  const getTasks = useCallback(
+    () => dispatch(tasksOperations.getTasks(sprintId)),
+    [dispatch, sprintId],
+  );
+
+  const getSprints = useCallback(
+    () => dispatch(sprintsOperations.getSprints(projectId)),
+    [dispatch, projectId],
+  );
+
+  useEffect(() => {
+    getTasks();
+    getSprints();
+  }, [getSprints, getTasks]);
 
   const deleteTask = id => dispatch(tasksOperations.deleteTask(id));
+
+  const tasks = useSelector(tasksSelectors.getVisibleTasks);
   const filter = useSelector(tasksSelectors.getFilter);
+  const sprints = useSelector(sprintsSelectors.getSprints);
   const onChange = useCallback(
     e => {
       dispatch(tasksActions.changeFilter(e.target.value));
     },
     [dispatch],
   );
-
-  useEffect(() => {
-    dispatch(tasksOperations.getTasks(sprintId));
-    dispatch(sprintsOperations.getSprints(projectId));
-  }, [dispatch, sprintId, projectId]);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -52,18 +59,18 @@ const Tasks = () => {
   }, []);
 
   const [pagDate, setPagDate] = useState('');
+
+  const updatePagDate = value => {
+    setPagDate(value);
+  };
+
   const [pagDateIndex, setPagDateIndex] = useState(0);
 
-  const sprints = useSelector(sprintsSelectors.getSprints);
-
   const currSprint = sprints.find(item => item._id === sprintId);
-  const tasks = useSelector(tasksSelectors.getVisibleTasks);
 
-  useEffect(() => {
-    if (currSprint !== undefined) {
-      setPagDateIndex(currSprint?.listOfDates.indexOf(pagDate));
-    }
-  }, [pagDate, currSprint]);
+  const updatePagDateIndex = value => {
+    setPagDateIndex(value);
+  };
 
   return (
     <Container>
@@ -89,9 +96,10 @@ const Tasks = () => {
               <p className={s.date}>01.01.2021</p>
             </div> */}
             <TaskPagination
-              sprint={currSprint}
-              pagDate={setPagDate}
-              // pagIndex={setPagDateIndex}
+              sprintId={sprintId}
+              // sprint={currSprint}
+              pagDate={updatePagDate}
+              pagIndex={updatePagDateIndex}
             />
 
             {/* <input
@@ -154,19 +162,21 @@ const Tasks = () => {
               </div>
             </div>
           </div>
-          {console.log('tasks', tasks)}
+
           <ul className={s.card_list}>
-            {tasks?.map(task => (
-              <TaskItem
-                // className={s.item}
-                key={task._id}
-                title={task.title}
-                scheduledHours={task.scheduledHours}
-                hoursPerDay={task.hoursPerDay[pagDateIndex].hours}
-                totalHours={task.totalHours}
-                onClick={() => deleteTask(task._id)}
-              />
-            ))}
+            {pagDateIndex !== undefined
+              ? tasks?.map(task => (
+                  <TaskItem
+                    // className={s.item}
+                    key={task._id}
+                    title={task.title}
+                    scheduledHours={task.scheduledHours}
+                    hoursPerDay={task.hoursPerDay[pagDateIndex].hours}
+                    totalHours={task.totalHours}
+                    onClick={() => deleteTask(task._id)}
+                  />
+                ))
+              : null}
           </ul>
 
           {showModal && (
