@@ -4,10 +4,13 @@ import { useHistory } from 'react-router';
 import { sprintsSelectors, sprintsOperations } from '../../redux/sprints';
 import { projectsOperations, projectsSelectors } from '../../redux/projects';
 import СreatingSprint from '../СreatingSprint/СreatingSprint.js';
+import СreatingPeopleItem from '../AddPeopleItem/CreatingPeopleItem';
 import Container from '../Container';
 import СreatingProject from '../СreatingProject';
-
+import peopleSelectors from '../../redux/peopleAdd/people-selectors';
 import SprintsItem from '../SprintsItem';
+import AddPeople from '../Modal/AddPeople';
+import PeopleModal from '../Modal/PeopleModal';
 import Modal from '../Modal';
 import Sidebar from '../Sidebar';
 import s from './sprints.module.scss';
@@ -25,7 +28,6 @@ const Sprint = () => {
   const sprints = useSelector(sprintsSelectors.getSprints);
   const teammate = useSelector(peopleSelectors.getPeople);
   const projects = useSelector(projectsSelectors.getProjects);
-
 
   const projectId = history.location.state;
   const addSprints = id => history.push(`/projects/${projectId}/${id}`, id);
