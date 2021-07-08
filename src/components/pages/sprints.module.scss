@@ -108,7 +108,7 @@
   line-height: 1.22;
   letter-spacing: 0.04em;
   text-decoration: underline;
-
+  cursor: pointer;
   color: #181c27;
 }
 .addpeople {
@@ -142,4 +142,8 @@
   .sprints {
     padding-left: 20px;
   }
+}
+
+.peopleModalBtn {
+  margin-left: 0;
 }

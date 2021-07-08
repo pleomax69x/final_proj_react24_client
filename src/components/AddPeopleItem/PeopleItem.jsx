@@ -1,15 +1,14 @@
-import s from '../../sass/utils/register.module.scss';
-
+import s from '../pages/sprints.module.scss';
 const AddPeople = ({ toggleModal }) => {
   return (
-    <div>
-      <h2>Add people</h2>
+    <label className={s.btnWrapper_add}>
       <button
+        className={s.addpeople}
         type="button"
-        className={s.addPeopleBtn}
         onClick={toggleModal}
       ></button>
-    </div>
+      <p className={s.text_add}>Add people</p>
+    </label>
   );
 };
 
