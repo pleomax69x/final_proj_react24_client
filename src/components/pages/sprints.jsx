@@ -89,32 +89,31 @@ const Sprint = () => {
       />
       <div className={s.sprints}>
         <div className={s.sprints_btn}>
-          <div className={s.projectEditWrapper}>
-            {!edit ? (
-              <label className={s.project_tittle__wrapper}>
-                <h2 className={s.project_tittle}> {currentProject.name} </h2>
-                <button
-                  onClick={handlerEdit}
-                  className={s.btn_project_change}
-                ></button>
-              </label>
-            ) : (
-              <label className={s.project_tittle__wrapper}>
-                <input
-                  className={s.inputField}
-                  type="text"
-                  name="name"
-                  value={inputProjectName}
-                  onChange={handleChangeInputProject}
-                />
-                <button
-                  onClick={handlerEditSave}
-                  type="button"
-                  className={s.btn_save_change}
-                ></button>
-              </label>
-            )}
-          </div>
+          {!edit ? (
+            <label className={s.project_tittle__wrapper}>
+              <h2 className={s.project_tittle}> {currentProject.name} </h2>
+              <button
+                onClick={handlerEdit}
+                className={s.btn_project_change}
+              ></button>
+            </label>
+          ) : (
+            <label className={s.project_tittle__wrapper}>
+              <input
+                className={s.inputField}
+                type="text"
+                name="name"
+                value={inputProjectName}
+                onChange={handleChangeInputProject}
+              />
+              <button
+                onClick={handlerEditSave}
+                type="button"
+                className={s.btn_save_change}
+              ></button>
+            </label>
+          )}
+
           <label className={s.btnWrapper}>
             <button
               className={s.btn}
@@ -137,7 +136,7 @@ const Sprint = () => {
         <Modal onClose={toggleModal}>
           <СreatingSprint onSave={toggleModal} prId={projectId} />
         </Modal>
-      )}{' '}
+      )}
       {addPeopleModal && (
         <PeopleModal onClose={togglePeopleModal}>
           <СreatingPeopleItem onSave={toggleModal} prId={projectId} />
