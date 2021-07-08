@@ -14,34 +14,15 @@
     max-width: 1200px;
   }
 }
+.sprints {
+  width: 100%;
+}
 
 .sprints_btn {
   position: relative;
+  // height: 45px;
 }
-.project_tittle {
-  padding-bottom: 30px;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 26px;
-  line-height: 1.23;
-  letter-spacing: 0.04em;
-  color: #181c27;
-}
-.project_create {
-  position: absolute;
-  top: 45px;
-  left: 140px;
-  margin-left: auto;
-  margin-right: 0;
-  width: 20px;
-  height: 20px;
-  background-color: transparent;
-  background-image: url('../../img/sprintsPage/Vector2.png');
-  background-repeat: no-repeat;
-  border: none;
-  cursor: pointer;
-}
+
 .btnWrapper {
   position: fixed;
   bottom: 20px;
@@ -62,7 +43,7 @@
   @media screen and (min-width: 1024px) {
     position: absolute;
     top: 30px;
-    right: -50px;
+
     display: flex;
     height: fit-content;
     align-items: center;
@@ -88,6 +69,7 @@
     box-shadow: 0 0 8px #ff6b08;
   }
 }
+
 .text {
   display: none;
   @media screen and (min-width: 1024px) {
@@ -127,19 +109,82 @@
   .project_wrapper {
     max-width: 320px;
   }
-  .project_tittle {
-    padding-top: 30px;
-  }
+
   .project_create {
     top: 56px;
     left: 160px;
   }
 }
 @media screen and (min-width: 768px) {
-  .project_tittle {
-    padding-top: 40px;
-  }
   .sprints {
     padding-left: 20px;
+  }
+}
+
+.projectEditWrapper {
+  height: 100px;
+  padding: 35px 0px 35px 0px;
+}
+.project_tittle__wrapper {
+  display: flex;
+  align-items: center;
+}
+.project_tittle {
+  width: 185px;
+  margin-right: 10px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 1.23;
+  letter-spacing: 0.04em;
+  color: #181c27;
+}
+.btn_project_change {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  background-image: url('../../img/sprintsPage/Vectoredit.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: all 0.2s linear;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+  &:hover {
+    outline: none;
+    box-shadow: 0 0 8px #ff6b08;
+  }
+}
+.inputField {
+  width: 185px;
+  margin-right: 10px;
+  border: none;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  border-radius: 5px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: #181c27;
+  padding: 6px 5px;
+  outline: none;
+}
+.btn_save_change {
+  width: 20px;
+  height: 20px;
+  background-image: url(../../img/sprintsPage/saver.svg);
+  background-position: 50%;
+  border: none;
+  transition: all 0.3s linear;
+  border-radius: 5px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+  cursor: pointer;
+  &:hover {
+    outline: none;
+    box-shadow: 0 0 8px #ff6b08;
   }
 }

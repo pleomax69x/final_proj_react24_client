@@ -51,10 +51,10 @@ const deleteProject = id => async dispatch => {
   }
 };
 
-const editProjectName = (id, updName) => async dispatch => {
+const editProjectName = (id, name) => async dispatch => {
   dispatch(editProjectRequest());
   try {
-    const { data } = await axios.patch(`/projects/${id}`, { updName });
+    const { data } = await axios.patch(`/projects/${id}`, { name });
     dispatch(editProjectSuccess(data.data.project));
   } catch (error) {
     dispatch(editProjectError(error.message));
