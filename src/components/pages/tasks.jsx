@@ -68,7 +68,7 @@ const Tasks = () => {
           transition={transitiontoProject}
           type="sprint"
           Creating={СreatingSprint}
-          activeItemId={currSprint._id}
+          activeItemId={currSprint?._id}
         />
 
         <TaskSection
