@@ -5,7 +5,6 @@ import { sprintsSelectors, sprintsOperations } from '../../redux/sprints';
 import { projectsOperations, projectsSelectors } from '../../redux/projects';
 import СreatingSprint from '../СreatingSprint/СreatingSprint.js';
 
-
 import СreatingPeopleItem from '../AddPeopleItem/CreatingPeopleItem';
 import СreatingProject from '../СreatingProject';
 import peopleSelectors from '../../redux/peopleAdd/people-selectors';
@@ -16,7 +15,6 @@ import PeopleModal from '../Modal/PeopleModal';
 import Modal from '../Modal';
 import Sidebar from '../Sidebar';
 import SprintsDelete from '../SprintsDelete';
-
 
 import s from './sprints.module.scss';
 
@@ -43,39 +41,32 @@ const Sprint = () => {
     setShowModal(prevShowModal => !prevShowModal);
   }, []);
 
-
   const currentProject = projects.find(project => project._id === projectId);
   const [inputProjectName, setInputProject] = useState(currentProject.name);
   const [edit, setEdit] = useState(false);
 
   const handleChangeInputProject = e => setInputProject(e.currentTarget.value);
-
   const handlerEdit = () => {
     setEdit(true);
   };
-
   const handlerEditSave = () => {
     dispatch(
       projectsOperations.editProjectName(currentProject._id, inputProjectName),
     );
     setEdit(false);
   };
-  useEffect(() => {
-    setInputProject(currentProject.name);
-    setEdit(false);
-  }, [currentProject.name]);
 
   const togglePeopleModal = useCallback(() => {
     setAddPeopleModal(prevShowModal => !prevShowModal);
   }, []);
-
 
   useEffect(() => {
     dispatch(sprintsOperations.getSprints(projectId));
   }, [dispatch, projectId]);
   useEffect(() => {
     dispatch(projectsOperations.getProjects());
-  }, [dispatch]);
+    setInputProject(currentProject.name);
+  }, [dispatch, currentProject.name]);
 
   useEffect(() => {
     if (compareWithPathName !== getState && !token) {
@@ -84,7 +75,6 @@ const Sprint = () => {
   }, [compareWithPathName, getState, history, token]);
 
   const transitiontoProject = id => history.push(`/projects/${id}`, id);
-  console.log(projects);
 
   return (
     <div className={s.project_wrapper}>
@@ -133,6 +123,12 @@ const Sprint = () => {
             ></button>
             <p className={s.text}>Create a sprint</p>
           </label>
+          <AddPeople
+            teammate={teammate}
+            // to={addSprints}
+            // del={deleteSprint}
+            toggleModal={togglePeopleModal}
+          />
         </div>
 
         <SprintsItem sprints={sprints} to={addSprints} del={deleteSprint} />
@@ -142,12 +138,6 @@ const Sprint = () => {
           <СreatingSprint onSave={toggleModal} prId={projectId} />
         </Modal>
       )}{' '}
-      <AddPeople
-        teammate={teammate}
-        // to={addSprints}
-        // del={deleteSprint}
-        toggleModal={togglePeopleModal}
-      />
       {addPeopleModal && (
         <PeopleModal onClose={togglePeopleModal}>
           <СreatingPeopleItem onSave={toggleModal} prId={projectId} />
