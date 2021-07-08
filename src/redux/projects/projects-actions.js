@@ -24,6 +24,8 @@ const deleteProjectsRequest = createAction('projects/deleteProjectsRequest');
 const deleteProjectsSuccess = createAction('projects/deleteProjectsSuccess');
 const deleteProjectsError = createAction('projects/deleteProjectsError');
 
+const changeFilter = createAction('projects/changeFilter');
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getProjectsRequest,
@@ -44,4 +46,5 @@ export default {
   deleteProjectsRequest,
   deleteProjectsSuccess,
   deleteProjectsError,
+  changeFilter,
 };
