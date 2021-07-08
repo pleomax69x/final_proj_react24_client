@@ -42,7 +42,7 @@ const Sprint = () => {
   }, []);
 
   const currentProject = projects.find(project => project._id === projectId);
-  const [inputProjectName, setInputProject] = useState(currentProject.name);
+  const [inputProjectName, setInputProject] = useState(currentProject?.name);
   const [edit, setEdit] = useState(false);
 
   const handleChangeInputProject = e => setInputProject(e.currentTarget.value);
@@ -65,8 +65,8 @@ const Sprint = () => {
   }, [dispatch, projectId]);
   useEffect(() => {
     dispatch(projectsOperations.getProjects());
-    setInputProject(currentProject.name);
-  }, [dispatch, currentProject.name]);
+    setInputProject(currentProject?.name);
+  }, [dispatch, currentProject?.name]);
 
   useEffect(() => {
     if (compareWithPathName !== getState && !token) {
@@ -91,7 +91,7 @@ const Sprint = () => {
         <div className={s.sprints_btn}>
           {!edit ? (
             <label className={s.project_tittle__wrapper}>
-              <h2 className={s.project_tittle}> {currentProject.name} </h2>
+              <h2 className={s.project_tittle}> {currentProject?.name} </h2>
               <button
                 onClick={handlerEdit}
                 className={s.btn_project_change}
