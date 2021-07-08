@@ -3,6 +3,7 @@ import { authActions } from '../auth';
 import { projectsActions } from '../projects';
 import { sprintsActions } from '../sprints';
 import { tasksActions } from '../tasks';
+import { peopleActions } from '../peopleAdd';
 
 const {
   registerRequest,
@@ -54,6 +55,15 @@ const {
   editScheduledHoursError,
 } = tasksActions;
 
+const {
+  getPeopleRequest,
+  getPeopleError,
+  addPeopleRequest,
+  addPeopleError,
+  deletePeopleRequest,
+  deletePeopleError,
+} = peopleActions;
+
 const error = createReducer(null, {
   [registerRequest]: () => null,
   [registerError]: (_, { payload }) => payload,
@@ -93,6 +103,21 @@ const error = createReducer(null, {
   [addTaskHoursError]: (_, { payload }) => payload,
   [editScheduledHoursRequest]: () => null,
   [editScheduledHoursError]: (_, { payload }) => payload,
+  [getPeopleRequest]: () => null,
+  [getPeopleError]:
+    () =>
+    (_, { payload }) =>
+      payload,
+  [addPeopleRequest]: () => null,
+  [addPeopleError]:
+    () =>
+    (_, { payload }) =>
+      payload,
+  [deletePeopleRequest]: () => null,
+  [deletePeopleError]:
+    () =>
+    (_, { payload }) =>
+      payload,
 });
 
 export default error;
