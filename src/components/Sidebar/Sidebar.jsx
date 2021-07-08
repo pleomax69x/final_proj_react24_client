@@ -42,7 +42,6 @@ const Sidebar = ({
                   ? [styles.itemLink, styles.linkProjectsActive].join(' ')
                   : styles.itemLink
               }
-              // activeClassName={styles.linkProjectsActive}
             >
               <p>{type === 'sprint' ? item.title : item.name}</p>
             </NavLink>
