@@ -19,7 +19,7 @@ const Projects = () => {
   const getStorageData = localStorage.getItem('persist:token');
   const token = JSON.parse(getStorageData).token;
 
-  const projects = useSelector(projectsSelectors.getProjects);
+  const projects = useSelector(projectsSelectors.getVisibleProjects);
 
   const [showModal, setShowModal] = useState(false);
   const toggleModal = useCallback(() => {

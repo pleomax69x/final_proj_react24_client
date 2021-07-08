@@ -12,6 +12,7 @@
   border: none;
   border-radius: 5px;
   position: relative;
+  transition: box-shadow ease 500ms;
   &:nth-child(4n + 1) .cart {
     background-color: #8c72df;
   }

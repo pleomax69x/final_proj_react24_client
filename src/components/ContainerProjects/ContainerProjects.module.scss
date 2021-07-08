@@ -5,6 +5,57 @@
   // background-color: #f1f2f7;
   padding: 40px 9px 30px 0;
 }
+
+.filterWrapper {
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 300px;
+}
+
+.filterBtn {
+  display: inline-block;
+  position: relative;
+  border: none;
+  background-color: transparent;
+  font-size: 14px;
+  font-weight: 500;
+  height: 100%;
+  padding: 10px 20px;
+  transition: color ease 500ms;
+  &::after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    content: ' ';
+    display: inline-block;
+    height: 2px;
+    width: 100%;
+    transform: scaleX(0.5);
+    transition: background-color, transform ease 500ms;
+    background-color: black;
+  }
+
+  &:hover {
+    &::after {
+      transform: scaleX(1);
+      background-color: #ff6b08;
+    }
+  }
+
+  &.current {
+    color: #ff6b08;
+    &::after {
+      background-color: #ff6b08;
+    }
+  }
+}
+
+.activeFilter {
+  color: #ff6b08;
+}
+
 .btnWrapper {
   display: flex;
   align-items: center;
