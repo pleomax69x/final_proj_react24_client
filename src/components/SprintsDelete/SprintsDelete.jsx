@@ -1,5 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { projectsSelectors } from '../../redux/projects';
+import authSelectors from '../../redux/auth/auth-selectors';
 import { sprintsOperations } from '../../redux/sprints';
 import Modal from '../Modal';
 import s from './SprintsDelete.module.scss';
@@ -7,12 +9,15 @@ import s from './SprintsDelete.module.scss';
 const SprintsDelete = ({ sprints, delAll, prId }) => {
   const dispatch = useDispatch();
 
-  // const ownerId = sprints?.map(sprint => sprint.owner);
-  // console.log('ownerId:', ownerId[ownerId.length - 1]);
-  // const firstId = sprints?.map(sprint => sprint.teammates[0].id);
-  // console.log('firstId:', firstId[firstId.length - 1]);
-  // const isOwner = ownerId === firstId;
-  // console.log('isOwner', isOwner);
+  const userId = useSelector(authSelectors.getUserId);
+  // console.log('userId', userId);
+
+  const projects = useSelector(projectsSelectors.getProjects);
+  const ownerId = projects?.map(project => project.owner);
+  // console.log('ownerId:', ownerId[0]);
+
+  const isOwner = JSON.stringify(userId) === JSON.stringify(ownerId[0]);
+  // console.log('SprintsDelete', isOwner);
 
   const [showModal, setShowModal] = useState(false);
   const toggleModal = useCallback(() => {
@@ -29,8 +34,7 @@ const SprintsDelete = ({ sprints, delAll, prId }) => {
 
   return (
     <div>
-      {/* {isOwner && ( */}
-      {true && (
+      {isOwner && (
         <div className={s.btnWrapper}>
           <button
             className={s.btnDel}
