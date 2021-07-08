@@ -16,6 +16,9 @@ const {
   editSprintRequest,
   editSprintSuccess,
   editSprintError,
+  deleteSprintsRequest,
+  deleteSprintsSuccess,
+  deleteSprintsError,
 } = actions;
 
 const getSprints = projId => async dispatch => {
@@ -64,10 +67,21 @@ const editSprintName = (sprintId, title) => async dispatch => {
   }
 };
 
+const deleteSprints = id => async dispatch => {
+  dispatch(deleteSprintsRequest());
+  try {
+    await axios.delete(`/deleteSprints/${id}`);
+    dispatch(deleteSprintsSuccess(id));
+  } catch (error) {
+    dispatch(deleteSprintsError(error.message));
+  }
+};
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getSprints,
   addSprint,
   deleteSprint,
   editSprintName,
+  deleteSprints,
 };

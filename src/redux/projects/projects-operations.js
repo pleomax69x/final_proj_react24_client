@@ -19,6 +19,9 @@ const {
   addTeammateRequest,
   addTeammateSuccess,
   addTeammateError,
+  deleteProjectsRequest,
+  deleteProjectsSuccess,
+  deleteProjectsError,
 } = actions;
 
 const getProjects = () => async dispatch => {
@@ -71,6 +74,16 @@ const addTeammate = (id, email) => async dispatch => {
   }
 };
 
+const deleteProjects = () => async dispatch => {
+  dispatch(deleteProjectsRequest());
+  try {
+    await axios.delete(`/deleteProjects`);
+    dispatch(deleteProjectsSuccess());
+  } catch (error) {
+    dispatch(deleteProjectsError(error.message));
+  }
+};
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getProjects,
@@ -78,4 +91,5 @@ export default {
   deleteProject,
   editProjectName,
   addTeammate,
+  deleteProjects,
 };

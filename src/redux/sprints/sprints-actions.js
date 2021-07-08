@@ -16,6 +16,10 @@ const editSprintRequest = createAction('sprints/editSprinsRequest');
 const editSprintSuccess = createAction('sprints/editSprinsSuccess');
 const editSprintError = createAction('sprints/editSprinsError');
 
+const deleteSprintsRequest = createAction('sprints/deleteSprintsRequest');
+const deleteSprintsSuccess = createAction('sprints/deleteSprintsSuccess');
+const deleteSprintsError = createAction('sprints/deleteSprintsError');
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getSprintsRequest,
@@ -30,4 +34,7 @@ export default {
   editSprintRequest,
   editSprintSuccess,
   editSprintError,
+  deleteSprintsRequest,
+  deleteSprintsSuccess,
+  deleteSprintsError,
 };

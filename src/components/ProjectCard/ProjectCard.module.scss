@@ -12,6 +12,7 @@
   border: none;
   border-radius: 5px;
   position: relative;
+  transition: box-shadow ease 500ms;
   &:nth-child(4n + 1) .cart {
     background-color: #8c72df;
   }
@@ -22,7 +23,19 @@
     background-color: #71df87;
   }
   &:nth-child(4n + 4) .cart {
-    background-color: #8c72df;
+    background-color: #f78335;
+  }
+  &:nth-child(4n + 5) .cart {
+    background-color: #f3be2e;
+  }
+  &:nth-child(4n + 6) .cart {
+    background-color: #e46cde;
+  }
+  &:nth-child(4n + 7) .cart {
+    background-color: #4394f1;
+  }
+  &:nth-child(4n + 8) .cart {
+    background-color: #d45535;
   }
   &:hover .descr {
     display: block;
@@ -131,12 +144,105 @@
       }
     }
   }
+
   &:nth-child(4n + 4) {
-    background-color: #8c72df;
+    background-color: #f78335;
     &:hover,
     :focus {
       outline: none;
-      box-shadow: 1px 6px 10px #8c72df;
+      box-shadow: 1px 6px 10px #f78335;
+    }
+    &::before {
+      content: none;
+      @media screen and (min-width: 1200px) {
+        content: url(../../img/projectsPage/task-4.png);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+      @media screen and (min-width: 767px) and (max-width: 1199px) {
+        content: url(../../img/projectsPage/task-4-768.png);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+    }
+  }
+  &:nth-child(4n + 5) {
+    background-color: #f3be2e;
+    &:hover,
+    :focus {
+      outline: none;
+      box-shadow: 1px 6px 10px #f3be2e;
+    }
+    &::before {
+      content: none;
+      @media screen and (min-width: 1200px) {
+        content: url(../../img/projectsPage/task-4.png);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+      @media screen and (min-width: 767px) and (max-width: 1199px) {
+        content: url(../../img/projectsPage/task-4-768.png);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+    }
+  }
+  &:nth-child(4n + 6) {
+    background-color: #e46cde;
+    &:hover,
+    :focus {
+      outline: none;
+      box-shadow: 1px 6px 10px #e46cde;
+    }
+    &::before {
+      content: none;
+      @media screen and (min-width: 1200px) {
+        content: url(../../img/projectsPage/task-4.png);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+      @media screen and (min-width: 767px) and (max-width: 1199px) {
+        content: url(../../img/projectsPage/task-4-768.png);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+    }
+  }
+  &:nth-child(4n + 7) {
+    background-color: #4394f1;
+    &:hover,
+    :focus {
+      outline: none;
+      box-shadow: 1px 6px 10px #4394f1;
+    }
+    &::before {
+      content: none;
+      @media screen and (min-width: 1200px) {
+        content: url(../../img/projectsPage/task-4.png);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+      @media screen and (min-width: 767px) and (max-width: 1199px) {
+        content: url(../../img/projectsPage/task-4-768.png);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+    }
+  }
+  &:nth-child(4n + 8) {
+    background-color: #d45535;
+    &:hover,
+    :focus {
+      outline: none;
+      box-shadow: 1px 6px 10px #d45535;
     }
     &::before {
       content: none;

@@ -109,7 +109,19 @@
   }
 
   &:nth-child(4n + 4)::before {
-    background-color: #8c72df;
+    background-color: #f78335;
+  }
+  &:nth-child(4n + 5)::before {
+    background-color: #f3be2e;
+  }
+  &:nth-child(4n + 6)::before {
+    background-color: #e46cde;
+  }
+  &:nth-child(4n + 7)::before {
+    background-color: #4394f1;
+  }
+  &:nth-child(4n + 8)::before {
+    background-color: #d45535;
   }
 }
 

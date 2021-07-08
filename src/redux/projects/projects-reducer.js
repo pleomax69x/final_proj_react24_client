@@ -1,4 +1,4 @@
-import { createReducer } from '@reduxjs/toolkit';
+import { combineReducers, createReducer } from '@reduxjs/toolkit';
 import actions from './projects-actions';
 
 const {
@@ -7,6 +7,7 @@ const {
   deleteProjectSuccess,
   editProjectSuccess,
   addTeammateSuccess,
+  changeFilter,
 } = actions;
 
 const projects = createReducer([], {
@@ -22,4 +23,8 @@ const projects = createReducer([], {
   [addTeammateSuccess]: (_, { payload }) => payload,
 });
 
-export default projects;
+const filter = createReducer('', {
+  [changeFilter]: (_, { payload }) => payload,
+});
+
+export default combineReducers({ projects, filter });

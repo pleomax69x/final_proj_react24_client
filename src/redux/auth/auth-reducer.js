@@ -12,7 +12,7 @@ const {
   getCurrUserError,
 } = actions;
 
-const userInitialState = { email: '' };
+const userInitialState = { email: '', id: '' };
 const user = createReducer(userInitialState, {
   [registerSuccess]: (_, { payload }) => payload.user,
   [loginSuccess]: (_, { payload }) => payload.user,

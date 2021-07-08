@@ -174,10 +174,12 @@ const Tasks = () => {
               : null}
           </ul>
           <div className={s.buttonContainer}>
-            <button
-              className={s.button_analytics}
-              onClick={toggleChartModal}
-            ></button>
+            {tasks?.length > 2 ? (
+              <button
+                className={s.button_analytics}
+                onClick={toggleChartModal}
+              ></button>
+            ) : null}
           </div>
           {showModal && (
             <Modal onClose={toggleModal}>

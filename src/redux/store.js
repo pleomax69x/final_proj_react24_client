@@ -14,6 +14,7 @@ import storage from 'redux-persist/lib/storage'; // defaults to localStorage for
 import { projectsReducer } from './projects';
 import { sprintsReducer } from './sprints';
 import { tasksReducer } from './tasks';
+import { peopleReducer } from './peopleAdd';
 import { loadingReducer } from './loading';
 import { errorReducer } from './error';
 import { authReducer } from './auth';
@@ -37,6 +38,7 @@ const store = configureStore({
   reducer: {
     projects: projectsReducer,
     sprints: sprintsReducer,
+    people: peopleReducer,
     tasks: tasksReducer,
     loading: loadingReducer,
     error: errorReducer,
