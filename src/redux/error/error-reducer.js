@@ -104,20 +104,14 @@ const error = createReducer(null, {
   [editScheduledHoursRequest]: () => null,
   [editScheduledHoursError]: (_, { payload }) => payload,
   [getPeopleRequest]: () => null,
-  [getPeopleError]:
-    () =>
-    (_, { payload }) =>
-      payload,
+  [getPeopleError]: (_, { payload }) => payload,
   [addPeopleRequest]: () => null,
-  [addPeopleError]:
-    () =>
-    (_, { payload }) =>
-      payload,
+  [addPeopleError]: (_, { payload }) => {
+    console.log('addPeopleError', payload);
+    return payload;
+  },
   [deletePeopleRequest]: () => null,
-  [deletePeopleError]:
-    () =>
-    (_, { payload }) =>
-      payload,
+  [deletePeopleError]: (_, { payload }) => payload,
 });
 
 export default error;
