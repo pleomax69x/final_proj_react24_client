@@ -1,9 +1,8 @@
 import s from './SprintsItem.module.scss';
 
 const SprintItem = ({ sprints, to, del }) => {
-  // const listOfDates = sprints.map(el => el.listOfDates);
-  // const EndDates = listOfDates.map(el => el[el.length - 1]);
-  // console.log(EndDates);
+  const EndDate = sprints.map(el => el.EndDate);
+  console.log(EndDate);
 
   return (
     <div>
