@@ -1,0 +1,127 @@
+.btnWrapper {
+  position: fixed;
+  bottom: 5px;
+  left: 10px;
+  text-align: center;
+  margin: 5px;
+  z-index: 4;
+  @media screen and (min-width: 767px) {
+    left: auto;
+    right: 20px;
+  }
+}
+
+.btnDel {
+  cursor: pointer;
+  z-index: 3;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 30px;
+  width: 30px;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  background-color: grey;
+  transition: all 250ms linear;
+  background-image: url(../../img/projectsPage/cart.svg);
+  &:hover,
+  :focus {
+    background-color: #ff6b08;
+    transform: scale(0.9);
+    box-shadow: 0px 0px 25px #ffffff;
+  }
+  @media screen and (min-width: 767px) {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+.textDell {
+  width: 60px;
+  color: rgba(24, 28, 39, 0.6);
+  font-size: 12px;
+}
+
+.modal_delete {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 32px;
+  letter-spacing: 0.04em;
+  color: #181c27;
+  margin-bottom: 30px;
+
+  @media screen and (min-width: 767px) {
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: 0.04em;
+    margin-bottom: 50px;
+  }
+}
+.text {
+  margin: 0;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  margin-bottom: 30px;
+  color: #ff6b08;
+
+  @media screen and (min-width: 767px) {
+    font-weight: 500;
+    font-size: 19px;
+    letter-spacing: 0.04em;
+    margin-bottom: 50px;
+  }
+}
+
+.modal_btnDel {
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 65px;
+  height: 65px;
+  outline: none;
+  border-radius: 50%;
+  background-color: grey;
+  border: 1px solid grey;
+  transition: all 250ms linear;
+  background-image: url(../../img/projectsPage/cart.svg);
+  &:hover,
+  :focus {
+    background-color: #ff6b08;
+    border: 1px solid #ff6b08;
+    // transform: scale(1.1);
+    transform: rotate(45deg);
+    box-shadow: 0px 0px 25px #ffffff;
+  }
+  @media screen and (min-width: 767px) {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.textBtn {
+  margin: 5px 0 40px 0;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: #ff6b08;
+
+  @media screen and (min-width: 767px) {
+    font-weight: 500;
+    font-size: 19px;
+    letter-spacing: 0.04em;
+    margin-bottom: 50px;
+  }
+}

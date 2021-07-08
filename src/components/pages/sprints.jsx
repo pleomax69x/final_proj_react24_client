@@ -13,11 +13,14 @@ import AddPeople from '../Modal/AddPeople';
 import PeopleModal from '../Modal/PeopleModal';
 import Modal from '../Modal';
 import Sidebar from '../Sidebar';
+import SprintsDelete from '../SprintsDelete';
+
 import s from './sprints.module.scss';
 
 const Sprint = () => {
   const dispatch = useDispatch();
   const deleteSprint = id => dispatch(sprintsOperations.deleteSprint(id));
+  const deleteSprints = id => dispatch(sprintsOperations.deleteSprints(id));
 
   const history = useHistory();
   const getState = history.location.state;
@@ -105,6 +108,11 @@ const Sprint = () => {
           <СreatingPeopleItem onSave={toggleModal} prId={projectId} />
         </PeopleModal>
       )}
+      <SprintsDelete
+        sprints={sprints}
+        delAll={deleteSprints}
+        prId={projectId}
+      />
     </div>
   );
 };
