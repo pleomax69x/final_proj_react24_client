@@ -17,7 +17,8 @@ const projects = createReducer([], {
     state.filter(({ _id }) => _id !== payload),
   [editProjectSuccess]: (state, { payload }) =>
     state.map(item => {
-      if (item._id === payload.id) return payload;
+      console.log(item._id);
+      if (item._id === payload._id) return payload;
       else return item;
     }),
   [addTeammateSuccess]: (_, { payload }) => payload,
