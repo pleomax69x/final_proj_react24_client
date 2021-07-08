@@ -5,11 +5,10 @@ import { sprintsSelectors, sprintsOperations } from '../../redux/sprints';
 import { projectsOperations, projectsSelectors } from '../../redux/projects';
 import СreatingSprint from '../СreatingSprint/СreatingSprint.js';
 import СreatingPeopleItem from '../AddPeopleItem/CreatingPeopleItem';
-import Container from '../Container';
 import СreatingProject from '../СreatingProject';
 import peopleSelectors from '../../redux/peopleAdd/people-selectors';
 import SprintsItem from '../SprintsItem';
-import AddPeople from '../Modal/AddPeople';
+import AddPeople from '../AddPeopleItem/PeopleItem';
 import PeopleModal from '../Modal/PeopleModal';
 import Modal from '../Modal';
 import Sidebar from '../Sidebar';
@@ -79,11 +78,6 @@ const Sprint = () => {
               onClick={toggleModal}
             ></button>
             <p className={s.text}>Create a sprint</p>
-          </label>
-
-          <label className={s.btnWrapper_add}>
-            <button className={s.addpeople}></button>
-            <p className={s.text_add}>Add people</p>
           </label>
         </div>
 
