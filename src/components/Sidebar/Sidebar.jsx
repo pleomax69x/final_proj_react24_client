@@ -34,7 +34,6 @@ const Sidebar = ({
             className={styles.listItem}
             onClick={() => transition(item._id)}
           >
-            {console.log('activeItemId', activeItemId, 'item._id', item._id)}
             <NavLink
               to={`/projects/${item._id}`}
               className={
