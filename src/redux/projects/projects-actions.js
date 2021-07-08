@@ -20,6 +20,10 @@ const addTeammateRequest = createAction('projects/addTeammateRequest');
 const addTeammateSuccess = createAction('projects/addTeammateSuccess');
 const addTeammateError = createAction('projects/addTeammateError');
 
+const deleteProjectsRequest = createAction('projects/deleteProjectsRequest');
+const deleteProjectsSuccess = createAction('projects/deleteProjectsSuccess');
+const deleteProjectsError = createAction('projects/deleteProjectsError');
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getProjectsRequest,
@@ -37,4 +41,7 @@ export default {
   addTeammateRequest,
   addTeammateSuccess,
   addTeammateError,
+  deleteProjectsRequest,
+  deleteProjectsSuccess,
+  deleteProjectsError,
 };

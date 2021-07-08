@@ -6,10 +6,12 @@ import СreatingProject from '../СreatingProject';
 import ProjectCard from '../ProjectCard/ProjectCard';
 import { useHistory } from 'react-router';
 import ContainerProjects from '../ContainerProjects';
+import ProjectsDelete from '../ProjectsDelete';
 
 const Projects = () => {
   const dispatch = useDispatch();
   const deleteProject = id => dispatch(projectsOperations.deleteProject(id));
+  const deleteProjects = () => dispatch(projectsOperations.deleteProjects());
 
   const history = useHistory();
   const transitiontoProject = id => history.push(`/projects/${id}`, id);
@@ -27,7 +29,7 @@ const Projects = () => {
   useEffect(() => {
     dispatch(projectsOperations.getProjects());
   }, [dispatch]);
-  console.log('history', history);
+  // console.log('history', history);
 
   useEffect(() => {
     !token && history.push('/register');
@@ -45,6 +47,8 @@ const Projects = () => {
           <СreatingProject onSave={toggleModal} />
         </Modal>
       )}
+
+      <ProjectsDelete projects={projects} delAll={deleteProjects} />
     </ContainerProjects>
   );
 };
