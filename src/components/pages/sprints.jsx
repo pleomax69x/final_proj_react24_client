@@ -4,15 +4,19 @@ import { useHistory } from 'react-router';
 import { sprintsSelectors, sprintsOperations } from '../../redux/sprints';
 import { projectsOperations, projectsSelectors } from '../../redux/projects';
 import СreatingSprint from '../СreatingSprint/СreatingSprint.js';
+
+
 import СreatingPeopleItem from '../AddPeopleItem/CreatingPeopleItem';
 import СreatingProject from '../СreatingProject';
 import peopleSelectors from '../../redux/peopleAdd/people-selectors';
+
 import SprintsItem from '../SprintsItem';
 import AddPeople from '../AddPeopleItem/PeopleItem';
 import PeopleModal from '../Modal/PeopleModal';
 import Modal from '../Modal';
 import Sidebar from '../Sidebar';
 import SprintsDelete from '../SprintsDelete';
+
 
 import s from './sprints.module.scss';
 
@@ -39,9 +43,32 @@ const Sprint = () => {
     setShowModal(prevShowModal => !prevShowModal);
   }, []);
 
+
+  const currentProject = projects.find(project => project._id === projectId);
+  const [inputProjectName, setInputProject] = useState(currentProject.name);
+  const [edit, setEdit] = useState(false);
+
+  const handleChangeInputProject = e => setInputProject(e.currentTarget.value);
+
+  const handlerEdit = () => {
+    setEdit(true);
+  };
+
+  const handlerEditSave = () => {
+    dispatch(
+      projectsOperations.editProjectName(currentProject._id, inputProjectName),
+    );
+    setEdit(false);
+  };
+  useEffect(() => {
+    setInputProject(currentProject.name);
+    setEdit(false);
+  }, [currentProject.name]);
+
   const togglePeopleModal = useCallback(() => {
     setAddPeopleModal(prevShowModal => !prevShowModal);
   }, []);
+
 
   useEffect(() => {
     dispatch(sprintsOperations.getSprints(projectId));
@@ -57,6 +84,7 @@ const Sprint = () => {
   }, [compareWithPathName, getState, history, token]);
 
   const transitiontoProject = id => history.push(`/projects/${id}`, id);
+  console.log(projects);
 
   return (
     <div className={s.project_wrapper}>
@@ -71,9 +99,32 @@ const Sprint = () => {
       />
       <div className={s.sprints}>
         <div className={s.sprints_btn}>
-          <h2 className={s.project_tittle}>Project 1</h2>
-          <button className={s.project_create}></button>
-
+          <div className={s.projectEditWrapper}>
+            {!edit ? (
+              <label className={s.project_tittle__wrapper}>
+                <h2 className={s.project_tittle}> {currentProject.name} </h2>
+                <button
+                  onClick={handlerEdit}
+                  className={s.btn_project_change}
+                ></button>
+              </label>
+            ) : (
+              <label className={s.project_tittle__wrapper}>
+                <input
+                  className={s.inputField}
+                  type="text"
+                  name="name"
+                  value={inputProjectName}
+                  onChange={handleChangeInputProject}
+                />
+                <button
+                  onClick={handlerEditSave}
+                  type="button"
+                  className={s.btn_save_change}
+                ></button>
+              </label>
+            )}
+          </div>
           <label className={s.btnWrapper}>
             <button
               className={s.btn}
