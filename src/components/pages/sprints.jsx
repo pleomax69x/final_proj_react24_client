@@ -5,13 +5,18 @@ import { sprintsSelectors, sprintsOperations } from '../../redux/sprints';
 import { peopleOperations } from '../../redux/peopleAdd';
 import { projectsOperations, projectsSelectors } from '../../redux/projects';
 import СreatingSprint from '../СreatingSprint/СreatingSprint.js';
+
 import СreatingPeopleItem from '../AddPeopleItem/CreatingPeopleItem';
 import СreatingProject from '../СreatingProject';
+import peopleSelectors from '../../redux/peopleAdd/people-selectors';
+
 import SprintsItem from '../SprintsItem';
 import AddPeople from '../AddPeopleItem/PeopleItem';
 import PeopleModal from '../Modal/PeopleModal';
 import Modal from '../Modal';
 import Sidebar from '../Sidebar';
+import SprintsDelete from '../SprintsDelete';
+
 import s from './sprints.module.scss';
 
 const Sprint = () => {
@@ -19,6 +24,7 @@ const Sprint = () => {
   const deleteSprint = id => dispatch(sprintsOperations.deleteSprint(id));
   const deleteTeammate = id =>
     dispatch(peopleOperations.deletePerson(id, idProject));
+  const deleteSprints = id => dispatch(sprintsOperations.deleteSprints(id));
 
   const history = useHistory();
   const getState = history.location.state;
@@ -40,6 +46,21 @@ const Sprint = () => {
     setShowModal(prevShowModal => !prevShowModal);
   }, []);
 
+  const currentProject = projects.find(project => project._id === projectId);
+  const [inputProjectName, setInputProject] = useState(currentProject?.name);
+  const [edit, setEdit] = useState(false);
+
+  const handleChangeInputProject = e => setInputProject(e.currentTarget.value);
+  const handlerEdit = () => {
+    setEdit(true);
+  };
+  const handlerEditSave = () => {
+    dispatch(
+      projectsOperations.editProjectName(currentProject._id, inputProjectName),
+    );
+    setEdit(false);
+  };
+
   const togglePeopleModal = useCallback(() => {
     setAddPeopleModal(prevShowModal => !prevShowModal);
   }, []);
@@ -49,7 +70,8 @@ const Sprint = () => {
   }, [dispatch, projectId]);
   useEffect(() => {
     dispatch(projectsOperations.getProjects());
-  }, [dispatch]);
+    setInputProject(currentProject?.name);
+  }, [dispatch, currentProject?.name]);
 
   useEffect(() => {
     if (compareWithPathName !== getState && !token) {
@@ -72,8 +94,30 @@ const Sprint = () => {
       />
       <div className={s.sprints}>
         <div className={s.sprints_btn}>
-          <h2 className={s.project_tittle}>Project 1</h2>
-          <button className={s.project_create}></button>
+          {!edit ? (
+            <label className={s.project_tittle__wrapper}>
+              <h2 className={s.project_tittle}> {currentProject?.name} </h2>
+              <button
+                onClick={handlerEdit}
+                className={s.btn_project_change}
+              ></button>
+            </label>
+          ) : (
+            <label className={s.project_tittle__wrapper}>
+              <input
+                className={s.inputField}
+                type="text"
+                name="name"
+                value={inputProjectName}
+                onChange={handleChangeInputProject}
+              />
+              <button
+                onClick={handlerEditSave}
+                type="button"
+                className={s.btn_save_change}
+              ></button>
+            </label>
+          )}
 
           <label className={s.btnWrapper}>
             <button
@@ -83,6 +127,12 @@ const Sprint = () => {
             ></button>
             <p className={s.text}>Create a sprint</p>
           </label>
+          <AddPeople
+            teammate={teammate}
+            // to={addSprints}
+            // del={deleteSprint}
+            toggleModal={togglePeopleModal}
+          />
         </div>
 
         <SprintsItem sprints={sprints} to={addSprints} del={deleteSprint} />
@@ -91,7 +141,6 @@ const Sprint = () => {
         <Modal onClose={toggleModal}>
           <СreatingSprint onSave={toggleModal} prId={projectId} />
         </Modal>
-      )}{' '}
       <AddPeople toggleModal={togglePeopleModal} />
       {addPeopleModal && (
         <PeopleModal onClose={togglePeopleModal}>
@@ -103,6 +152,11 @@ const Sprint = () => {
           />
         </PeopleModal>
       )}
+      <SprintsDelete
+        sprints={sprints}
+        delAll={deleteSprints}
+        prId={projectId}
+      />
     </div>
   );
 };

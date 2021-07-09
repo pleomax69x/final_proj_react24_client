@@ -1,8 +1,8 @@
-import s from './TaskItem.module.scss';
-import TaskInput from '../TaskInput';
 import { useEffect } from 'react';
-import { tasksOperations } from '../../redux/tasks';
 import { useDispatch } from 'react-redux';
+import { tasksOperations } from '../../redux/tasks';
+import TaskInput from '../TaskInput';
+import s from './TaskItem.module.scss';
 
 const TaskItem = ({ ...props }) => {
   const {

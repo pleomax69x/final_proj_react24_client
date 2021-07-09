@@ -1,4 +1,4 @@
-import { createReducer } from '@reduxjs/toolkit';
+import { combineReducers, createReducer } from '@reduxjs/toolkit';
 import actions from './projects-actions';
 
 const {
@@ -7,6 +7,7 @@ const {
   deleteProjectSuccess,
   editProjectSuccess,
   addTeammateSuccess,
+  changeFilter,
 } = actions;
 
 const projects = createReducer([], {
@@ -16,10 +17,15 @@ const projects = createReducer([], {
     state.filter(({ _id }) => _id !== payload),
   [editProjectSuccess]: (state, { payload }) =>
     state.map(item => {
-      if (item._id === payload.id) return payload;
+      console.log(item._id);
+      if (item._id === payload._id) return payload;
       else return item;
     }),
   [addTeammateSuccess]: (_, { payload }) => payload,
 });
 
-export default projects;
+const filter = createReducer('', {
+  [changeFilter]: (_, { payload }) => payload,
+});
+
+export default combineReducers({ projects, filter });
