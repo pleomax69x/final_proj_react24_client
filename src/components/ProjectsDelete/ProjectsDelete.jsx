@@ -9,13 +9,9 @@ const ProjectsDelete = ({ projects, delAll }) => {
   const dispatch = useDispatch();
 
   const userId = useSelector(authSelectors.getUserId);
-  // console.log('userId', userId);
 
-  const ownerId = projects?.map(project => project.owner);
-  // console.log('ownerId:', ownerId[0]);
-
-  const isOwner = JSON.stringify(userId) === JSON.stringify(ownerId[0]);
-  // console.log('ProjectsDelete', isOwner);
+  const isOwner = projects?.every(project => project.owner === userId);
+  console.log('isOwner:', isOwner);
 
   const [showModal, setShowModal] = useState(false);
   const toggleModal = useCallback(() => {

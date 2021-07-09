@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { projectsSelectors } from '../../redux/projects';
 import authSelectors from '../../redux/auth/auth-selectors';
 import { sprintsOperations } from '../../redux/sprints';
 import Modal from '../Modal';
@@ -10,14 +9,8 @@ const SprintsDelete = ({ sprints, delAll, prId }) => {
   const dispatch = useDispatch();
 
   const userId = useSelector(authSelectors.getUserId);
-  // console.log('userId', userId);
 
-  const projects = useSelector(projectsSelectors.getProjects);
-  const ownerId = projects?.map(project => project.owner);
-  // console.log('ownerId:', ownerId[0]);
-
-  const isOwner = JSON.stringify(userId) === JSON.stringify(ownerId[0]);
-  // console.log('SprintsDelete', isOwner);
+  const isOwner = sprints?.every(sprint => sprint.projectOwnerId === userId);
 
   const [showModal, setShowModal] = useState(false);
   const toggleModal = useCallback(() => {
