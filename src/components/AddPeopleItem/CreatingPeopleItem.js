@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom';
 import { Formik, Field, Form } from 'formik';
 import * as yup from 'yup';
 import { errorSelectors } from '../../redux/error';
-// import authOperations from '../../redux/peopleAdd/people-operations';
 import s from '../СreatingSprint/СreatingSprint.module.scss';
 import PeopleList from './PeopleList.jsx';
 
@@ -22,15 +21,16 @@ const createErrorMessage = error => {
   console.log('createErrorMessage', error);
   if (error.includes('400')) return 'Bad request. Please try again';
   if (error.includes('401')) return 'User not authorized';
+  if (error.includes('404')) return 'User not found';
+  if (error.includes('409')) return 'Conflict (user already in project)';
   return 'Unknown error. Please try again';
 };
 
-const СreatingPeopleItem = ({ teammate }) => {
+const СreatingPeopleItem = ({ teammates, del }) => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const errorFromState = useSelector(errorSelectors);
   let history = useHistory();
-  console.log('history', history.location.state);
   const projectId = history.location.state;
   const handleValueChange = e => {
     const { name, value } = e.target;
@@ -41,11 +41,10 @@ const СreatingPeopleItem = ({ teammate }) => {
         return;
     }
   };
-  console.log(teammate, 'teammate');
+  const teammateEmail = Object.values(teammates.map(el => el.teammates));
+  const teammate = teammateEmail.flat().map(obj => obj.email);
   let errorMessage = errorFromState ? createErrorMessage(errorFromState) : null;
-  // const onSubmit = email => dispatch(authOperations.addTeammate({ email }));
   const handleSubmit = ({ email }, { resetForm, setSubmitting }) => {
-    console.log('testId and email', projectId, email);
     dispatch(addTeammate(projectId, email));
     setSubmitting(false);
     resetForm();
@@ -80,8 +79,10 @@ const СreatingPeopleItem = ({ teammate }) => {
               <div className={s.error}>{errors.email}</div>
             )}
           </div>
-          <p>Added users:</p>
-          <PeopleList teammate={teammate} />
+          <p className={s.memberCount}>
+            Total participants in the project: {teammate.length}
+          </p>
+          <PeopleList teammates={teammateEmail} del={del} />
           <div className={s.wr}>
             {errorMessage ? (
               <div className={s.errorMessage}>{errorMessage}</div>

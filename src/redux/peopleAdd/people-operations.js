@@ -25,10 +25,11 @@ const addTeammate = (id, email) => async dispatch => {
   }
 };
 
-const deletePerson = id => async dispatch => {
+const deletePerson = (id, idProject) => async dispatch => {
+  console.log(id, idProject);
   dispatch(deletePeopleRequest());
   try {
-    await axios.delete(`/teammates/${id}`);
+    await axios.delete(`/teammates/${idProject}/${id}`);
     dispatch(deletePeopleSuccess(id));
   } catch (error) {
     dispatch(deletePeopleError(error.message));
