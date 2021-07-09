@@ -23,7 +23,7 @@ const TasksPage = lazy(() =>
   import('./components/pages/tasks.jsx' /* webpackChunkName: "tasks-view"*/),
 );
 const LogInPage = lazy(() =>
-  import('./components/pages/login.jsx' /* webpackChunkName: "logIn-view"*/),
+  import('./pages/loginPage.js' /* webpackChunkName: "logIn-view"*/),
 );
 const RegisterPage = lazy(() =>
   import(
