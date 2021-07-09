@@ -5,6 +5,7 @@ import { sprintsSelectors, sprintsOperations } from '../../redux/sprints';
 import { peopleOperations } from '../../redux/peopleAdd';
 import { projectsOperations, projectsSelectors } from '../../redux/projects';
 import СreatingSprint from '../СreatingSprint/СreatingSprint.js';
+import NameInputEdit from '../NameInputEdit/NameInputEdit';
 import СreatingPeopleItem from '../AddPeopleItem/CreatingPeopleItem';
 import СreatingProject from '../СreatingProject';
 import SprintsItem from '../SprintsItem';
@@ -45,6 +46,7 @@ const Sprint = () => {
   useEffect(() => {
     dispatch(sprintsOperations.getSprints(projectId));
   }, [dispatch, projectId]);
+
   useEffect(() => {
     dispatch(projectsOperations.getProjects());
   }, [dispatch]);
@@ -70,8 +72,8 @@ const Sprint = () => {
       />
       <div className={s.sprints}>
         <div className={s.sprints_btn}>
-          <h2 className={s.project_tittle}>Project 1</h2>
-          <button className={s.project_create}></button>
+
+          <NameInputEdit data={projects} itemId={projectId} />
 
           <label className={s.btnWrapper}>
             <button

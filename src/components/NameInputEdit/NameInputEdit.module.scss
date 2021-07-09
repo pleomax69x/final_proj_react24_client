@@ -1,0 +1,67 @@
+.project_tittle__wrapper {
+  display: flex;
+  align-items: center;
+  min-height: 100px;
+  padding: 35px 0px 10px 0px;
+}
+.project_tittle {
+  width: 220px;
+  word-wrap: break-word;
+  margin-right: 10px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 1.23;
+  letter-spacing: 0.04em;
+  color: #181c27;
+}
+
+.btn_project_change {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  background-image: url(../../img/sprintsPage/Vectoredit.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: all 0.2s linear;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+  &:hover {
+    outline: none;
+    box-shadow: 0 0 8px #ff6b08;
+  }
+}
+.inputField {
+  width: 220px;
+  margin-right: 10px;
+  border: none;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  border-radius: 5px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: 0.04em;
+  color: #181c27;
+  padding: 6px 5px;
+  outline: none;
+}
+.btn_save_change {
+  width: 20px;
+  height: 20px;
+  background-image: url(../../img/sprintsPage/saver.svg);
+  background-position: 50%;
+  border: none;
+  transition: all 0.3s linear;
+  border-radius: 5px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+  cursor: pointer;
+  &:hover {
+    outline: none;
+    box-shadow: 0 0 8px #ff6b08;
+  }
+}
