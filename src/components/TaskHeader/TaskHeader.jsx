@@ -1,13 +1,22 @@
+import NameInputEdit from '../NameInputEdit/NameInputEdit';
 import s from './TaskHeader.module.scss';
 
-const TaskHeader = ({ currSprint, toggleModal, filter, onChange }) => {
+const TaskHeader = ({
+  currSprint,
+  toggleModal,
+  filter,
+  onChange,
+  editName,
+}) => {
+  console.log(currSprint);
   return (
     <div className={s.wrapper_all}>
       <div className={s.wrapper_wr}>
-        <div className={s.wrapper_tasks}>
+        {/* <div className={s.wrapper_tasks}>
           <h1 className={s.sprint_name}>{currSprint?.title}</h1>
           <button className={s.edit_sprint_name_button}></button>
-        </div>
+        </div> */}
+        <NameInputEdit currItemName={currSprint?.title} editName={editName} />
         <div className={s.wrap_tasks}>
           <button onClick={toggleModal} className={s.add_task_button}></button>
           <p className={s.task_name}>Create a task</p>
