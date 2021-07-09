@@ -10,6 +10,7 @@ import СreatingProject from '../СreatingProject';
 import SprintsItem from '../SprintsItem';
 import AddPeople from '../AddPeopleItem/PeopleItem';
 import PeopleModal from '../Modal/PeopleModal';
+import SprintsDelete from '../SprintsDelete';
 import Modal from '../Modal';
 import Sidebar from '../Sidebar';
 import s from './sprints.module.scss';
@@ -17,6 +18,7 @@ import s from './sprints.module.scss';
 const Sprint = () => {
   const dispatch = useDispatch();
   const deleteSprint = id => dispatch(sprintsOperations.deleteSprint(id));
+  const deleteSprints = id => dispatch(sprintsOperations.deleteSprint(id));
   const deleteTeammate = id =>
     dispatch(peopleOperations.deletePerson(id, idProject));
   const history = useHistory();
@@ -101,6 +103,11 @@ const Sprint = () => {
           />
         </PeopleModal>
       )}
+      <SprintsDelete
+        sprints={sprints}
+        delAll={deleteSprints}
+        prId={projectId}
+      />
     </div>
   );
 };
