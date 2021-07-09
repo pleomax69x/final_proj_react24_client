@@ -32,13 +32,17 @@ const Sprint = () => {
   const idProject = teammatesBody.flat().map(el => el._id)[0];
   console.log('idProject[0]', idProject);
   const projectId = history.location.state;
+  const currentProject = projects.find(project => project._id === projectId);
   const addSprints = id => history.push(`/projects/${projectId}/${id}`, id);
   const [showModal, setShowModal] = useState(false);
   const [addPeopleModal, setAddPeopleModal] = useState(false);
   const toggleModal = useCallback(() => {
     setShowModal(prevShowModal => !prevShowModal);
   }, []);
-
+  const editName = inputProjectName =>
+    dispatch(
+      projectsOperations.editProjectName(currentProject?._id, inputProjectName),
+    );
   const togglePeopleModal = useCallback(() => {
     setAddPeopleModal(prevShowModal => !prevShowModal);
   }, []);
@@ -72,8 +76,10 @@ const Sprint = () => {
       />
       <div className={s.sprints}>
         <div className={s.sprints_btn}>
-
-          <NameInputEdit data={projects} itemId={projectId} />
+          <NameInputEdit
+            currItemName={currentProject?.name}
+            editName={editName}
+          />
 
           <label className={s.btnWrapper}>
             <button
@@ -83,6 +89,7 @@ const Sprint = () => {
             ></button>
             <p className={s.text}>Create a sprint</p>
           </label>
+          <AddPeople toggleModal={togglePeopleModal} />
         </div>
 
         <SprintsItem sprints={sprints} to={addSprints} del={deleteSprint} />
@@ -91,8 +98,7 @@ const Sprint = () => {
         <Modal onClose={toggleModal}>
           <СreatingSprint onSave={toggleModal} prId={projectId} />
         </Modal>
-      )}{' '}
-      <AddPeople toggleModal={togglePeopleModal} />
+      )}
       {addPeopleModal && (
         <PeopleModal onClose={togglePeopleModal}>
           <СreatingPeopleItem

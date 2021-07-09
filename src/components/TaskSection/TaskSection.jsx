@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { sprintsSelectors } from '../../redux/sprints/';
+import { sprintsOperations, sprintsSelectors } from '../../redux/sprints/';
 import { tasksSelectors } from '../../redux/tasks';
 import { tasksActions } from '../../redux/tasks';
 import TaskHeader from '../TaskHeader';
@@ -35,6 +35,10 @@ const TaskSection = ({
   );
 
   const currSprint = sprints.find(item => item._id === sprintId);
+  const editName = inputProjectName =>
+    dispatch(
+      sprintsOperations.editSprintName(currSprint?._id, inputProjectName),
+    );
 
   const updatePagDate = value => {
     setPagDate(value);
@@ -69,6 +73,7 @@ const TaskSection = ({
             toggleModal={toggleModal}
             filter={filter}
             onChange={onChange}
+            editName={editName}
           />
         </div>
 
