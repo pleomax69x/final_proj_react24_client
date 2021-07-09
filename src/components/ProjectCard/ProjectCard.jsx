@@ -13,13 +13,13 @@ const ProjectCard = ({ projects, to, del }) => {
             <h3 className={styles.title}>{project.name}</h3>
             <p className={styles.descr}>{project.description}</p>
           </div>
-          {project.owner === userId ? (
+          {project.owner === userId && (
             <button
               type="button"
               onClick={() => del(project._id)}
               className={styles.cart}
             ></button>
-          ) : null}
+          )}
         </li>
       ))}
     </ul>
