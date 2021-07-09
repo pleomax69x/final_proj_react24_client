@@ -7,7 +7,7 @@ import { errorSelectors } from '../../redux/error';
 import s from '../СreatingSprint/СreatingSprint.module.scss';
 import PeopleList from './PeopleList.jsx';
 
-import operations from '../../redux/peopleAdd/people-operations';
+import operations from '../../redux/projects/projects-operations';
 const { addTeammate } = operations;
 const schema = yup.object({
   email: yup

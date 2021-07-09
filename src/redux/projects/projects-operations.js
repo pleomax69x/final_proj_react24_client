@@ -22,6 +22,12 @@ const {
   deleteProjectsRequest,
   deleteProjectsSuccess,
   deleteProjectsError,
+  addPeopleRequest,
+  addPeopleSuccess,
+  addPeopleError,
+  deletePeopleRequest,
+  deletePeopleSuccess,
+  deletePeopleError,
 } = actions;
 
 const getProjects = () => async dispatch => {
@@ -64,15 +70,15 @@ const editProjectName = (id, name) => async dispatch => {
   }
 };
 
-const addTeammate = (id, email) => async dispatch => {
-  dispatch(addTeammateRequest());
-  try {
-    const { data } = await axios.patch(`/projects/${id}/teammate`, { email });
-    dispatch(addTeammateSuccess(data));
-  } catch (error) {
-    dispatch(addTeammateError(error.message));
-  }
-};
+// const addTeammate = (id, email) => async dispatch => {
+//   dispatch(addTeammateRequest());
+//   try {
+//     const { data } = await axios.patch(`/projects/${id}/teammate`, { email });
+//     dispatch(addTeammateSuccess(data));
+//   } catch (error) {
+//     dispatch(addTeammateError(error.message));
+//   }
+// };
 
 const deleteProjects = () => async dispatch => {
   dispatch(deleteProjectsRequest());
@@ -84,6 +90,31 @@ const deleteProjects = () => async dispatch => {
   }
 };
 
+const addTeammate = (id, email) => async dispatch => {
+  dispatch(addPeopleRequest());
+  console.log('id', id);
+  console.log('email', email);
+  try {
+    const { data } = await axios.post(`/teammates/${id}`, { email });
+    console.log(data);
+    const teammates = data.data.teammates;
+    dispatch(addPeopleSuccess({ id, teammates }));
+  } catch (error) {
+    dispatch(addPeopleError(error.message));
+  }
+};
+
+const deletePerson = (id, idProject) => async dispatch => {
+  console.log(id, idProject);
+  dispatch(deletePeopleRequest());
+  try {
+    await axios.delete(`/teammates/${idProject}/${id}`);
+    dispatch(deletePeopleSuccess({ id, idProject }));
+  } catch (error) {
+    dispatch(deletePeopleError(error.message));
+  }
+};
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getProjects,
@@ -92,4 +123,5 @@ export default {
   editProjectName,
   addTeammate,
   deleteProjects,
+  deletePerson,
 };

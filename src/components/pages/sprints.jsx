@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { sprintsSelectors, sprintsOperations } from '../../redux/sprints';
-import { peopleOperations } from '../../redux/peopleAdd';
+// import { peopleOperations } from '../../redux/peopleAdd';
 import { projectsOperations, projectsSelectors } from '../../redux/projects';
 import СreatingSprint from '../СreatingSprint/СreatingSprint.js';
 import СreatingPeopleItem from '../AddPeopleItem/CreatingPeopleItem';
@@ -18,7 +18,7 @@ const Sprint = () => {
   const dispatch = useDispatch();
   const deleteSprint = id => dispatch(sprintsOperations.deleteSprint(id));
   const deleteTeammate = id =>
-    dispatch(peopleOperations.deletePerson(id, idProject));
+    dispatch(projectsOperations.deletePerson(id, idProject));
   const history = useHistory();
   const getState = history.location.state;
   const compareWithPathName = history.location.pathname.slice(10);
@@ -26,8 +26,10 @@ const Sprint = () => {
   const token = JSON.parse(getStorageData).token;
   const sprints = useSelector(sprintsSelectors.getSprints);
   const teammates = useSelector(projectsSelectors.getProjects);
+
   const projects = useSelector(projectsSelectors.getProjects);
   const teammatesBody = teammates.map(item => item);
+  console.log('teammatesBody', teammatesBody);
   const idProject = teammatesBody.flat().map(el => el._id)[0];
   console.log('idProject[0]', idProject);
   const projectId = history.location.state;
@@ -97,7 +99,7 @@ const Sprint = () => {
             teammates={teammates}
             del={deleteTeammate}
             onSave={toggleModal}
-            idTeammate={idProject}
+            ArrayTeammate={idProject}
           />
         </PeopleModal>
       )}
