@@ -2,11 +2,11 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { sprintsSelectors, sprintsOperations } from '../../redux/sprints';
+import { peopleOperations } from '../../redux/peopleAdd';
 import { projectsOperations, projectsSelectors } from '../../redux/projects';
 import СreatingSprint from '../СreatingSprint/СreatingSprint.js';
 import СreatingPeopleItem from '../AddPeopleItem/CreatingPeopleItem';
 import СreatingProject from '../СreatingProject';
-import peopleSelectors from '../../redux/peopleAdd/people-selectors';
 import SprintsItem from '../SprintsItem';
 import AddPeople from '../AddPeopleItem/PeopleItem';
 import PeopleModal from '../Modal/PeopleModal';
@@ -17,6 +17,8 @@ import s from './sprints.module.scss';
 const Sprint = () => {
   const dispatch = useDispatch();
   const deleteSprint = id => dispatch(sprintsOperations.deleteSprint(id));
+  const deleteTeammate = id =>
+    dispatch(peopleOperations.deletePerson(id, idProject));
 
   const history = useHistory();
   const getState = history.location.state;
@@ -25,9 +27,11 @@ const Sprint = () => {
   const token = JSON.parse(getStorageData).token;
 
   const sprints = useSelector(sprintsSelectors.getSprints);
-  const teammate = useSelector(peopleSelectors.getPeople);
+  const teammates = useSelector(projectsSelectors.getProjects);
   const projects = useSelector(projectsSelectors.getProjects);
-
+  const teammatesBody = teammates.map(item => item);
+  const idProject = teammatesBody.flat().map(el => el._id)[0];
+  console.log('idProject[0]', idProject);
   const projectId = history.location.state;
   const addSprints = id => history.push(`/projects/${projectId}/${id}`, id);
   const [showModal, setShowModal] = useState(false);
@@ -88,15 +92,15 @@ const Sprint = () => {
           <СreatingSprint onSave={toggleModal} prId={projectId} />
         </Modal>
       )}{' '}
-      <AddPeople
-        teammate={teammate}
-        // to={addSprints}
-        // del={deleteSprint}
-        toggleModal={togglePeopleModal}
-      />
+      <AddPeople toggleModal={togglePeopleModal} />
       {addPeopleModal && (
         <PeopleModal onClose={togglePeopleModal}>
-          <СreatingPeopleItem onSave={toggleModal} prId={projectId} />
+          <СreatingPeopleItem
+            teammates={teammates}
+            del={deleteTeammate}
+            onSave={toggleModal}
+            idTeammate={idProject}
+          />
         </PeopleModal>
       )}
     </div>
