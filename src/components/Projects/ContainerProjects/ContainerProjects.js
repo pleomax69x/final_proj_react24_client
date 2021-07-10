@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import s from './ContainerProjects.module.scss';
-import Container from '../Container';
+import Container from '../../Container';
 import { useDispatch, useSelector } from 'react-redux';
-import { authSelectors } from '../../redux/auth';
-import { projectsActions } from '../../redux/projects';
+import { authSelectors } from '../../../redux/auth';
+import { projectsActions } from '../../../redux/projects';
 
 export default function ContainerProjects({ onClick, children }) {
   const dispatch = useDispatch();

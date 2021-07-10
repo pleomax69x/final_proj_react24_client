@@ -1,12 +1,12 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { projectsOperations, projectsSelectors } from '../../redux/projects';
-import Modal from '../Modal';
-import СreatingProject from '../СreatingProject';
-import ProjectCard from '../ProjectCard/ProjectCard';
+import { projectsOperations, projectsSelectors } from '../redux/projects';
+import Modal from '../components/Modal';
+import СreatingProject from '../components/Projects/СreatingProject';
+import ProjectCard from '../components/Projects/ProjectCard';
 import { useHistory } from 'react-router';
-import ContainerProjects from '../ContainerProjects';
-import ProjectsDelete from '../ProjectsDelete';
+import ContainerProjects from '../components/Projects/ContainerProjects';
+import ProjectsDelete from '../components/Projects/ProjectsDelete';
 
 const Projects = () => {
   const dispatch = useDispatch();
@@ -29,7 +29,6 @@ const Projects = () => {
   useEffect(() => {
     dispatch(projectsOperations.getProjects());
   }, [dispatch]);
-  // console.log('history', history);
 
   useEffect(() => {
     !token && history.push('/register');

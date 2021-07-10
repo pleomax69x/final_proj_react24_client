@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Field, Form } from 'formik';
 import * as yup from 'yup';
-import { projectsOperations, projectsSelectors } from '../../redux/projects';
-import { errorSelectors } from '../../redux/error';
+import { projectsOperations, projectsSelectors } from '../../../redux/projects';
+import { errorSelectors } from '../../../redux/error';
 import s from './СreatingProject.module.scss';
 
 const schema = yup.object({

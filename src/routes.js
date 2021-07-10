@@ -10,9 +10,7 @@ const pathes = {
 };
 
 const ProjectsPage = lazy(() =>
-  import(
-    './components/pages/projects.jsx' /* webpackChunkName: "project-view"*/
-  ),
+  import('./pages/projects.js' /* webpackChunkName: "project-view"*/),
 );
 const SprintsPage = lazy(() =>
   import(
