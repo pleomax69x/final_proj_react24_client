@@ -1,5 +1,5 @@
 import styles from './ProjectCard.module.scss';
-import authSelectors from '../../redux/auth/auth-selectors';
+import authSelectors from '../../../redux/auth/auth-selectors';
 import { useSelector } from 'react-redux';
 
 const ProjectCard = ({ projects, to, del }) => {

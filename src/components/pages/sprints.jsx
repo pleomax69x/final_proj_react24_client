@@ -7,7 +7,9 @@ import { projectsOperations, projectsSelectors } from '../../redux/projects';
 import СreatingSprint from '../СreatingSprint/СreatingSprint.js';
 import NameInputEdit from '../NameInputEdit/NameInputEdit';
 import СreatingPeopleItem from '../AddPeopleItem/CreatingPeopleItem';
-import СreatingProject from '../СreatingProject';
+
+import СreatingProject from '../Projects/СreatingProject';
+
 import SprintsItem from '../SprintsItem';
 import AddPeople from '../AddPeopleItem/PeopleItem';
 import PeopleModal from '../Modal/PeopleModal';

@@ -18,8 +18,7 @@
 
 .registerForm {
   background: #fafafa;
-  padding-top: 47px;
-  padding-bottom: 79px;
+  padding: 47px 20px 79px 20px;
   box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
   border-radius: 5px;
   margin: 0 auto;
@@ -45,7 +44,7 @@
   @media screen and(max-width: 767px) {
     margin-bottom: 30px;
   }
-  @media screen and(max-width: 767px) {
+  @media screen and(min-width: 767px) {
     font-size: 36px;
   }
 }
@@ -54,13 +53,7 @@
   flex-direction: column;
   margin: 0 auto;
 }
-.formField {
-  position: relative;
-  @media screen and(max-width: 508px) {
-    margin-right: 20px;
-    margin-left: 20px;
-  }
-}
+
 .formLabel {
   position: absolute;
   font-family: Montserrat;

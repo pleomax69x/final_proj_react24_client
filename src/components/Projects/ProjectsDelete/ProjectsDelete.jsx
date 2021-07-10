@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { projectsOperations } from '../../redux/projects';
-import authSelectors from '../../redux/auth/auth-selectors';
-import Modal from '../Modal';
+import { projectsOperations } from '../../../redux/projects';
+import authSelectors from '../../../redux/auth/auth-selectors';
+import Modal from '../../Modal';
 import s from './ProjectsDelete.module.scss';
 
 const ProjectsDelete = ({ projects, delAll }) => {
