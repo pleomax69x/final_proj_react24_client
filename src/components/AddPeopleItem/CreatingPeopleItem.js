@@ -28,6 +28,7 @@ const createErrorMessage = error => {
 
 const СreatingPeopleItem = ({ teammates, del }) => {
   const dispatch = useDispatch();
+  // eslint-disable-next-line
   const [email, setEmail] = useState('');
   const errorFromState = useSelector(errorSelectors);
   let history = useHistory();

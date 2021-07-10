@@ -8,7 +8,7 @@ const SprintChart = ({ onClose, tasks, sprintDuration, sprintTitle }) => {
   var chart = null;
   useEffect(() => {
     const ctx = document.getElementById('BurndownChart');
-    const data = getChartData(tasks, sprintDuration);
+    const data = getChartData(tasks, sprintDuration); // eslint-disable-next-line
     chart = new Chart(ctx, {
       type: 'line',
       data: data,
