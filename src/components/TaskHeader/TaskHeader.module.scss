@@ -179,11 +179,45 @@
     right: 0;
   }
 }
+
+.search_form_button:hover {
+  opacity: 1;
+}
+
+.search_form_input {
+  width: 82px;
+  border: none;
+  box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
+  border-radius: 5px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: #181c27;
+  padding: 2px 0 2px 5px;
+  outline: none;
+  margin-left: 10px;
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    border-bottom: 1px solid rgba(24, 28, 39, 0.1);
+    width: 0;
+    background-color: transparent;
+  }
+  @media screen and (max-width: 767px) {
+    background: transparent;
+    box-shadow: none;
+    width: 265px;
+  }
+}
+
 .search_form_button {
   display: inline-block;
+  margin-left: 5px;
   width: 20px;
   height: 20px;
   border: 0;
+  pointer-events: none;
+  cursor: pointer;
   background: #e5e5e5;
   background-image: url('https://image.flaticon.com/icons/svg/149/149852.svg');
   background-repeat: no-repeat;
@@ -192,23 +226,4 @@
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   outline: none;
-}
-
-.search_form_button:hover {
-  opacity: 1;
-}
-
-.search_form_input {
-  display: inline-block;
-  width: 100%;
-  font: inherit;
-  font-size: 18px;
-  border: none;
-  outline: none;
-  padding-left: 4px;
-  padding-right: 4px;
-  background-color: transparent;
-  @media screen and (min-width: 768px) and (max-width: 1199px) {
-    border-bottom: 1px solid rgba(24, 28, 39, 0.1);
-  }
 }

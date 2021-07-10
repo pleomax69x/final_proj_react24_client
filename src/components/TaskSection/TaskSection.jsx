@@ -23,7 +23,7 @@ const TaskSection = ({
 
   const tasks = useSelector(tasksSelectors.getVisibleTasks);
   const sprints = useSelector(sprintsSelectors.getSprints);
-
+  console.log('tasks count', tasks.length);
   const [pagDate, setPagDate] = useState('');
   const [pagDateIndex, setPagDateIndex] = useState(0);
 
@@ -74,6 +74,7 @@ const TaskSection = ({
             filter={filter}
             onChange={onChange}
             editName={editName}
+            tasks={tasks}
           />
         </div>
 
