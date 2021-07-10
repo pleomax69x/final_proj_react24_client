@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Formik, Field, Form } from 'formik';
@@ -28,6 +28,7 @@ const createErrorMessage = error => {
 
 const СreatingPeopleItem = ({ teammates, del }) => {
   const dispatch = useDispatch();
+  // eslint-disable-next-line
   const [email, setEmail] = useState('');
   const errorFromState = useSelector(errorSelectors);
   let history = useHistory();
