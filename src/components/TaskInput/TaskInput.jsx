@@ -22,29 +22,30 @@ const HoursWasted = withStyles({
       paddingTop: '0px',
       paddingBottom: '0px',
     },
+    '& .MuiInputBase-input.MuiInput-input': {
+      textAlign: 'end',
+    },
     '& .MuiInputBase-root.Mui-error': {
       marginBottom: '0px',
       color: ' red',
     },
-    //xz
     '& label.Mui-focused': {
       color: '#181c2799',
     },
     '& .MuiInput-underline:after': {
       borderBottomColor: '#181c2799',
     },
-    // позиція помилки
     '& .MuiFormHelperText-root.Mui-error': {
       marginBottom: '0px',
       fontFamily: 'Montserrat',
       color: 'red',
       fontSize: '10px',
       position: 'absolute',
+      textAlign: 'right',
       top: '-18px',
-      right: '-24px',
+      right: '-10px',
       width: '140px',
     },
-    // число інпута
     '& > *': {
       width: ' 100%',
       fontFamily: 'Montserrat',
@@ -53,16 +54,20 @@ const HoursWasted = withStyles({
       lineHeight: '17px',
       outline: 'none',
     },
-    '@media screen and (max-width: 768px)': {
+    '@media screen and (min-width: 768px)': {
       '& .MuiFormHelperText-root.Mui-error': {},
-      '&.MuiInputBase-input': {
+      '& .MuiInputBase-input.MuiInput-input': {
         fontSize: '18px',
         lineHeight: '22px',
       },
     },
-    '@media screen and (max-width: 1200px)': {
+    '@media screen and (min-width: 1200px)': {
       '& .MuiFormHelperText-root.Mui-error': {
-        textAlign: 'right',
+        textAlign: 'center',
+        right: '-15px',
+      },
+      '& .MuiInputBase-input.MuiInput-input': {
+        textAlign: 'left',
       },
     },
   },
@@ -92,7 +97,7 @@ const TaskInput = ({ id, hoursPerDay, currDate }) => {
       return false;
     }
 
-    if (num.toString().length > 2) {
+    if (num > 24) {
       setNoValid('are you serious? 😠');
       return false;
     }
@@ -117,6 +122,7 @@ const TaskInput = ({ id, hoursPerDay, currDate }) => {
       margin="none"
       className={s.input}
       autoComplete="off"
+      defaultValue=" "
     />
   );
 };
