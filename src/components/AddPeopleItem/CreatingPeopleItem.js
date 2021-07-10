@@ -42,7 +42,10 @@ const СreatingPeopleItem = ({ teammates, del }) => {
         return;
     }
   };
-  const teammateEmail = Object.values(teammates.map(el => el.teammates));
+
+  const currentProject = teammates.filter(({ _id }) => _id === projectId);
+
+  const teammateEmail = Object.values(currentProject.map(el => el.teammates));
   const teammate = teammateEmail.flat().map(obj => obj.email);
   let errorMessage = errorFromState ? createErrorMessage(errorFromState) : null;
   const handleSubmit = ({ email }, { resetForm, setSubmitting }) => {
@@ -51,6 +54,8 @@ const СreatingPeopleItem = ({ teammates, del }) => {
     resetForm();
     reset();
   };
+
+  console.log(currentProject);
 
   const reset = () => {
     setEmail('');
