@@ -55,8 +55,6 @@ const СreatingPeopleItem = ({ teammates, del }) => {
     reset();
   };
 
-  console.log(currentProject);
-
   const reset = () => {
     setEmail('');
   };
