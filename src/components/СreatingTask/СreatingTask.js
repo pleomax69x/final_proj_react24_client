@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Field, Form } from 'formik';
 import * as yup from 'yup';
-import { tasksOperations, tasksSelectors } from '../../redux/tasks';
+import { tasksOperations } from '../../redux/tasks';
 import { errorSelectors } from '../../redux/error';
 import s from './СreatingTask.module.scss';
 
@@ -28,8 +28,9 @@ const СreatingTask = ({ onSave, sprintId }) => {
   const dispatch = useDispatch();
   // const tasks = useSelector(tasksSelectors.getTasks);
   const errorFromState = useSelector(errorSelectors);
-
+  // eslint-disable-next-line
   const [name, setName] = useState('');
+  // eslint-disable-next-line
   const [hours, setHours] = useState('');
 
   const handleValueChange = e => {
