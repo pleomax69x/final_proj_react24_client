@@ -85,7 +85,7 @@ const RegisterForm = ({ validationSchema, createErrorMessage }) => {
                 labelStyle={s.formLabel}
                 labelValue="Password"
                 touched={touched.password}
-                messagemessage={errors.password}
+                message={errors.password}
               />
               <Input
                 type="password"
