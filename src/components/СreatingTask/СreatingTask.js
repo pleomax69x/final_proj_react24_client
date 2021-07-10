@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Field, Form } from 'formik';
 import * as yup from 'yup';
-import { tasksOperations, tasksSelectors } from '../../redux/tasks';
+import { tasksOperations } from '../../redux/tasks';
 import { errorSelectors } from '../../redux/error';
 import s from './СreatingTask.module.scss';
 

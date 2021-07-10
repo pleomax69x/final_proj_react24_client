@@ -13,10 +13,9 @@ const validationSchema = Yup.object().shape({
       /[A-Z]\w+/,
       'Only Latin letters are allowed. At list one Uppercase is required.',
     ),
-  confirmPassword: Yup.string().oneOf(
-    [Yup.ref('password'), null],
-    'Passwords do not match',
-  ),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password'), null], 'Passwords do not match')
+    .required('Please repeat your password.'),
 });
 
 const createErrorMessage = error => {
