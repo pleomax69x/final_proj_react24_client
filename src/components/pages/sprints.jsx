@@ -35,7 +35,8 @@ const Sprint = () => {
   const projects = useSelector(projectsSelectors.getProjects);
   const teammatesBody = teammates.map(item => item);
   console.log('teammatesBody', teammatesBody);
-  const idProject = teammatesBody.flat().map(el => el._id)[0];
+  const idProject = history.location.state;
+  // teammatesBody.flat().map(el => el._id);
   console.log('idProject[0]', idProject);
   const projectId = history.location.state;
   const currentProject = projects.find(project => project._id === projectId);
