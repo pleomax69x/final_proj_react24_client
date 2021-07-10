@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Form } from 'formik';
-import Input from './Input';
+import Input from './loginInput/Input';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../../redux/auth/';
@@ -12,7 +12,7 @@ const LoginForm = ({ errorMessage, schema }) => {
   const dispatch = useDispatch();
   // eslint-disable-next-line
   const [email, setEmail] = useState('');
-  // eslint-disable-next-line
+  // // eslint-disable-next-line
   const [password, setPassword] = useState('');
 
   const handleSubmit = ({ email, password }, { resetForm, setSubmitting }) => {

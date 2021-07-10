@@ -32,9 +32,8 @@ const СreatingSprint = ({ onSave, prId }) => {
   const sprints = useSelector(sprintsSelectors.getSprints);
 
   const errorFromState = useSelector(errorSelectors);
-  // eslint-disable-next-line
+
   const [name, setName] = useState('');
-  // eslint-disable-next-line
   const [number, setNumber] = useState('');
 
   const [data, setDate] = useState('');

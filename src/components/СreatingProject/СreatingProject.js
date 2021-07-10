@@ -24,9 +24,7 @@ const createErrorMessage = error => {
 };
 
 const СreatingProject = ({ onSave }) => {
-  // eslint-disable-next-line
   const [name, setName] = useState('');
-  // eslint-disable-next-line
   const [desc, setDesc] = useState('');
 
   const handleChange = e => {

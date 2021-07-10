@@ -28,9 +28,8 @@ const СreatingTask = ({ onSave, sprintId }) => {
   const dispatch = useDispatch();
   // const tasks = useSelector(tasksSelectors.getTasks);
   const errorFromState = useSelector(errorSelectors);
-  // eslint-disable-next-line
+
   const [name, setName] = useState('');
-  // eslint-disable-next-line
   const [hours, setHours] = useState('');
 
   const handleValueChange = e => {

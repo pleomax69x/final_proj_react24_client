@@ -26,7 +26,9 @@ const LogInPage = lazy(() =>
   import('./pages/loginPage.js' /* webpackChunkName: "logIn-view"*/),
 );
 const RegisterPage = lazy(() =>
-  import('./pages/registerPage.js' /* webpackChunkName: "register-view"*/),
+  import(
+    './components/pages/register.jsx' /* webpackChunkName: "register-view"*/
+  ),
 );
 
 const routes = [
