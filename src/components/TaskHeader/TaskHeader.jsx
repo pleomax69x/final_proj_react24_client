@@ -7,15 +7,11 @@ const TaskHeader = ({
   filter,
   onChange,
   editName,
+  tasks,
 }) => {
-  console.log(currSprint);
   return (
     <div className={s.wrapper_all}>
       <div className={s.wrapper_wr}>
-        {/* <div className={s.wrapper_tasks}>
-          <h1 className={s.sprint_name}>{currSprint?.title}</h1>
-          <button className={s.edit_sprint_name_button}></button>
-        </div> */}
         <NameInputEdit currItemName={currSprint?.title} editName={editName} />
         <div className={s.wrap_tasks}>
           <button onClick={toggleModal} className={s.add_task_button}></button>
@@ -37,18 +33,19 @@ const TaskHeader = ({
             <p className={s.table_title}>Hours spent</p>
           </li>
         </ul>
-        <form className={s.search_form} onSubmit={1}>
-          <input
-            className={s.search_form_input}
-            type="text"
-            name="filter"
-            placeholder=""
-            value={filter}
-            onChange={onChange}
-            // name="name"
-          />
-          <button type="submit" className={s.search_form_button}></button>
-        </form>
+        {tasks.length >= 5 || filter.length > 0 ? (
+          <form className={s.search_form} onSubmit={1}>
+            <input
+              className={s.search_form_input}
+              type="text"
+              name="filter"
+              placeholder=""
+              value={filter}
+              onChange={onChange}
+            />
+            <button type="submit" className={s.search_form_button}></button>
+          </form>
+        ) : null}
       </div>
     </div>
   );
