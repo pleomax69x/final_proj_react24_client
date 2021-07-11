@@ -16,6 +16,7 @@ import SprintsDelete from './SprintsDelete/SprintsDelete';
 import Modal from '../Modal';
 import Sidebar from '../Sidebar';
 import s from './sprints.module.scss';
+import Container from '../Container';
 
 const Sprint = ({ toggleModal, showModal, deleteSprint, deleteSprints }) => {
   const dispatch = useDispatch();
@@ -64,57 +65,59 @@ const Sprint = ({ toggleModal, showModal, deleteSprint, deleteSprints }) => {
   const transitiontoProject = id => history.push(`/projects/${id}`, id);
 
   return (
-    <div className={s.project_wrapper}>
-      <Sidebar
-        projectId={projectId}
-        data={projects}
-        link={`/projects`}
-        transition={transitiontoProject}
-        type="project"
-        Creating={СreatingProject}
-        activeItemId={projectId}
-      />
-      <div className={s.sprints}>
-        <div className={s.sprints_btn}>
-          <NameInputEdit
-            currItemName={currentProject?.name}
-            editName={editName}
-          />
+    <Container>
+      <div className={s.project_wrapper}>
+        <Sidebar
+          projectId={projectId}
+          data={projects}
+          link={`/projects`}
+          transition={transitiontoProject}
+          type="project"
+          Creating={СreatingProject}
+          activeItemId={projectId}
+        />
+        <div className={s.sprints}>
+          <div className={s.sprints_btn}>
+            <NameInputEdit
+              currItemName={currentProject?.name}
+              editName={editName}
+            />
 
-          <label className={s.btnWrapper}>
-            <button
-              className={s.btn}
-              type="button"
-              onClick={toggleModal}
-            ></button>
-            <p className={s.text}>Create a sprint</p>
-          </label>
-          <AddPeople toggleModal={togglePeopleModal} />
+            <label className={s.btnWrapper}>
+              <button
+                className={s.btn}
+                type="button"
+                onClick={toggleModal}
+              ></button>
+              <p className={s.text}>Create a sprint</p>
+            </label>
+            <AddPeople toggleModal={togglePeopleModal} />
+          </div>
+
+          <SprintsItem sprints={sprints} to={addSprints} del={deleteSprint} />
         </div>
-
-        <SprintsItem sprints={sprints} to={addSprints} del={deleteSprint} />
+        {showModal && (
+          <Modal onClose={toggleModal}>
+            <СreatingSprint onSave={toggleModal} prId={projectId} />
+          </Modal>
+        )}
+        {addPeopleModal && (
+          <PeopleModal onClose={togglePeopleModal}>
+            <СreatingPeopleItem
+              teammates={teammates}
+              del={deleteTeammate}
+              onSave={toggleModal}
+              ArrayTeammate={idProject}
+            />
+          </PeopleModal>
+        )}
+        <SprintsDelete
+          sprints={sprints}
+          delAll={deleteSprints}
+          prId={projectId}
+        />
       </div>
-      {showModal && (
-        <Modal onClose={toggleModal}>
-          <СreatingSprint onSave={toggleModal} prId={projectId} />
-        </Modal>
-      )}
-      {addPeopleModal && (
-        <PeopleModal onClose={togglePeopleModal}>
-          <СreatingPeopleItem
-            teammates={teammates}
-            del={deleteTeammate}
-            onSave={toggleModal}
-            ArrayTeammate={idProject}
-          />
-        </PeopleModal>
-      )}
-      <SprintsDelete
-        sprints={sprints}
-        delAll={deleteSprints}
-        prId={projectId}
-      />
-    </div>
+    </Container>
   );
 };
 

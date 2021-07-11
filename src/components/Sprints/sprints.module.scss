@@ -1,21 +1,20 @@
 .project_wrapper {
   display: flex;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin: auto;
-  max-width: 320px;
+
   @media screen and (min-width: 320px) and (max-width: 767px) {
     flex-direction: column;
   }
-  @media screen and (min-width: 767px) and (max-width: 1199px) {
-    max-width: 720px;
-  }
-  @media screen and (min-width: 1200px) {
-    max-width: 1200px;
-  }
 }
+
 .sprints {
   width: 100%;
+
+  @media screen and (min-width: 767px) and (max-width: 1199px) {
+    padding-left: 20px;
+  }
+  @media screen and (min-width: 1200px) {
+    padding-left: 70px;
+  }
 }
 
 .sprints_btn {
@@ -32,17 +31,16 @@
   line-height: 1.22;
   cursor: pointer;
   z-index: 5;
-  // @media screen and (min-width: 320px) and (max-width: 767px) {
-  // }
-  @media screen and (min-width: 767px) and (max-width: 1023px) {
-    position: absolute;
-    top: 30px;
-    right: 40px;
-  }
-  @media screen and (min-width: 1024px) {
-    position: absolute;
-    top: 30px;
 
+  @media screen and (min-width: 767px) and (max-width: 1199px) {
+    position: absolute;
+    top: 40px;
+    right: 0px;
+  }
+  @media screen and (min-width: 1200px) {
+    position: absolute;
+    top: 40px;
+    right: 40px;
     display: flex;
     height: fit-content;
     align-items: center;
@@ -105,18 +103,13 @@
   color: #181c27;
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
-  .project_wrapper {
-    max-width: 320px;
-  }
+  // .project_wrapper {
+  //   max-width: 320px;
+  // }
 
   .project_create {
     top: 56px;
     left: 160px;
-  }
-}
-@media screen and (min-width: 768px) {
-  .sprints {
-    padding-left: 20px;
   }
 }
 
