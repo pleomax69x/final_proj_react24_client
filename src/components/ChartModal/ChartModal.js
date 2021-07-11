@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import SprintChart from '../SprintChart/SprintChart';
+import SprintChart from '../Sprints/SprintChart/SprintChart';
 import s from './ChartModal.module.scss';
 
 const modalRoot = document.querySelector('#modal-root');

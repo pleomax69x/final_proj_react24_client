@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import authSelectors from '../../redux/auth/auth-selectors';
-import { sprintsOperations } from '../../redux/sprints';
-import Modal from '../Modal';
+import authSelectors from '../../../redux/auth/auth-selectors';
+import { sprintsOperations } from '../../../redux/sprints';
+import Modal from '../../Modal';
 import s from './SprintsDelete.module.scss';
 
 const SprintsDelete = ({ sprints, delAll, prId }) => {

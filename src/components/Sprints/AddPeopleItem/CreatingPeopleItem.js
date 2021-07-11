@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Formik, Field, Form } from 'formik';
 import * as yup from 'yup';
-import { errorSelectors } from '../../redux/error';
+import { errorSelectors } from '../../../redux/error';
 import s from '../СreatingSprint/СreatingSprint.module.scss';
 import PeopleList from './PeopleList.jsx';
 
-import operations from '../../redux/projects/projects-operations';
+import operations from '../../../redux/projects/projects-operations';
+
 const { addTeammate } = operations;
 const schema = yup.object({
   email: yup

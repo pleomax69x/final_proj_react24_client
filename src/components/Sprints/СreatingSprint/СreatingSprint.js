@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Field, Form } from 'formik';
 import * as yup from 'yup';
-import { sprintsOperations, sprintsSelectors } from '../../redux/sprints';
-import { errorSelectors } from '../../redux/error';
-import currentDate from '../../helpers/currentDate';
-import sprintData from '../../helpers/sprintData';
+import { sprintsOperations, sprintsSelectors } from '../../../redux/sprints';
+import { errorSelectors } from '../../../redux/error';
+import currentDate from '../../../helpers/currentDate';
+import sprintData from '../../../helpers/sprintData';
 import s from './СreatingSprint.module.scss';
 
 const schema = yup.object({

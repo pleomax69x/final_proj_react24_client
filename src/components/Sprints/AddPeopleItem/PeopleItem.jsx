@@ -1,4 +1,4 @@
-import s from '../pages/sprints.module.scss';
+import s from '../sprints.module.scss';
 const AddPeople = ({ toggleModal }) => {
   return (
     <label className={s.btnWrapper_add}>
