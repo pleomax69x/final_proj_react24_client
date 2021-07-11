@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
-import { sprintsSelectors } from '../../redux/sprints';
-import currentDate from '../../helpers/currentDate';
+import { sprintsSelectors } from '../../../redux/sprints';
+import currentDate from '../../../helpers/currentDate';
 import s from './TaskPagination.module.scss';
 
 const TaskPagination = ({ sprintId, pagDate, pagIndex }) => {

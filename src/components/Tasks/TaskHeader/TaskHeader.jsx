@@ -1,4 +1,4 @@
-import NameInputEdit from '../Sprints/NameInputEdit/NameInputEdit';
+import NameInputEdit from '../../Sprints/NameInputEdit/NameInputEdit';
 import s from './TaskHeader.module.scss';
 
 const TaskHeader = ({
@@ -34,7 +34,7 @@ const TaskHeader = ({
           </li>
         </ul>
         {tasks.length >= 5 || filter.length > 0 ? (
-          <form className={s.search_form} onSubmit={1}>
+          <form className={s.search_form}>
             <input
               className={s.search_form_input}
               type="text"

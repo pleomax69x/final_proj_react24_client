@@ -16,7 +16,7 @@ const SprintsPage = lazy(() =>
   import('./pages/sprintsPage.js' /* webpackChunkName: "sprints-view"*/),
 );
 const TasksPage = lazy(() =>
-  import('./components/pages/tasks.jsx' /* webpackChunkName: "tasks-view"*/),
+  import('./pages/tasksPage.js' /* webpackChunkName: "tasks-view"*/),
 );
 const LogInPage = lazy(() =>
   import('./pages/loginPage.js' /* webpackChunkName: "logIn-view"*/),

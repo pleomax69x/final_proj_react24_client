@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { tasksOperations } from '../../redux/tasks';
+import { tasksOperations } from '../../../redux/tasks';
 
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -122,7 +122,7 @@ const TaskInput = ({ id, hoursPerDay, currDate }) => {
       margin="none"
       className={s.input}
       autoComplete="off"
-      defaultValue=" "
+      // defaultValue=" "
     />
   );
 };

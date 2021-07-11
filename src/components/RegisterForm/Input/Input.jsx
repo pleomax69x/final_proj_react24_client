@@ -1,5 +1,5 @@
 import style from './Input.module.scss';
-import Error from '../../pages/Error';
+import Error from '../../Error/Error';
 
 const Input = ({
   type,
