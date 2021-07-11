@@ -1,27 +1,31 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useCallback, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { sprintsOperations, sprintsSelectors } from '../../redux/sprints/';
-import { tasksOperations, tasksSelectors } from '../../redux/tasks';
+import { sprintsOperations } from '../../redux/sprints';
+import { tasksOperations } from '../../redux/tasks';
 import Container from '../Container/Container';
-import TaskSection from '../TaskSection';
-import СreatingTask from '../СreatingTask';
+import TaskSection from './TaskSection';
+import СreatingTask from './СreatingTask';
 import Sidebar from '../Sidebar/Sidebar';
 import СreatingSprint from '../Sprints/СreatingSprint';
 import Modal from '../Modal';
 import ChartModal from '../ChartModal';
 import s from './tasks.module.scss';
 
-const Tasks = () => {
+const Tasks = ({
+  tasks,
+  sprints,
+  filter,
+  showModal,
+  toggleModal,
+  showChartModal,
+  toggleChartModal,
+}) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const sprintId = history.location.state;
   const projectId = history.location.pathname.slice(10, 34);
-
-  const tasks = useSelector(tasksSelectors.getVisibleTasks);
-  const sprints = useSelector(sprintsSelectors.getSprints);
-  const filter = useSelector(tasksSelectors.getFilter);
 
   const deleteTask = id => dispatch(tasksOperations.deleteTask(id));
 
@@ -37,16 +41,6 @@ const Tasks = () => {
     () => dispatch(sprintsOperations.getSprints(projectId)),
     [dispatch, projectId],
   );
-
-  const [showModal, setShowModal] = useState(false);
-  const toggleModal = useCallback(() => {
-    setShowModal(prevShowModal => !prevShowModal);
-  }, []);
-
-  const [showChartModal, setShowChartModal] = useState(false);
-  const toggleChartModal = useCallback(() => {
-    setShowChartModal(prevShowModal => !prevShowModal);
-  }, []);
 
   const currSprint = sprints.find(item => item._id === sprintId);
 
@@ -98,21 +92,3 @@ const Tasks = () => {
   );
 };
 export default Tasks;
-
-// const [pagDate, setPagDate] = useState('');
-// const [pagDateIndex, setPagDateIndex] = useState(0);
-
-// const onChange = useCallback(
-//   e => {
-//     dispatch(tasksActions.changeFilter(e.target.value));
-//   },
-//   [dispatch],
-// );
-
-// const updatePagDate = value => {
-//   setPagDate(value);
-// };
-
-// const updatePagDateIndex = value => {
-//   setPagDateIndex(value);
-// };

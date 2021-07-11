@@ -1,9 +1,9 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { sprintsOperations, sprintsSelectors } from '../../redux/sprints/';
-import { tasksSelectors } from '../../redux/tasks';
-import { tasksActions } from '../../redux/tasks';
+import { sprintsOperations, sprintsSelectors } from '../../../redux/sprints/';
+import { tasksSelectors } from '../../../redux/tasks';
+import { tasksActions } from '../../../redux/tasks';
 import TaskHeader from '../TaskHeader';
 import TaskItem from '../TaskItem/TaskItem';
 import TaskPagination from '../TaskPagination';
