@@ -2,26 +2,24 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { sprintsSelectors, sprintsOperations } from '../../redux/sprints';
-// import { peopleOperations } from '../../redux/peopleAdd';
 import { projectsOperations, projectsSelectors } from '../../redux/projects';
-import СreatingSprint from '../СreatingSprint/СreatingSprint.js';
-import NameInputEdit from '../NameInputEdit/NameInputEdit';
-import СreatingPeopleItem from '../AddPeopleItem/CreatingPeopleItem';
+import СreatingSprint from './СreatingSprint/СreatingSprint.js';
+import NameInputEdit from './NameInputEdit/NameInputEdit';
+import СreatingPeopleItem from './AddPeopleItem/CreatingPeopleItem';
 
 import СreatingProject from '../Projects/СreatingProject';
 
-import SprintsItem from '../SprintsItem';
-import AddPeople from '../AddPeopleItem/PeopleItem';
+import SprintsItem from './SprintsItem';
+import AddPeople from './AddPeopleItem/PeopleItem';
 import PeopleModal from '../Modal/PeopleModal';
-import SprintsDelete from '../SprintsDelete';
+import SprintsDelete from './SprintsDelete/SprintsDelete';
 import Modal from '../Modal';
 import Sidebar from '../Sidebar';
 import s from './sprints.module.scss';
 
-const Sprint = () => {
+const Sprint = ({ toggleModal, showModal, deleteSprint, deleteSprints }) => {
   const dispatch = useDispatch();
-  const deleteSprint = id => dispatch(sprintsOperations.deleteSprint(id));
-  const deleteSprints = id => dispatch(sprintsOperations.deleteSprint(id));
+
   const deleteTeammate = id =>
     dispatch(projectsOperations.deletePerson(id, idProject));
   const history = useHistory();
@@ -33,18 +31,14 @@ const Sprint = () => {
   const teammates = useSelector(projectsSelectors.getProjects);
 
   const projects = useSelector(projectsSelectors.getProjects);
-  const teammatesBody = teammates.map(item => item);
-  console.log('teammatesBody', teammatesBody);
   const idProject = history.location.state;
-  console.log('idProject[0]', idProject);
+
   const projectId = history.location.state;
   const currentProject = projects.find(project => project._id === projectId);
   const addSprints = id => history.push(`/projects/${projectId}/${id}`, id);
-  const [showModal, setShowModal] = useState(false);
+
   const [addPeopleModal, setAddPeopleModal] = useState(false);
-  const toggleModal = useCallback(() => {
-    setShowModal(prevShowModal => !prevShowModal);
-  }, []);
+
   const editName = inputProjectName =>
     dispatch(
       projectsOperations.editProjectName(currentProject?._id, inputProjectName),

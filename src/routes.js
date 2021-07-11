@@ -10,12 +10,10 @@ const pathes = {
 };
 
 const ProjectsPage = lazy(() =>
-  import('./pages/projects.js' /* webpackChunkName: "project-view"*/),
+  import('./pages/projectsPage.js' /* webpackChunkName: "project-view"*/),
 );
 const SprintsPage = lazy(() =>
-  import(
-    './components/pages/sprints.jsx' /* webpackChunkName: "sprints-view"*/
-  ),
+  import('./pages/sprintsPage.js' /* webpackChunkName: "sprints-view"*/),
 );
 const TasksPage = lazy(() =>
   import('./components/pages/tasks.jsx' /* webpackChunkName: "tasks-view"*/),

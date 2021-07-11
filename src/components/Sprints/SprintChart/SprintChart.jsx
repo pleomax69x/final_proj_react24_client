@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Chart from 'chart.js/auto';
-import { getChartOptions, getChartData } from '../../helpers/chart/utils';
+import { getChartOptions, getChartData } from '../../../helpers/chart/utils';
 
 // var ctx = document.getElementById('myChart');
 
