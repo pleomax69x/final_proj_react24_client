@@ -9,15 +9,16 @@
     margin-bottom: 20px;
   }
 }
-// .pageWrapper {
-//   display: flex;
-//   @media screen and (max-width: 767px) {
-//     flex-direction: column;
-//   }
-// }
+.pageWrapper {
+  width: 100%;
+  @media screen and (min-width: 767px) {
+    border-left: 1px solid rgba(24, 28, 39, 0.1);
+  }
+}
 
 .contentWrapper {
   position: relative;
+  width: 100%;
   @media screen and (min-width: 768px) and (max-width: 1199px) {
     padding-left: 20px;
   }

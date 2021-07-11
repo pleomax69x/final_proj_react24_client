@@ -3,7 +3,6 @@
   padding-bottom: 20px;
   @media screen and (min-width: 767px) {
     flex-direction: column;
-    border-right: 1px solid rgba(24, 28, 39, 0.1);
     height: 90vh;
     position: relative;
     height: 100%;
@@ -45,15 +44,6 @@
   }
 }
 
-// .list {
-//   display: flex;
-//   flex-direction: column;
-//   height: 70vh;
-//   justify-content: center;
-//   @media screen and (min-width: 320px) and (max-width: 767px) {
-//     display: none;
-//   }
-// }
 .list {
   display: flex;
   margin-top: 80px;
@@ -73,7 +63,7 @@
     height: 0; /* высота для горизонтального скролла */
     background-color: transparent;
   }
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @media screen and (max-width: 767px) {
     display: none;
   }
 }
