@@ -57,7 +57,7 @@ const TaskSection = ({
   }, [getTasks]);
 
   return (
-    <div>
+    <div className={s.pageWrapper}>
       <div className={s.contentWrapper}>
         <div style={{ position: 'relative' }}>
           {tasks.length > 0 ? (

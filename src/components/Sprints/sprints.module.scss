@@ -11,9 +11,11 @@
 
   @media screen and (min-width: 767px) and (max-width: 1199px) {
     padding-left: 20px;
+    border-left: 1px solid rgba(24, 28, 39, 0.1);
   }
   @media screen and (min-width: 1200px) {
     padding-left: 70px;
+    border-left: 1px solid rgba(24, 28, 39, 0.1);
   }
 }
 
@@ -103,10 +105,6 @@
   color: #181c27;
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
-  // .project_wrapper {
-  //   max-width: 320px;
-  // }
-
   .project_create {
     top: 56px;
     left: 160px;
