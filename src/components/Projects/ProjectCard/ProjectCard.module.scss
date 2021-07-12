@@ -1,0 +1,330 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.card {
+  width: 136px;
+  height: 136px;
+
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+  position: relative;
+  transition: box-shadow ease 500ms;
+  &:nth-child(4n + 1) .cart {
+    background-color: #8c72df;
+  }
+  &:nth-child(4n + 2) .cart {
+    background-color: #ff765f;
+  }
+  &:nth-child(4n + 3) .cart {
+    background-color: #71df87;
+  }
+  &:nth-child(4n + 4) .cart {
+    background-color: #f78335;
+  }
+  &:nth-child(4n + 5) .cart {
+    background-color: #f3be2e;
+  }
+  &:nth-child(4n + 6) .cart {
+    background-color: #e46cde;
+  }
+  &:nth-child(4n + 7) .cart {
+    background-color: #4394f1;
+  }
+  &:nth-child(4n + 8) .cart {
+    background-color: #d45535;
+  }
+  &:hover .descr {
+    display: block;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 1.2;
+    color: #ffffff;
+    @media screen and (min-width: 767px) {
+      font-size: 14px;
+      line-height: 1.21;
+      letter-spacing: 0.04em;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 20px;
+    &:not(:nth-child(2n)) {
+      margin-right: 17px;
+    }
+  }
+  @media screen and (min-width: 767px) and (max-width: 1199px) {
+    width: 216px;
+    height: 216px;
+    &:not(:nth-child(3n)) {
+      margin-right: 20px;
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    width: 270px;
+    height: 270px;
+    &:not(:nth-child(4n)) {
+      margin-right: 30px;
+    }
+  }
+
+  &:nth-child(4n + 1) {
+    background-color: #8c72df;
+    &:hover,
+    :focus {
+      border: none;
+      outline: none;
+      box-shadow: 1px 6px 10px #8c72df;
+    }
+    &::before {
+      content: none;
+      @media screen and (min-width: 1200px) {
+        content: url(../../../img/projectsPage/task-1.png);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+
+      @media screen and (min-width: 767px) and (max-width: 1199px) {
+        content: url(../../../img/projectsPage/task-1-768.png);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+    }
+  }
+  &:nth-child(4n + 2) {
+    background-color: #ff765f;
+    &:hover,
+    :focus {
+      outline: none;
+      box-shadow: 1px 6px 10px #ff765f;
+    }
+    &::before {
+      content: none;
+      @media screen and (min-width: 1200px) {
+        content: url(../../../img/projectsPage/task-2.png);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+      @media screen and (min-width: 767px) and (max-width: 1199px) {
+        content: url(../../../img/projectsPage/task-2-768.png);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+    }
+  }
+
+  &:nth-child(4n + 3) {
+    background-color: #71df87;
+    &:hover,
+    :focus {
+      outline: none;
+      box-shadow: 1px 6px 10px #71df87;
+    }
+    &::before {
+      content: none;
+      @media screen and (min-width: 1200px) {
+        content: url(../../../img/projectsPage/task-3.png);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+      @media screen and (min-width: 767px) and (max-width: 1199px) {
+        content: url(../../../img/projectsPage/task-3-768.png);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+    }
+  }
+
+  &:nth-child(4n + 4) {
+    background-color: #f78335;
+    &:hover,
+    :focus {
+      outline: none;
+      box-shadow: 1px 6px 10px #f78335;
+    }
+    &::before {
+      content: none;
+      @media screen and (min-width: 1200px) {
+        content: url(../../../img/projectsPage/task-4.png);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+      @media screen and (min-width: 767px) and (max-width: 1199px) {
+        content: url(../../../img/projectsPage/task-4-768.png);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+    }
+  }
+  &:nth-child(4n + 5) {
+    background-color: #f3be2e;
+    &:hover,
+    :focus {
+      outline: none;
+      box-shadow: 1px 6px 10px #f3be2e;
+    }
+    &::before {
+      content: none;
+      @media screen and (min-width: 1200px) {
+        content: url(../../../img/projectsPage/task-4.png);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+      @media screen and (min-width: 767px) and (max-width: 1199px) {
+        content: url(../../../img/projectsPage/task-4-768.png);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+    }
+  }
+  &:nth-child(4n + 6) {
+    background-color: #e46cde;
+    &:hover,
+    :focus {
+      outline: none;
+      box-shadow: 1px 6px 10px #e46cde;
+    }
+    &::before {
+      content: none;
+      @media screen and (min-width: 1200px) {
+        content: url(../../../img/projectsPage/task-4.png);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+      @media screen and (min-width: 767px) and (max-width: 1199px) {
+        content: url(../../../img/projectsPage/task-4-768.png);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+    }
+  }
+  &:nth-child(4n + 7) {
+    background-color: #4394f1;
+    &:hover,
+    :focus {
+      outline: none;
+      box-shadow: 1px 6px 10px #4394f1;
+    }
+    &::before {
+      content: none;
+      @media screen and (min-width: 1200px) {
+        content: url(../../../img/projectsPage/task-4.png);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+      @media screen and (min-width: 767px) and (max-width: 1199px) {
+        content: url(../../../img/projectsPage/task-4-768.png);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+    }
+  }
+  &:nth-child(4n + 8) {
+    background-color: #d45535;
+    &:hover,
+    :focus {
+      outline: none;
+      box-shadow: 1px 6px 10px #d45535;
+    }
+    &::before {
+      content: none;
+      @media screen and (min-width: 1200px) {
+        content: url(../../../img/projectsPage/task-4.png);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+      @media screen and (min-width: 767px) and (max-width: 1199px) {
+        content: url(../../../img/projectsPage/task-4-768.png);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+    }
+  }
+}
+
+.title {
+  margin-bottom: 20px;
+  font-family: Montserrat;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  word-wrap: break-word;
+  @media screen and (min-width: 767px) {
+    font-size: 26px;
+    line-height: 1.17;
+  }
+  @media screen and (min-width: 1200px) {
+    font-size: 26px;
+    line-height: 1.23;
+  }
+}
+
+.link {
+  padding: 20px;
+  text-align: center;
+  width: 136px;
+  height: 136px;
+  position: absolute;
+  cursor: pointer;
+
+  @media screen and (min-width: 767px) and (max-width: 1199px) {
+    width: 216px;
+    height: 216px;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 270px;
+    height: 270px;
+  }
+}
+
+.descr {
+  display: none;
+}
+
+.cart {
+  background-image: url(../../../img/projectsPage/cart.svg);
+  cursor: pointer;
+  z-index: 3;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 30px;
+  width: 30px;
+  border: none;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  outline: none;
+  border-radius: 50%;
+  transition: all 250ms linear;
+  &:hover,
+  :focus {
+    transform: scale(0.9);
+    box-shadow: 0px 0px 25px #ffffff;
+  }
+  @media screen and (min-width: 767px) {
+    width: 34px;
+    height: 34px;
+  }
+}

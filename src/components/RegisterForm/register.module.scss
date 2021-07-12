@@ -1,38 +1,31 @@
 .wrapper {
   background-repeat: no-repeat;
   background-size: contain;
+  margin-top: 6px;
   @media screen and (min-width: 768px) and (max-width: 1199px) {
-    margin-top: 15px;
-    padding-top: 114px;
-    padding-bottom: 680px;
+    padding-top: 50px;
+    padding-bottom: 380px;
+
     background-image: url(../../img/loginPage/bg-tablet.png);
   }
   @media screen and (min-width: 1200px) {
-    padding-top: 90px;
-    padding-bottom: 600px;
+    background-size: cover;
+    padding-top: 50px;
+    padding-bottom: 140px;
     background-image: url(../../img/loginPage/bg.png);
   }
 }
 
 .registerForm {
   background: #fafafa;
-  padding-bottom: 79px;
+  padding: 47px 20px 79px 20px;
   box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
   border-radius: 5px;
-  margin-left: auto;
-  margin-right: auto;
-  @media screen and(max-width: 508px) {
-    width: 508px;
-    padding-top: 47px;
-  }
-  @media screen and (min-width: 509px) {
-    margin-right: auto;
-    margin-left: auto;
+  margin: 0 auto;
+  width: 320px;
+  @media screen and (min-width: 768px) {
+    padding: 62px 70px;
     width: 570px;
-    height: 538px;
-    padding-top: 47px;
-    padding-left: 70px;
-    padding-right: 70px;
   }
 }
 
@@ -46,35 +39,19 @@
   text-align: center;
   color: #181c27;
   justify-content: center;
+  font-size: 26px;
 
-  @media screen and(max-width: 508px) {
-    font-size: 26px;
+  @media screen and(max-width: 767px) {
     margin-bottom: 30px;
   }
-  font-size: 36px;
+  @media screen and(min-width: 767px) {
+    font-size: 36px;
+  }
 }
 .formGroup {
   display: flex;
   flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-
-  @media screen and(max-width: 508px) {
-    width: 508px;
-  }
-  @media screen and(min-width: 768px) {
-    width: 768px;
-  }
-  @media screen and(min-width: 1280px) {
-    width: 768px;
-  }
-}
-.formField {
-  position: relative;
-  @media screen and(max-width: 508px) {
-    margin-right: 20px;
-    margin-left: 20px;
-  }
+  margin: 0 auto;
 }
 
 .formLabel {
@@ -97,12 +74,7 @@
   background-color: transparent;
   border-bottom: 1px solid #cdced0;
   padding-bottom: 5px;
-  @media screen and(max-width: 508px) {
-    width: 100%;
-  }
-  @media screen and (min-width: 509px) {
-    width: 429px;
-  }
+  width: 100%;
   &:focus {
     outline: none;
     border-color: #ff6b08;
@@ -119,16 +91,11 @@
   padding-left: 8px;
   margin-bottom: 58px;
   border: none;
+  width: 100%;
   background-color: transparent;
   border-bottom: 1px solid #ff2c0c;
   padding-bottom: 5px;
   color: #ff2c0c;
-  @media screen and(max-width: 508px) {
-    width: 100%;
-  }
-  @media screen and (min-width: 509px) {
-    width: 429px;
-  }
   &:focus {
     outline: none;
     border-color: #ff6b08;
@@ -139,16 +106,6 @@
     transform: translateY(-25px);
     transition: cubic-bezier(0.4, 0, 0.2, 1) 250ms, transform 250ms;
   }
-}
-
-.formMessage {
-  position: absolute;
-  top: 30px;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  color: rgba(24, 28, 39, 0.6);
 }
 
 .regFormBtn {
@@ -197,23 +154,4 @@
     cursor: pointer;
     color: rgba(24, 28, 39, 0.6);
   }
-}
-
-.addPeopleBtn {
-  width: 44px;
-  height: 44px;
-  margin-right: 20px;
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABeSURBVHgB7ZLBCcAgEAQvIQWkg7SQEizNDizBGqxAS7KDcx++3XuIILiw+BmGBU+ERFUD6hl3C8+PfjNEphzRQtGFG4mEcf0tA6ZaFr0yI1icDavP928pegxMQiuDGlpQFg9dX/4lAAAAAElFTkSuQmCC);
-  background-position: 50%;
-  border: none;
-  border-radius: 50%;
-  transition: all 0.3s linear;
-  background-color: #ff6b08;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
-
-.peopleModalBtn {
-  display: flex;
-  margin-left: 0;
 }

@@ -3,7 +3,6 @@ import { authActions } from '../auth';
 import { projectsActions } from '../projects';
 import { sprintsActions } from '../sprints';
 import { tasksActions } from '../tasks';
-import { peopleActions } from '../peopleAdd';
 
 const {
   registerRequest,
@@ -27,6 +26,12 @@ const {
   editProjectError,
   addTeammateRequest,
   addTeammateError,
+  getPeopleRequest,
+  getPeopleError,
+  addPeopleRequest,
+  addPeopleError,
+  deletePeopleRequest,
+  deletePeopleError,
 } = projectsActions;
 
 const {
@@ -55,14 +60,7 @@ const {
   editScheduledHoursError,
 } = tasksActions;
 
-const {
-  getPeopleRequest,
-  getPeopleError,
-  addPeopleRequest,
-  addPeopleError,
-  deletePeopleRequest,
-  deletePeopleError,
-} = peopleActions;
+// const {} = peopleActions;
 
 const error = createReducer(null, {
   [registerRequest]: () => null,

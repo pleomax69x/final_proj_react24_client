@@ -8,6 +8,8 @@ const {
   editProjectSuccess,
   addTeammateSuccess,
   changeFilter,
+  addPeopleSuccess,
+  deletePeopleSuccess,
 } = actions;
 
 const projects = createReducer([], {
@@ -22,6 +24,23 @@ const projects = createReducer([], {
       else return item;
     }),
   [addTeammateSuccess]: (_, { payload }) => payload,
+  [addPeopleSuccess]: (state, { payload }) =>
+    state.map(item => {
+      if (item._id === payload.id) {
+        const { teammates } = payload;
+        return { ...item, teammates };
+      }
+      return item;
+    }),
+  [deletePeopleSuccess]: (state, { payload }) =>
+    state.map(item => {
+      if (item._id === payload.idProject) {
+        const teammates = item.teammates.filter(
+          person => person.id !== payload.id,
+        );
+        return { ...item, teammates };
+      } else return item;
+    }),
 });
 
 const filter = createReducer('', {

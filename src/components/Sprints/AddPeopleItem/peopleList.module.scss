@@ -1,0 +1,41 @@
+.memberList {
+  margin: 0 auto;
+  width: 430px;
+  height: 160px;
+  overflow-y: auto;
+  flex-wrap: wrap;
+  flex-direction: column;
+  .member {
+    text-align: center;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    align-items: center;
+    font-size: 16px;
+    font-family: 'Montserrat';
+  }
+}
+
+.buttonDelete {
+  width: 20px;
+  height: 20px;
+
+  background-image: url(../../../img/header/delete.svg);
+  background-repeat: no-repeat;
+
+  outline: none;
+  border: none;
+  border-radius: 50%;
+
+  transition: all 250ms linear;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0px 0px 15px #ff6c00;
+    transform: scale(1.2);
+  }
+}

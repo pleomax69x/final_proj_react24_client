@@ -26,6 +26,13 @@ const deleteProjectsError = createAction('projects/deleteProjectsError');
 
 const changeFilter = createAction('projects/changeFilter');
 
+const addPeopleRequest = createAction('projects/addPeopleRequest');
+const addPeopleSuccess = createAction('projects/addPeopleSuccess');
+const addPeopleError = createAction('projects/addPeopleError');
+
+const deletePeopleRequest = createAction('projects/deletePeopleRequest');
+const deletePeopleSuccess = createAction('projects/deletePeopleSuccess');
+const deletePeopleError = createAction('projects/deletePeopleError');
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getProjectsRequest,
@@ -47,4 +54,10 @@ export default {
   deleteProjectsSuccess,
   deleteProjectsError,
   changeFilter,
+  addPeopleRequest,
+  addPeopleSuccess,
+  addPeopleError,
+  deletePeopleRequest,
+  deletePeopleSuccess,
+  deletePeopleError,
 };

@@ -1,0 +1,117 @@
+.sprintItem_list {
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.sprintItem {
+  width: 280px;
+  background-color: #ffffff;
+  min-height: 100%;
+  box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
+  border-radius: 5px;
+  position: relative;
+  transition: all 0.25s linear;
+  margin-bottom: 10px;
+
+  &:hover {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 250ms;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    &:not(:nth-child(2n)) {
+      margin-right: 37px;
+    }
+    margin-bottom: 20px;
+    width: 216px;
+    height: 255px;
+  }
+  @media screen and (min-width: 1200px) {
+    &:not(:nth-child(3n)) {
+      margin-right: 44px;
+    }
+    width: 270px;
+    height: 224px;
+    margin-bottom: 30px;
+  }
+}
+
+.projectLink {
+  display: block;
+  min-width: 100%;
+  min-height: 170px;
+  padding: 20px 20px 36px;
+  overflow: auto;
+  color: #000;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  z-index: 1;
+
+  @media screen and (min-width: 768px) {
+    padding: 18px 20px 40px;
+  }
+  @media screen and (min-width: 1200px) {
+    padding: 18px 30px 40px;
+  }
+}
+
+.cardTitle {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 20px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 28px;
+  }
+  @media screen and (min-width: 1200px) {
+  }
+}
+
+.cardDateContainer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  line-height: 12px;
+  align-items: center;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    line-height: 17px;
+  }
+  @media screen and (min-width: 1200px) {
+  }
+}
+
+.buttonDelete {
+  z-index: 2;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 20px;
+  height: 20px;
+
+  background-image: url(../../../img/header/delete.svg);
+  background-repeat: no-repeat;
+
+  outline: none;
+  border: none;
+  border-radius: 50%;
+
+  transition: all 250ms linear;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0px 0px 15px #ff6c00;
+    transform: scale(1.2);
+  }
+}

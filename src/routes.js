@@ -10,25 +10,19 @@ const pathes = {
 };
 
 const ProjectsPage = lazy(() =>
-  import(
-    './components/pages/projects.jsx' /* webpackChunkName: "project-view"*/
-  ),
+  import('./pages/projectsPage.js' /* webpackChunkName: "project-view"*/),
 );
 const SprintsPage = lazy(() =>
-  import(
-    './components/pages/sprints.jsx' /* webpackChunkName: "sprints-view"*/
-  ),
+  import('./pages/sprintsPage.js' /* webpackChunkName: "sprints-view"*/),
 );
 const TasksPage = lazy(() =>
-  import('./components/pages/tasks.jsx' /* webpackChunkName: "tasks-view"*/),
+  import('./pages/tasksPage.js' /* webpackChunkName: "tasks-view"*/),
 );
 const LogInPage = lazy(() =>
-  import('./components/pages/login.jsx' /* webpackChunkName: "logIn-view"*/),
+  import('./pages/loginPage.js' /* webpackChunkName: "logIn-view"*/),
 );
 const RegisterPage = lazy(() =>
-  import(
-    './components/pages/register.jsx' /* webpackChunkName: "register-view"*/
-  ),
+  import('./pages/registerPage.js' /* webpackChunkName: "register-view"*/),
 );
 
 const routes = [
