@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { sprintsSelectors, sprintsOperations } from '../../redux/sprints';
 import { projectsOperations, projectsSelectors } from '../../redux/projects';
+import { authSelectors } from '../../redux/auth';
 import СreatingSprint from './СreatingSprint/СreatingSprint.js';
 import NameInputEdit from './NameInputEdit/NameInputEdit';
 import СreatingPeopleItem from './AddPeopleItem/CreatingPeopleItem';
@@ -32,6 +33,7 @@ const Sprint = ({ toggleModal, showModal, deleteSprint, deleteSprints }) => {
   const token = JSON.parse(getStorageData).token;
   const sprints = useSelector(sprintsSelectors.getSprints);
   const teammates = useSelector(projectsSelectors.getProjects);
+  const userId = useSelector(authSelectors.getUserId);
 
   const projects = useSelector(projectsSelectors.getProjects);
   const idProject = history.location.state;
@@ -93,7 +95,9 @@ const Sprint = ({ toggleModal, showModal, deleteSprint, deleteSprints }) => {
               ></button>
               <p className={s.text}>Create a sprint</p>
             </label>
-            <AddPeople toggleModal={togglePeopleModal} />
+            {userId === currentProject?.owner && (
+              <AddPeople toggleModal={togglePeopleModal} />
+            )}
           </div>
           {sprints.length === 0 ? <Message type="sprints" /> : null}
           <SprintsItem sprints={sprints} to={addSprints} del={deleteSprint} />
