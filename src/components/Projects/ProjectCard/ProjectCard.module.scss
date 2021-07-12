@@ -13,6 +13,7 @@
   border-radius: 5px;
   position: relative;
   transition: box-shadow ease 500ms;
+
   &:nth-child(4n + 1) .cart {
     background-color: #8c72df;
   }
@@ -44,6 +45,7 @@
     font-size: 10px;
     line-height: 1.2;
     color: #ffffff;
+    transition: all 1s linear;
     @media screen and (min-width: 767px) {
       font-size: 14px;
       line-height: 1.21;
@@ -74,8 +76,11 @@
 
   &:nth-child(4n + 1) {
     background-color: #8c72df;
+    transition: 1s;
     &:hover,
     :focus {
+      transform: translateY(-15px);
+      transition: 1s;
       border: none;
       outline: none;
       box-shadow: 1px 6px 10px #8c72df;
@@ -99,8 +104,11 @@
   }
   &:nth-child(4n + 2) {
     background-color: #ff765f;
+    transition: 1s;
     &:hover,
     :focus {
+      transform: translateY(-15px);
+      transition: 1s;
       outline: none;
       box-shadow: 1px 6px 10px #ff765f;
     }
@@ -123,8 +131,11 @@
 
   &:nth-child(4n + 3) {
     background-color: #71df87;
+    transition: 1s;
     &:hover,
     :focus {
+      transform: translateY(-15px);
+      transition: 1s;
       outline: none;
       box-shadow: 1px 6px 10px #71df87;
     }
@@ -147,8 +158,11 @@
 
   &:nth-child(4n + 4) {
     background-color: #f78335;
+    transition: 1s;
     &:hover,
     :focus {
+      transform: translateY(-15px);
+      transition: 1s;
       outline: none;
       box-shadow: 1px 6px 10px #f78335;
     }
@@ -170,8 +184,11 @@
   }
   &:nth-child(4n + 5) {
     background-color: #f3be2e;
+    transition: 1s;
     &:hover,
     :focus {
+      transform: translateY(-15px);
+      transition: 1s;
       outline: none;
       box-shadow: 1px 6px 10px #f3be2e;
     }
@@ -193,8 +210,11 @@
   }
   &:nth-child(4n + 6) {
     background-color: #e46cde;
+    transition: 1s;
     &:hover,
     :focus {
+      transform: translateY(-15px);
+      transition: 1s;
       outline: none;
       box-shadow: 1px 6px 10px #e46cde;
     }
@@ -216,8 +236,11 @@
   }
   &:nth-child(4n + 7) {
     background-color: #4394f1;
+    transition: 1s;
     &:hover,
     :focus {
+      transform: translateY(-15px);
+      transition: 1s;
       outline: none;
       box-shadow: 1px 6px 10px #4394f1;
     }
@@ -239,8 +262,11 @@
   }
   &:nth-child(4n + 8) {
     background-color: #d45535;
+    transition: 1s;
     &:hover,
     :focus {
+      transform: translateY(-15px);
+      transition: 1s;
       outline: none;
       box-shadow: 1px 6px 10px #d45535;
     }
@@ -301,6 +327,7 @@
 
 .descr {
   display: none;
+  transition: all 1s linear;
 }
 
 .cart {
