@@ -23,6 +23,7 @@
   height: 100%;
   padding: 10px 20px;
   transition: color ease 500ms;
+  cursor: pointer;
   &::after {
     position: absolute;
     left: 0;

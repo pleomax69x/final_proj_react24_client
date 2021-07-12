@@ -4,6 +4,7 @@
   position: fixed;
   top: 0;
   left: 0;
+
   @media screen and (min-width: 767px) {
     background-color: rgba(0, 0, 0, 0.5);
   }
@@ -20,6 +21,8 @@
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   z-index: 101;
+  transform: translateX(-100%);
+  transition: 100s;
 
   @media screen and (min-width: 767px) {
     top: 50%;

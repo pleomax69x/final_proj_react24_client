@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, Suspense } from 'react';
 import './App.scss';
 import 'modern-normalize/modern-normalize.css';
+import Loader from 'react-loader-spinner';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { Switch, Redirect } from 'react-router-dom';
 import PrivateRoute from './components/Routes/PrivateRoute';
 import PublicRoute from './components/Routes/PublicRoute';
@@ -21,7 +23,21 @@ function App() {
   return (
     <>
       <Header />
-      <Suspense fallback={<p>loading...</p>}>
+      <Suspense
+        fallback={
+          <Loader
+            type="ThreeDots"
+            color="#ff6b08"
+            height={80}
+            width={80}
+            timeout={3000}
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          />
+        }
+      >
         <Switch>
           {routesData.routes.map(route =>
             route.private ? (
