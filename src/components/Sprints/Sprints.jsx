@@ -18,6 +18,8 @@ import Sidebar from '../Sidebar';
 import s from './sprints.module.scss';
 import Container from '../Container';
 
+import Message from '../Message';
+
 const Sprint = ({ toggleModal, showModal, deleteSprint, deleteSprints }) => {
   const dispatch = useDispatch();
 
@@ -93,7 +95,7 @@ const Sprint = ({ toggleModal, showModal, deleteSprint, deleteSprints }) => {
             </label>
             <AddPeople toggleModal={togglePeopleModal} />
           </div>
-
+          {sprints.length === 0 ? <Message type="sprints" /> : null}
           <SprintsItem sprints={sprints} to={addSprints} del={deleteSprint} />
         </div>
         {showModal && (
@@ -111,11 +113,13 @@ const Sprint = ({ toggleModal, showModal, deleteSprint, deleteSprints }) => {
             />
           </PeopleModal>
         )}
-        <SprintsDelete
-          sprints={sprints}
-          delAll={deleteSprints}
-          prId={projectId}
-        />
+        {sprints?.length > 0 ? (
+          <SprintsDelete
+            sprints={sprints}
+            delAll={deleteSprints}
+            prId={projectId}
+          />
+        ) : null}
       </div>
     </Container>
   );

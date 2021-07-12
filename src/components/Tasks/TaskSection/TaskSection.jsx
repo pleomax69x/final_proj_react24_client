@@ -7,6 +7,7 @@ import { tasksActions } from '../../../redux/tasks';
 import TaskHeader from '../TaskHeader';
 import TaskItem from '../TaskItem/TaskItem';
 import TaskPagination from '../TaskPagination';
+import Message from '../../Message';
 import s from './TaskSection.module.scss';
 
 const TaskSection = ({
@@ -76,7 +77,7 @@ const TaskSection = ({
             tasks={tasks}
           />
         </div>
-
+        {tasks?.length === 0 ? <Message type="tasks" /> : null}
         <ul className={s.card_list}>
           {pagDateIndex !== undefined && tasks.length > 0
             ? tasks?.map(task => (

@@ -7,6 +7,7 @@ import ProjectCard from '../components/Projects/ProjectCard';
 import { useHistory } from 'react-router';
 import ContainerProjects from '../components/Projects/ContainerProjects';
 import ProjectsDelete from '../components/Projects/ProjectsDelete';
+import Message from '../components/Message';
 
 const Projects = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ const Projects = () => {
   }, [history, token]);
   return (
     <ContainerProjects onClick={toggleModal}>
+      {projects.length === 0 ? <Message type="projects" /> : null}
       <ProjectCard
         projects={projects}
         to={transitiontoProject}
@@ -46,8 +48,9 @@ const Projects = () => {
           <СreatingProject onSave={toggleModal} />
         </Modal>
       )}
-
-      <ProjectsDelete projects={projects} delAll={deleteProjects} />
+      {projects.length > 0 ? (
+        <ProjectsDelete projects={projects} delAll={deleteProjects} />
+      ) : null}
     </ContainerProjects>
   );
 };
