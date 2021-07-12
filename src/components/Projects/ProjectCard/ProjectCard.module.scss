@@ -45,7 +45,7 @@
     font-size: 10px;
     line-height: 1.2;
     color: #ffffff;
-    transition: all 1s linear;
+    transition: all 500ms linear;
     @media screen and (min-width: 767px) {
       font-size: 14px;
       line-height: 1.21;
@@ -326,8 +326,8 @@
 }
 
 .descr {
-  display: none;
-  transition: all 1s linear;
+  color: transparent;
+  transition: all 500ms linear;
 }
 
 .cart {
