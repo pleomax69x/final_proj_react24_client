@@ -28,14 +28,14 @@
     }
     margin-bottom: 20px;
     width: 216px;
-    height: 255px;
+    height: 100%;
   }
   @media screen and (min-width: 1200px) {
     &:not(:nth-child(3n)) {
       margin-right: 44px;
     }
     width: 270px;
-    height: 224px;
+    // height: 224px;
     margin-bottom: 30px;
   }
 }
@@ -66,12 +66,19 @@
   line-height: 20px;
   margin-bottom: 20px;
 
+  // width: 240px;
+
   @media screen and (min-width: 768px) {
     font-size: 18px;
     line-height: 22px;
     margin-bottom: 28px;
+    width: 176px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
   @media screen and (min-width: 1200px) {
+    width: 210px;
   }
 }
 
@@ -89,8 +96,15 @@
   @media screen and (min-width: 768px) {
     font-size: 14px;
     line-height: 17px;
+
+    &:not(:last-child) {
+      margin-bottom: 37px;
+    }
   }
   @media screen and (min-width: 1200px) {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
   }
 }
 
