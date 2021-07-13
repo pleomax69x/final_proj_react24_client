@@ -1,9 +1,12 @@
 import React, { useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { CSSTransition } from 'react-transition-group';
+
 import authSelectors from '../../../redux/auth/auth-selectors';
 import { sprintsOperations } from '../../../redux/sprints';
 import Modal from '../../Modal';
 import s from './SprintsDelete.module.scss';
+import style from '../../Modal/Modal.module.scss';
 
 const SprintsDelete = ({ sprints, delAll, prId }) => {
   const dispatch = useDispatch();
@@ -38,7 +41,17 @@ const SprintsDelete = ({ sprints, delAll, prId }) => {
         </div>
       )}
 
-      {showModal && (
+      <CSSTransition
+        in={showModal}
+        timeout={400}
+        classNames={{
+          enter: style.displayEnter,
+          enterActive: style.displayEnterActive,
+          exit: style.displayExit,
+          exitActive: style.displayExitActive,
+        }}
+        unmountOnExit
+      >
         <Modal onClose={toggleModal}>
           <div className={s.modal_delete}>
             <h2 className={s.title}>Delete all sprints</h2>
@@ -53,7 +66,7 @@ const SprintsDelete = ({ sprints, delAll, prId }) => {
             <p className={s.textBtn}>Delete all</p>
           </div>
         </Modal>
-      )}
+      </CSSTransition>
     </div>
   );
 };

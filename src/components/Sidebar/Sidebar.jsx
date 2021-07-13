@@ -1,7 +1,10 @@
 import React, { useState, useCallback } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
+
 import styles from './Sidebar.module.scss';
 import Modal from '../Modal';
+import style from '../Modal/Modal.module.scss';
 
 const Sidebar = ({
   projectId,
@@ -55,11 +58,21 @@ const Sidebar = ({
         ></button>
         <p className={styles.text}>Create a {type}</p>
       </div>
-      {showModal && (
+      <CSSTransition
+        in={showModal}
+        timeout={400}
+        classNames={{
+          enter: style.displayEnter,
+          enterActive: style.displayEnterActive,
+          exit: style.displayExit,
+          exitActive: style.displayExitActive,
+        }}
+        unmountOnExit
+      >
         <Modal onClose={toggleModal}>
           <Creating onSave={toggleModal} prId={projectId} />
         </Modal>
-      )}
+      </CSSTransition>
     </div>
   );
 };

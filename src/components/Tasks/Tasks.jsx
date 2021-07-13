@@ -11,6 +11,8 @@ import СreatingSprint from '../Sprints/СreatingSprint';
 import Modal from '../Modal';
 import ChartModal from '../ChartModal';
 import s from './tasks.module.scss';
+import { CSSTransition } from 'react-transition-group';
+import style from '../Modal/Modal.module.scss';
 
 const Tasks = ({
   tasks,
@@ -74,20 +76,40 @@ const Tasks = ({
           toggleChartModal={toggleChartModal}
         />
       </div>
-      {showModal && (
+      <CSSTransition
+        in={showModal}
+        timeout={400}
+        classNames={{
+          enter: style.displayEnter,
+          enterActive: style.displayEnterActive,
+          exit: style.displayExit,
+          exitActive: style.displayExitActive,
+        }}
+        unmountOnExit
+      >
         <Modal onClose={toggleModal}>
           <СreatingTask onSave={toggleModal} sprintId={sprintId} />
         </Modal>
-      )}
+      </CSSTransition>
 
-      {showChartModal && (
+      <CSSTransition
+        in={showChartModal}
+        timeout={400}
+        classNames={{
+          enter: style.displayEnter,
+          enterActive: style.displayEnterActive,
+          exit: style.displayExit,
+          exitActive: style.displayExitActive,
+        }}
+        unmountOnExit
+      >
         <ChartModal
           onClose={toggleChartModal}
           tasks={tasks}
           sprintDuration={currSprint.duration}
           sprintTitle={currSprint.title}
         />
-      )}
+      </CSSTransition>
     </Container>
   );
 };
