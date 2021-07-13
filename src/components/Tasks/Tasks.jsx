@@ -106,8 +106,8 @@ const Tasks = ({
         <ChartModal
           onClose={toggleChartModal}
           tasks={tasks}
-          sprintDuration={currSprint.duration}
-          sprintTitle={currSprint.title}
+          sprintDuration={currSprint?.duration}
+          sprintTitle={currSprint?.title}
         />
       </CSSTransition>
     </Container>
