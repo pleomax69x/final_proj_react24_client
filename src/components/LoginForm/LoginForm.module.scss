@@ -8,7 +8,8 @@
     background-image: url(../../img/loginPage/bg-tablet.png);
   }
   @media screen and (min-width: 1200px) {
-    background-size: cover;
+    margin: 0 auto;
+    max-width: 1280px;
     padding-top: 50px;
     padding-bottom: 140px;
     background-image: url(../../img/loginPage/bg.png);
