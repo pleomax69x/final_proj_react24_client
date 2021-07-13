@@ -1,4 +1,4 @@
-import Sprint from '../components/Sprints/Sprints';
+import Sprint from '../components/sprints/Sprints';
 import React, { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { sprintsOperations } from '../redux/sprints';

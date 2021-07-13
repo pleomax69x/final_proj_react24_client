@@ -3,8 +3,8 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 
 import styles from './Sidebar.module.scss';
-import Modal from '../Modal';
-import style from '../Modal/Modal.module.scss';
+import Modal from '../modals';
+import style from '../modals/Modal.module.scss';
 
 const Sidebar = ({
   projectId,

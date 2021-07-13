@@ -1,4 +1,4 @@
-import NameInputEdit from '../../Sprints/NameInputEdit/NameInputEdit';
+import NameInputEdit from '../../sprints/NameInputEdit/NameInputEdit';
 import s from './TaskHeader.module.scss';
 
 const TaskHeader = ({

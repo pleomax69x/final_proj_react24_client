@@ -7,12 +7,12 @@ import Container from '../Container/Container';
 import TaskSection from './TaskSection';
 import СreatingTask from './СreatingTask';
 import Sidebar from '../Sidebar/Sidebar';
-import СreatingSprint from '../Sprints/СreatingSprint';
-import Modal from '../Modal';
+import СreatingSprint from '../sprints/СreatingSprint';
+import Modal from '../modals';
 import ChartModal from '../ChartModal';
 import s from './tasks.module.scss';
 import { CSSTransition } from 'react-transition-group';
-import style from '../Modal/Modal.module.scss';
+import style from '../modals/Modal.module.scss';
 
 const Tasks = ({
   tasks,

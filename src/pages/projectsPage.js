@@ -1,15 +1,15 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { projectsOperations, projectsSelectors } from '../redux/projects';
-import Modal from '../components/Modal';
-import СreatingProject from '../components/Projects/СreatingProject';
-import ProjectCard from '../components/Projects/ProjectCard';
+import Modal from '../components/modals';
+import СreatingProject from '../components/projects/СreatingProject';
+import ProjectCard from '../components/projects/ProjectCard';
 import { useHistory } from 'react-router';
-import ContainerProjects from '../components/Projects/ContainerProjects';
-import ProjectsDelete from '../components/Projects/ProjectsDelete';
+import ContainerProjects from '../components/projects/ContainerProjects';
+import ProjectsDelete from '../components/projects/ProjectsDelete';
 import Message from '../components/Message';
 import { CSSTransition } from 'react-transition-group';
-import style from '../components/Modal/Modal.module.scss';
+import style from '../components/modals/Modal.module.scss';
 
 const Projects = () => {
   const dispatch = useDispatch();
