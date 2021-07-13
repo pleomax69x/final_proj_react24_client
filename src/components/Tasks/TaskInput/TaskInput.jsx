@@ -122,7 +122,6 @@ const TaskInput = ({ id, hoursPerDay, currDate }) => {
       margin="none"
       className={s.input}
       autoComplete="off"
-      // defaultValue=" "
     />
   );
 };
