@@ -19,7 +19,6 @@ const schema = yup.object({
 });
 
 const createErrorMessage = error => {
-  console.log('createErrorMessage', error);
   if (error.includes('400')) return 'Bad request. Please try again';
   if (error.includes('401')) return 'User not authorized';
   if (error.includes('404')) return 'User not found';
@@ -44,10 +43,10 @@ const СreatingPeopleItem = ({ teammates, del }) => {
     }
   };
 
-  const currentProject = teammates.filter(({ _id }) => _id === projectId);
+  const currentProject = teammates?.filter(({ _id }) => _id === projectId);
 
-  const teammateEmail = Object.values(currentProject.map(el => el.teammates));
-  const teammate = teammateEmail.flat().map(obj => obj.email);
+  const teammateEmail = Object.values(currentProject?.map(el => el.teammates));
+  const teammate = teammateEmail?.flat()?.map(obj => obj.email);
   let errorMessage = errorFromState ? createErrorMessage(errorFromState) : null;
   const handleSubmit = ({ email }, { resetForm, setSubmitting }) => {
     dispatch(addTeammate(projectId, email));
@@ -85,7 +84,7 @@ const СreatingPeopleItem = ({ teammates, del }) => {
             )}
           </div>
           <p className={s.memberCount}>
-            Total participants in the project: {teammate.length}
+            Total participants in the project: {teammate?.length}
           </p>
           <PeopleList teammates={teammateEmail} del={del} />
           <div className={s.wr}>

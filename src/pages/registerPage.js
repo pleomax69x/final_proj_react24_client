@@ -1,5 +1,8 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import RegisterForm from '../components/RegisterForm/RegisterForm';
+import { errorActions } from '../redux/error';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -26,6 +29,11 @@ const createErrorMessage = error => {
   return 'Unknown error. Please try again';
 };
 const RegisterPage = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    return () => dispatch(errorActions.resetError());
+  }, [dispatch]);
   return (
     <RegisterForm
       validationSchema={validationSchema}

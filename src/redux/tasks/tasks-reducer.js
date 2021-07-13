@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import actions from './tasks-actions';
+import { authActions } from '../auth';
 
 const {
   getTasksSuccess,
@@ -13,6 +14,7 @@ const {
 } = actions;
 
 const tasks = createReducer([], {
+  [authActions.logoutSuccess]: () => [],
   [getTasksSuccess]: (_, { payload }) => payload,
   [addTaskSuccess]: (state, { payload }) => [...state, payload],
   [deleteTaskSuccess]: (state, { payload }) =>
@@ -36,6 +38,7 @@ const tasks = createReducer([], {
 });
 
 const filter = createReducer('', {
+  [authActions.logoutSuccess]: () => '',
   [changeFilter]: (_, { payload }) => payload,
 });
 

@@ -1,5 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 import actions from './sprints-actions';
+import { authActions } from '../auth';
 
 const {
   getSprintsSuccess,
@@ -9,6 +10,7 @@ const {
 } = actions;
 
 const sprints = createReducer([], {
+  [authActions.logoutSuccess]: () => [],
   [getSprintsSuccess]: (_, { payload }) => payload,
   [addSprintSuccess]: (state, { payload }) => [...state, payload],
   [deleteSprintSuccess]: (state, { payload }) =>
