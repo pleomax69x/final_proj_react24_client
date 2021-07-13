@@ -13,12 +13,10 @@ export default function ContainerProjects({ onClick, children }) {
   const userId = useSelector(authSelectors.getUserId);
 
   const handleFilterChange = e => {
-    console.log('handleFilterChange', e.target.dataset);
     setFilter(e.target.dataset.value);
   };
 
   useEffect(() => {
-    console.log('filter', filter);
     dispatch(projectsActions.changeFilter(filter));
   }, [filter, dispatch]);
 

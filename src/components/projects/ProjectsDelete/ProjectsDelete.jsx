@@ -14,7 +14,6 @@ const ProjectsDelete = ({ projects, delAll }) => {
   const userId = useSelector(authSelectors.getUserId);
 
   const isOwner = projects?.every(project => project.owner === userId);
-  console.log('isOwner:', isOwner);
 
   const [showModal, setShowModal] = useState(false);
   const toggleModal = useCallback(() => {

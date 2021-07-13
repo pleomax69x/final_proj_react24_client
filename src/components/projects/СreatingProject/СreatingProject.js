@@ -56,7 +56,6 @@ const СreatingProject = ({ onSave }) => {
     setSubmitting(false);
     resetForm();
 
-    // console.log(name, desc);
     onSave();
   };
 

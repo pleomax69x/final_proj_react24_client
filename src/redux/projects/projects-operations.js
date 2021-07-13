@@ -92,11 +92,8 @@ const deleteProjects = () => async dispatch => {
 
 const addTeammate = (id, email) => async dispatch => {
   dispatch(addPeopleRequest());
-  console.log('id', id);
-  console.log('email', email);
   try {
     const { data } = await axios.post(`/teammates/${id}`, { email });
-    console.log(data);
     const teammates = data.data.teammates;
     dispatch(addPeopleSuccess({ id, teammates }));
   } catch (error) {
@@ -105,7 +102,6 @@ const addTeammate = (id, email) => async dispatch => {
 };
 
 const deletePerson = (id, idProject) => async dispatch => {
-  console.log(id, idProject);
   dispatch(deletePeopleRequest());
   try {
     await axios.delete(`/teammates/${idProject}/${id}`);

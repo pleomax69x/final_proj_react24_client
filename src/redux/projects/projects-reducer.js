@@ -1,5 +1,6 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit';
 import actions from './projects-actions';
+import { authActions } from '../auth';
 
 const {
   getProjectsSuccess,
@@ -13,13 +14,13 @@ const {
 } = actions;
 
 const projects = createReducer([], {
+  [authActions.logoutSuccess]: () => [],
   [getProjectsSuccess]: (_, { payload }) => payload,
   [addProjectSuccess]: (state, { payload }) => [...state, payload],
   [deleteProjectSuccess]: (state, { payload }) =>
     state.filter(({ _id }) => _id !== payload),
   [editProjectSuccess]: (state, { payload }) =>
     state.map(item => {
-      console.log(item._id);
       if (item._id === payload._id) return payload;
       else return item;
     }),
@@ -44,6 +45,7 @@ const projects = createReducer([], {
 });
 
 const filter = createReducer('', {
+  [authActions.logoutSuccess]: () => '',
   [changeFilter]: (_, { payload }) => payload,
 });
 

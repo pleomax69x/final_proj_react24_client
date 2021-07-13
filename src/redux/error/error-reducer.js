@@ -3,6 +3,7 @@ import { authActions } from '../auth';
 import { projectsActions } from '../projects';
 import { sprintsActions } from '../sprints';
 import { tasksActions } from '../tasks';
+import actions from './error-actions';
 
 const {
   registerRequest,
@@ -63,6 +64,7 @@ const {
 // const {} = peopleActions;
 
 const error = createReducer(null, {
+  [actions.resetError]: () => null,
   [registerRequest]: () => null,
   [registerError]: (_, { payload }) => payload,
   [loginRequest]: () => null,
