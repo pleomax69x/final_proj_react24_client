@@ -2,19 +2,18 @@ import React, { useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 
-import { projectsOperations } from '../../../redux/projects';
 import authSelectors from '../../../redux/auth/auth-selectors';
-import Modal from '../../Modal';
-import s from './ProjectsDelete.module.scss';
-import style from '../../Modal/Modal.module.scss';
+import { sprintsOperations } from '../../../redux/sprints';
+import Modal from '../../modals';
+import s from './SprintsDelete.module.scss';
+import style from '../../modals/Modal.module.scss';
 
-const ProjectsDelete = ({ projects, delAll }) => {
+const SprintsDelete = ({ sprints, delAll, prId }) => {
   const dispatch = useDispatch();
 
   const userId = useSelector(authSelectors.getUserId);
 
-  const isOwner = projects?.every(project => project.owner === userId);
-  console.log('isOwner:', isOwner);
+  const isOwner = sprints?.every(sprint => sprint.projectOwnerId === userId);
 
   const [showModal, setShowModal] = useState(false);
   const toggleModal = useCallback(() => {
@@ -22,9 +21,9 @@ const ProjectsDelete = ({ projects, delAll }) => {
   }, []);
 
   const handleDelete = () => {
-    delAll();
+    delAll(prId);
     setTimeout(() => {
-      dispatch(projectsOperations.getProjects());
+      dispatch(sprintsOperations.getSprints(prId));
     }, 500);
     toggleModal();
   };
@@ -41,6 +40,7 @@ const ProjectsDelete = ({ projects, delAll }) => {
           <p className={s.textDell}>Delete all</p>
         </div>
       )}
+
       <CSSTransition
         in={showModal}
         timeout={400}
@@ -54,9 +54,9 @@ const ProjectsDelete = ({ projects, delAll }) => {
       >
         <Modal onClose={toggleModal}>
           <div className={s.modal_delete}>
-            <h2 className={s.title}>Delete all projects</h2>
+            <h2 className={s.title}>Delete all sprints</h2>
             <p className={s.text}>
-              Are you sure, you want to delete all projects?
+              Are you sure, you want to delete all sprints?
             </p>
             <button
               className={s.modal_btnDel}
@@ -71,4 +71,4 @@ const ProjectsDelete = ({ projects, delAll }) => {
   );
 };
 
-export default ProjectsDelete;
+export default SprintsDelete;

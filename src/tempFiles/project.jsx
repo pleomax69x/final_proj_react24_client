@@ -4,7 +4,7 @@ import { useLocation, useHistory } from 'react-router';
 import { sprintsSelectors, sprintsOperations } from '../../redux/sprints';
 import СreatingSprint from '../СreatingSprint';
 import SprintsItem from '../SprintsItem';
-import Modal from '../Modal';
+import Modal from '../modals';
 
 const Sprint = () => {
   const dispatch = useDispatch();

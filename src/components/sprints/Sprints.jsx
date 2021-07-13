@@ -9,16 +9,16 @@ import СreatingSprint from './СreatingSprint/СreatingSprint.js';
 import NameInputEdit from './NameInputEdit/NameInputEdit';
 import СreatingPeopleItem from './AddPeopleItem/CreatingPeopleItem';
 
-import СreatingProject from '../Projects/СreatingProject';
+import СreatingProject from '../projects/СreatingProject';
 
 import SprintsItem from './SprintsItem';
 import AddPeople from './AddPeopleItem/PeopleItem';
-import PeopleModal from '../Modal/PeopleModal';
+import PeopleModal from '../modals/PeopleModal';
 import SprintsDelete from './SprintsDelete/SprintsDelete';
-import Modal from '../Modal';
+import Modal from '../modals';
 import Sidebar from '../Sidebar';
 import s from './sprints.module.scss';
-import style from '../Modal/Modal.module.scss';
+import style from '../modals/Modal.module.scss';
 
 import Container from '../Container';
 
