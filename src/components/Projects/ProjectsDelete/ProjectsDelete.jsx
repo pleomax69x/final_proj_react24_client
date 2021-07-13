@@ -1,9 +1,12 @@
 import React, { useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { CSSTransition } from 'react-transition-group';
+
 import { projectsOperations } from '../../../redux/projects';
 import authSelectors from '../../../redux/auth/auth-selectors';
 import Modal from '../../Modal';
 import s from './ProjectsDelete.module.scss';
+import style from '../../Modal/Modal.module.scss';
 
 const ProjectsDelete = ({ projects, delAll }) => {
   const dispatch = useDispatch();
@@ -38,8 +41,17 @@ const ProjectsDelete = ({ projects, delAll }) => {
           <p className={s.textDell}>Delete all</p>
         </div>
       )}
-
-      {showModal && (
+      <CSSTransition
+        in={showModal}
+        timeout={400}
+        classNames={{
+          enter: style.displayEnter,
+          enterActive: style.displayEnterActive,
+          exit: style.displayExit,
+          exitActive: style.displayExitActive,
+        }}
+        unmountOnExit
+      >
         <Modal onClose={toggleModal}>
           <div className={s.modal_delete}>
             <h2 className={s.title}>Delete all projects</h2>
@@ -54,7 +66,7 @@ const ProjectsDelete = ({ projects, delAll }) => {
             <p className={s.textBtn}>Delete all</p>
           </div>
         </Modal>
-      )}
+      </CSSTransition>
     </div>
   );
 };

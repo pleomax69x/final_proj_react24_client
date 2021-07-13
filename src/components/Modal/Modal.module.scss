@@ -91,3 +91,21 @@
     text-shadow: 4px 4px 2px #969696;
   }
 }
+
+.displayEnter {
+  opacity: 0;
+}
+
+.displayEnterActive {
+  opacity: 1;
+  transition: all 400ms ease-in;
+}
+
+.displayExit {
+  opacity: 1;
+}
+
+.displayExitActive {
+  opacity: 0;
+  transition: all 400ms ease-in;
+}

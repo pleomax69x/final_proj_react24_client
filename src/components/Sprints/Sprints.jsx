@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
+import { CSSTransition } from 'react-transition-group';
 import { sprintsSelectors, sprintsOperations } from '../../redux/sprints';
 import { projectsOperations, projectsSelectors } from '../../redux/projects';
 import { authSelectors } from '../../redux/auth';
@@ -17,6 +18,8 @@ import SprintsDelete from './SprintsDelete/SprintsDelete';
 import Modal from '../Modal';
 import Sidebar from '../Sidebar';
 import s from './sprints.module.scss';
+import style from '../Modal/Modal.module.scss';
+
 import Container from '../Container';
 
 import Message from '../Message';
@@ -102,12 +105,33 @@ const Sprint = ({ toggleModal, showModal, deleteSprint, deleteSprints }) => {
           {sprints.length === 0 ? <Message type="sprints" /> : null}
           <SprintsItem sprints={sprints} to={addSprints} del={deleteSprint} />
         </div>
-        {showModal && (
+
+        <CSSTransition
+          in={showModal}
+          timeout={400}
+          classNames={{
+            enter: style.displayEnter,
+            enterActive: style.displayEnterActive,
+            exit: style.displayExit,
+            exitActive: style.displayExitActive,
+          }}
+          unmountOnExit
+        >
           <Modal onClose={toggleModal}>
             <СreatingSprint onSave={toggleModal} prId={projectId} />
           </Modal>
-        )}
-        {addPeopleModal && (
+        </CSSTransition>
+        <CSSTransition
+          in={addPeopleModal}
+          timeout={400}
+          classNames={{
+            enter: style.displayEnter,
+            enterActive: style.displayEnterActive,
+            exit: style.displayExit,
+            exitActive: style.displayExitActive,
+          }}
+          unmountOnExit
+        >
           <PeopleModal onClose={togglePeopleModal}>
             <СreatingPeopleItem
               teammates={teammates}
@@ -116,7 +140,8 @@ const Sprint = ({ toggleModal, showModal, deleteSprint, deleteSprints }) => {
               ArrayTeammate={idProject}
             />
           </PeopleModal>
-        )}
+        </CSSTransition>
+
         {sprints?.length > 0 ? (
           <SprintsDelete
             sprints={sprints}

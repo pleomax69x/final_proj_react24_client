@@ -8,6 +8,8 @@ import { useHistory } from 'react-router';
 import ContainerProjects from '../components/Projects/ContainerProjects';
 import ProjectsDelete from '../components/Projects/ProjectsDelete';
 import Message from '../components/Message';
+import { CSSTransition } from 'react-transition-group';
+import style from '../components/Modal/Modal.module.scss';
 
 const Projects = () => {
   const dispatch = useDispatch();
@@ -43,11 +45,22 @@ const Projects = () => {
         del={deleteProject}
       />
 
-      {showModal && (
+      <CSSTransition
+        in={showModal}
+        timeout={400}
+        classNames={{
+          enter: style.displayEnter,
+          enterActive: style.displayEnterActive,
+          exit: style.displayExit,
+          exitActive: style.displayExitActive,
+        }}
+        mountOnEnter
+        unmountOnExit
+      >
         <Modal onClose={toggleModal}>
           <СreatingProject onSave={toggleModal} />
         </Modal>
-      )}
+      </CSSTransition>
       {projects.length > 0 ? (
         <ProjectsDelete projects={projects} delAll={deleteProjects} />
       ) : null}
