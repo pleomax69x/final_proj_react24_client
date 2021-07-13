@@ -1,5 +1,6 @@
 import NameInputEdit from '../../sprints/NameInputEdit/NameInputEdit';
 import s from './TaskHeader.module.scss';
+import { useState } from 'react';
 
 const TaskHeader = ({
   currSprint,
@@ -9,6 +10,16 @@ const TaskHeader = ({
   editName,
   tasks,
 }) => {
+  const [displayInput, setDisplay] = useState(null);
+
+  const handleInput = () => {
+    if (displayInput === null) {
+      setDisplay({ display: 'block' });
+    } else if (displayInput !== null) {
+      setDisplay(null);
+    }
+  };
+
   return (
     <div className={s.wrapper_all}>
       <div className={s.wrapper_wr}>
@@ -37,13 +48,18 @@ const TaskHeader = ({
           <form className={s.search_form}>
             <input
               className={s.search_form_input}
+              style={displayInput}
               type="text"
               name="filter"
               placeholder=""
               value={filter}
               onChange={onChange}
             />
-            <button type="submit" className={s.search_form_button}></button>
+            <button
+              type="button"
+              onClick={handleInput}
+              className={s.search_form_button}
+            ></button>
           </form>
         ) : null}
       </div>
