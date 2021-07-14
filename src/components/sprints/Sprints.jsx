@@ -88,22 +88,30 @@ const Sprint = ({ toggleModal, showModal, deleteSprint, deleteSprints }) => {
             <NameInputEdit
               currItemName={currentProject?.name}
               editName={editName}
+              owner={currentProject?.owner === userId}
             />
+            {userId === currentProject?.owner && (
+              <label className={s.btnWrapper}>
+                <button
+                  className={s.btn}
+                  type="button"
+                  onClick={toggleModal}
+                ></button>
+                <p className={s.text}>Create a sprint</p>
+              </label>
+            )}
 
-            <label className={s.btnWrapper}>
-              <button
-                className={s.btn}
-                type="button"
-                onClick={toggleModal}
-              ></button>
-              <p className={s.text}>Create a sprint</p>
-            </label>
             {userId === currentProject?.owner && (
               <AddPeople toggleModal={togglePeopleModal} />
             )}
           </div>
           {sprints.length === 0 ? <Message type="sprints" /> : null}
-          <SprintsItem sprints={sprints} to={addSprints} del={deleteSprint} />
+          <SprintsItem
+            sprints={sprints}
+            to={addSprints}
+            del={deleteSprint}
+            owner={currentProject?.owner === userId}
+          />
         </div>
 
         <CSSTransition

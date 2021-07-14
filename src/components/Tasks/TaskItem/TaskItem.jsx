@@ -13,6 +13,7 @@ const TaskItem = ({ ...props }) => {
     totalHours,
     currDate,
     onClick,
+    owner,
   } = props;
   const dispatch = useDispatch();
 
@@ -38,7 +39,13 @@ const TaskItem = ({ ...props }) => {
           <span className={s.itemRezult}>{totalHours}</span>
         </li>
         <li className={s.item}>
-          <button onClick={onClick} className={s.button} type="button"></button>
+          {owner && (
+            <button
+              onClick={onClick}
+              className={s.button}
+              type="button"
+            ></button>
+          )}
         </li>
       </ul>
     </div>
