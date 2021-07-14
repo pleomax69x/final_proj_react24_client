@@ -1,8 +1,10 @@
 import React, { useCallback, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { sprintsOperations } from '../../redux/sprints';
 import { tasksOperations } from '../../redux/tasks';
+import { projectsSelectors } from '../../redux/projects';
+import { authSelectors } from '../../redux/auth';
 import Container from '../Container/Container';
 import TaskSection from './TaskSection';
 import СreatingTask from './СreatingTask';
@@ -30,6 +32,11 @@ const Tasks = ({
   const projectId = history.location.pathname.slice(10, 34);
 
   const deleteTask = id => dispatch(tasksOperations.deleteTask(id));
+
+  const currProject = useSelector(state =>
+    projectsSelectors.getProjectsById(state, projectId),
+  );
+  const userId = useSelector(authSelectors.getUserId);
 
   const transitiontoProject = id =>
     history.push(`/projects/${projectId}/${id}`, id);
@@ -74,6 +81,7 @@ const Tasks = ({
           deleteTask={deleteTask}
           toggleModal={toggleModal}
           toggleChartModal={toggleChartModal}
+          owner={currProject?.owner === userId}
         />
       </div>
       <CSSTransition

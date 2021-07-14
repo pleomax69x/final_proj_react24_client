@@ -1,6 +1,8 @@
 import { createSelector } from '@reduxjs/toolkit';
 
 const getProjects = state => state.projects.projects;
+const getProjectsById = (state, id) =>
+  state.projects.projects.find(item => item._id === id);
 const getFilter = state => state.projects.filter;
 
 const getVisibleProjects = createSelector(
@@ -13,4 +15,4 @@ const getVisibleProjects = createSelector(
 );
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default { getProjects, getFilter, getVisibleProjects };
+export default { getProjects, getFilter, getVisibleProjects, getProjectsById };

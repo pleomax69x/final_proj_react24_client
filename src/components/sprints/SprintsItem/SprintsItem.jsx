@@ -1,6 +1,6 @@
 import s from './SprintsItem.module.scss';
 
-const SprintItem = ({ sprints, to, del }) => {
+const SprintItem = ({ sprints, to, del, owner }) => {
   return (
     <ul className={s.sprintItem_list}>
       {sprints?.map(sprint => (
@@ -19,11 +19,13 @@ const SprintItem = ({ sprints, to, del }) => {
               </p>
             </div>
           </div>
-          <button
-            type="button"
-            onClick={() => del(sprint._id)}
-            className={s.buttonDelete}
-          ></button>
+          {owner && (
+            <button
+              type="button"
+              onClick={() => del(sprint._id)}
+              className={s.buttonDelete}
+            ></button>
+          )}
         </li>
       ))}
     </ul>

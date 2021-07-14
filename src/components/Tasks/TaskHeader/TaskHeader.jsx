@@ -9,6 +9,7 @@ const TaskHeader = ({
   onChange,
   editName,
   tasks,
+  owner,
 }) => {
   const [displayInput, setDisplay] = useState(null);
 
@@ -23,7 +24,11 @@ const TaskHeader = ({
   return (
     <div className={s.wrapper_all}>
       <div className={s.wrapper_wr}>
-        <NameInputEdit currItemName={currSprint?.title} editName={editName} />
+        <NameInputEdit
+          currItemName={currSprint?.title}
+          editName={editName}
+          owner={owner}
+        />
         <div className={s.wrap_tasks}>
           <button onClick={toggleModal} className={s.add_task_button}></button>
           <p className={s.task_name}>Create a task</p>

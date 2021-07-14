@@ -90,7 +90,7 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-index: 20;
+    z-index: 25;
   }
 }
 .task_name {
@@ -124,7 +124,7 @@
 }
 .table_list {
   display: none;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1200px) {
     display: flex;
     margin-top: 36px;
     align-items: center;

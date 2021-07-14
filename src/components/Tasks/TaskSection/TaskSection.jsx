@@ -17,6 +17,7 @@ const TaskSection = ({
   deleteTask,
   toggleModal,
   toggleChartModal,
+  owner,
 }) => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -75,6 +76,7 @@ const TaskSection = ({
             onChange={onChange}
             editName={editName}
             tasks={tasks}
+            owner={owner}
           />
         </div>
         {tasks?.length === 0 ? <Message type="tasks" /> : null}
@@ -90,6 +92,7 @@ const TaskSection = ({
                   totalHours={task.totalHours}
                   currDate={pagDate}
                   onClick={() => deleteTask(task._id)}
+                  owner={owner}
                 />
               ))
             : null}
