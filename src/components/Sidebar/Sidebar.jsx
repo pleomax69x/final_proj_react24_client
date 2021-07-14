@@ -14,6 +14,7 @@ const Sidebar = ({
   transition,
   type,
   Creating,
+  owner,
 }) => {
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
@@ -50,14 +51,16 @@ const Sidebar = ({
           </li>
         ))}
       </ul>
-      <div className={styles.btnWrapper}>
-        <button
-          type="button"
-          className={styles.btn}
-          onClick={toggleModal}
-        ></button>
-        <p className={styles.text}>Create a {type}</p>
-      </div>
+      {owner && (
+        <div className={styles.btnWrapper}>
+          <button
+            type="button"
+            className={styles.btn}
+            onClick={toggleModal}
+          ></button>
+          <p className={styles.text}>Create a {type}</p>
+        </div>
+      )}
       <CSSTransition
         in={showModal}
         timeout={400}
