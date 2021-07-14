@@ -81,6 +81,8 @@ const TaskInput = ({ id, hoursPerDay, currDate }) => {
 
   useEffect(() => setInputValue(hoursPerDay), [hoursPerDay]);
 
+  useEffect(() => setNoValid(''), [currDate]);
+
   const validation = value => {
     const num = Number(value);
     if (value.length > 1 && value[0] === '0') {
