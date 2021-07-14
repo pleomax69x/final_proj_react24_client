@@ -28,7 +28,7 @@ const Sprint = ({ toggleModal, showModal, deleteSprint, deleteSprints }) => {
   const dispatch = useDispatch();
 
   const deleteTeammate = id =>
-    dispatch(projectsOperations.deletePerson(id, idProject));
+    dispatch(projectsOperations.deletePerson(id, projectId));
   const history = useHistory();
   const getState = history.location.state;
   const compareWithPathName = history.location.pathname.slice(10);
@@ -39,7 +39,6 @@ const Sprint = ({ toggleModal, showModal, deleteSprint, deleteSprints }) => {
   const userId = useSelector(authSelectors.getUserId);
 
   const projects = useSelector(projectsSelectors.getProjects);
-  const idProject = history.location.state;
 
   const projectId = history.location.state;
   const currentProject = projects.find(project => project._id === projectId);
@@ -146,7 +145,7 @@ const Sprint = ({ toggleModal, showModal, deleteSprint, deleteSprints }) => {
               teammates={teammates}
               del={deleteTeammate}
               onSave={toggleModal}
-              ArrayTeammate={idProject}
+              ArrayTeammate={projectId}
             />
           </PeopleModal>
         </CSSTransition>
