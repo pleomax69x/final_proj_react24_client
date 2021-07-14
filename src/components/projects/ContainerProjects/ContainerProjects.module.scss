@@ -1,0 +1,111 @@
+.headWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 0px 30px 0;
+}
+
+.filterWrapper {
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 300px;
+}
+
+.filterBtn {
+  display: inline-block;
+  position: relative;
+  border: none;
+  background-color: transparent;
+  font-size: 14px;
+  font-weight: 500;
+  height: 100%;
+  padding: 10px 20px;
+  transition: color ease 500ms;
+  cursor: pointer;
+  &::after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    content: ' ';
+    display: inline-block;
+    height: 2px;
+    width: 100%;
+    transform: scaleX(0.5);
+    transition: background-color, transform ease 500ms;
+    background-color: black;
+  }
+
+  &:hover {
+    &::after {
+      transform: scaleX(1);
+      background-color: #ff6b08;
+    }
+  }
+
+  &.current {
+    color: #ff6b08;
+    &::after {
+      background-color: #ff6b08;
+    }
+  }
+}
+
+.activeFilter {
+  color: #ff6b08;
+}
+
+.btnWrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  line-height: 1.22;
+  cursor: pointer;
+  @media screen and (max-width: 1199px) {
+    margin-right: 0;
+  }
+}
+
+.btn {
+  width: 44px;
+  height: 44px;
+  margin-right: 20px;
+  background-image: url(../../../img/sidebar/+.png);
+  background-position: 50%;
+  border: none;
+  border-radius: 50%;
+  transition: all 0.3s linear;
+  background-color: #ff6b08;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  &:hover {
+    outline: none;
+    box-shadow: 0 0 8px #ff6b08;
+  }
+  @media screen and (max-width: 1199px) {
+    margin-right: 0;
+  }
+  @media screen and (max-width: 767px) {
+    margin-right: 0;
+    position: fixed;
+    bottom: 20px;
+    right: 16px;
+    z-index: 20;
+  }
+}
+
+.text {
+  display: none;
+  @media screen and (min-width: 1200px) {
+    display: block;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.22;
+  }
+}

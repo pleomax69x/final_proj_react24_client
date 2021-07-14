@@ -1,0 +1,237 @@
+.wrapper_all {
+  @media screen and (max-width: 767px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+.wrapper_wr {
+  display: flex;
+  justify-content: space-between;
+}
+.wrapper_tasks {
+  display: flex;
+  align-items: center;
+}
+
+.sprint_name {
+  font-family: Montserrat;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.23;
+  letter-spacing: 0.04em;
+  text-align: left;
+  margin-bottom: 30px;
+
+  @media screen and (min-width: 768px) {
+    margin-right: 40px;
+    font-size: 36px;
+    line-height: 1.22;
+  }
+  @media screen and (min-width: 1200px) {
+    margin-right: 42px;
+  }
+
+  &:first-child {
+    margin-top: 40px;
+  }
+}
+
+.edit_sprint_name_button {
+  margin-left: 0px;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  background-image: url('../../../img/tasksPage/edit.svg');
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  @media screen and (max-width: 767px) {
+    display: inline-block;
+    background-repeat: round;
+    width: 30px;
+    height: 28px;
+  }
+  @media screen and (min-width: 768px) {
+    display: inline-block;
+    margin-right: 34px;
+    background-repeat: round;
+    width: 29px;
+    height: 28px;
+  }
+}
+
+.wrap_tasks {
+  display: flex;
+  align-items: center;
+}
+.add_task_button {
+  width: 44px;
+  height: 44px;
+  margin-right: 20px;
+  background-image: url(../../../img/sidebar/+.png);
+  background-position: 50%;
+  border: none;
+  border-radius: 50%;
+  transition: all 0.3s linear;
+  background-color: #ff6b08;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  &:hover {
+    outline: none;
+    box-shadow: 0 0 8px #ff6b08;
+  }
+  @media screen and (max-width: 1199px) {
+    margin-right: 0;
+  }
+  @media screen and (max-width: 767px) {
+    margin-right: 0;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 25;
+  }
+}
+.task_name {
+  display: none;
+
+  @media screen and (min-width: 1200px) {
+    display: block;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.22;
+    letter-spacing: 0.04em;
+    color: #181c27;
+  }
+}
+.table_list_wrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: 10px;
+
+  @media screen and (min-width: 768px) {
+    border-bottom: 1px solid rgba(91, 115, 182, 0.1);
+    margin-bottom: 20px;
+  }
+  @media screen and (max-width: 767px) {
+    padding: 0;
+    margin-bottom: 20px;
+  }
+}
+.table_list {
+  display: none;
+  @media screen and (min-width: 1200px) {
+    display: flex;
+    margin-top: 36px;
+    align-items: center;
+    padding-left: 30px;
+    padding-bottom: 7px;
+  }
+}
+.table_item {
+  &:first-child {
+    @media screen and (min-width: 768px) and (max-width: 1199px) {
+      display: none;
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    margin-right: 60px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    margin-right: 90px;
+  }
+}
+.table_item:last-child {
+  margin-right: 0;
+}
+
+.table_title {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  color: #181c27;
+}
+
+.search_form {
+  display: flex;
+  background-color: transparent;
+  border: none;
+  padding-bottom: 5px;
+  @media screen and (max-width: 767px) {
+    border-bottom: 1px solid rgba(24, 28, 39, 0.1);
+    flex-direction: row-reverse;
+  }
+  @media screen and (min-width: 768px) {
+    margin-right: 36px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    display: flex;
+    border-bottom: 1px solid rgba(24, 28, 39, 0.1);
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  @media screen and (min-width: 1200px) {
+    height: 25px;
+    align-items: flex-end;
+  }
+}
+
+.search_form_button:hover {
+  opacity: 1;
+}
+
+.search_form_input {
+  width: 100px;
+  height: 20px;
+  border: none;
+  box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
+  border-radius: 5px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: #181c27;
+  padding: 2px 0 2px 5px;
+  outline: none;
+  margin-left: 10px;
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    width: 180px;
+    background: transparent;
+    box-shadow: none;
+  }
+  @media screen and (max-width: 767px) {
+    background: transparent;
+    box-shadow: none;
+    width: 265px;
+  }
+  @media screen and (min-width: 1200px) {
+    display: none;
+  }
+}
+
+.search_form_button {
+  margin-left: 5px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  cursor: pointer;
+  background-image: url(../../../img/tasksPage/find.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.6;
+  outline: none;
+  background-color: transparent;
+}

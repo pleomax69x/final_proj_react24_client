@@ -1,0 +1,112 @@
+.modal_backdrop {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  @media screen and (min-width: 500px) {
+    top: 0;
+  }
+}
+
+.modal_content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  right: 0px;
+  top: 0px;
+  padding-top: 63px;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  z-index: 101;
+
+  @media screen and (min-width: 500px) {
+    padding-top: 120px;
+    width: 512px;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 530px;
+  }
+}
+
+.modal_close_btn {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  background: none;
+  transition: all 0.25s linear;
+
+  &::before {
+    display: inline-block;
+    content: ' ';
+    width: 15px;
+    height: 15px;
+    background: no-repeat center url(../../img/modal/cancel.svg);
+  }
+
+  &:hover,
+  &:focus {
+    transform: rotate(180deg);
+  }
+}
+
+.modal_btn_wrapper {
+  padding: 0;
+  @media screen and (min-width: 767px) {
+    // padding: 40px 0;
+  }
+}
+
+.modal_btn_exit {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  width: 154px;
+  height: 44px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  color: rgba(24, 28, 39, 0.6);
+  background: #fff;
+  text-decoration-line: underline;
+  transition: all 0.25s linear;
+
+  &:hover,
+  &:focus {
+    color: #181c27;
+    text-shadow: 4px 4px 2px #969696;
+  }
+}
+
+.displayEnter {
+  opacity: 0;
+}
+
+.displayEnterActive {
+  opacity: 1;
+  transition: all 400ms ease-in;
+}
+
+.displayExit {
+  opacity: 1;
+}
+
+.displayExitActive {
+  opacity: 0;
+  transition: all 400ms ease-in;
+}
