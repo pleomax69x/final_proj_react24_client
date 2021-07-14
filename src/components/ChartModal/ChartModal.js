@@ -41,9 +41,7 @@ export default function ChartModal({
         <div>
           <canvas id="BurndownChart" className={s.canvasStyle}></canvas>
         </div>
-        <button className={s.modal_close_btn} onClick={handleClose}>
-          +
-        </button>
+        <button className={s.modal_close_btn} onClick={handleClose}></button>
         <SprintChart
           tasks={tasks}
           sprintDuration={sprintDuration}

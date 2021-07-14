@@ -32,9 +32,7 @@ export default function PeopleModal({ onClose, children }) {
   return createPortal(
     <div className={s.modal_backdrop} onClick={handleBackdropClick}>
       <div className={s.modal_content}>
-        <button className={s.modal_close_btn} onClick={handleClose}>
-          +
-        </button>
+        <button className={s.modal_close_btn} onClick={handleClose}></button>
         {children}
         <div className={s.modal_btn_wrapper}>
           <button className={s.modal_btn_exit} onClick={handleClose}>
