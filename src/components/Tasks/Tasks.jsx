@@ -72,6 +72,7 @@ const Tasks = ({
           type="sprint"
           Creating={СreatingSprint}
           activeItemId={currSprint?._id}
+          owner={currProject?.owner === userId}
         />
 
         <TaskSection

@@ -82,6 +82,7 @@ const Sprint = ({ toggleModal, showModal, deleteSprint, deleteSprints }) => {
           type="project"
           Creating={СreatingProject}
           activeItemId={projectId}
+          owner={true}
         />
         <div className={s.sprints}>
           <div className={s.sprints_btn}>
